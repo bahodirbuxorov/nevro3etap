@@ -1,0 +1,83 @@
+// Import all utilities
+@use "~/assets/scss/utilities/animations" as *;
+@use "~/assets/scss/utilities/mixins" as *;
+@use "~/assets/scss/utilities/variables" as *;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  background: #dcefff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $blue;
+  border-radius: 50px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+body {
+  background: #fff;
+}
+
+section {
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media (max-width: $xxl) {
+    max-width: 1200px !important;
+  }
+
+  @media (max-width: $xl) {
+    max-width: 1024px !important;
+  }
+
+  @media (max-width: $lg) {
+    max-width: 768px !important;
+  }
+
+  @media (max-width: $md) {
+    max-width: 640px !important;
+  }
+
+  @media (max-width: $sm) {
+    padding: 0 12px;
+    max-width: 450px !important;
+  }
+
+  @media (max-width: $xs) {
+    max-width: 100% !important;
+  }
+}
+
+.swiper-wrapper {
+  align-items: stretch;
+}
+
+.swiper-slide {
+  height: auto;
+}

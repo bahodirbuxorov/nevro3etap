@@ -1,0 +1,14 @@
+// Import base styles
+@use "~/assets/scss/base/global";
+@use "~/assets/scss/base/reset";
+@use "~/assets/scss/base/typography";
+
+// Import layouts
+@use "~/assets/scss/layouts/default";
+
+// Import components
+@use "~/assets/scss/components/navbar";
+@use "~/assets/scss/components/footer";
+
+// Import pages
+@use "~/assets/scss/pages/index";

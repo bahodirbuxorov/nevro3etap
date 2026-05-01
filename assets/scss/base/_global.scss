@@ -1,0 +1,46 @@
+// Import all utilities
+@use "~/assets/scss/utilities/animations" as *;
+@use "~/assets/scss/utilities/mixins" as *;
+@use "~/assets/scss/utilities/variables" as *;
+
+.btn--main {
+  background: $blue;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  @include font(25px, 38px, 700);
+  text-transform: uppercase;
+  padding: 18px 36px;
+  border-radius: 12px;
+  animation: scale 5s ease-in-out infinite;
+  cursor: pointer;
+  background: linear-gradient(#1f5afe, #0f4cf5);
+  color: white;
+  box-shadow:
+    inset 0pt 4pt 3pt -2pt #386fff,
+    0pt 4pt 5pt -3pt #0009;
+  border-bottom: 4pt solid #083acd;
+  transition: all 0.5s ease;
+
+  @include media($lg) {
+    @include font(20px, 24px, 700);
+    padding: 16px 28px;
+  }
+
+  @include media($sm) {
+    @include font(16px, 20px, 700);
+    padding: 12px 24px;
+  }
+
+  &:hover {
+    translate: 0pt -1pt;
+  }
+
+  &:active {
+    box-shadow:
+      inset 0pt 4pt 3pt -2pt #386fff,
+      0pt 4pt 5pt -3pt #0000;
+    translate: 0pt 0pt;
+  }
+}
