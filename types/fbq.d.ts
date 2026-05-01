@@ -1,5 +1,5 @@
 // Global Meta Pixel (fbq) type declaration
-// Window interfeysini kengaytiradi — TypeScript window.fbq ni taniydi
+// This extends the Window interface so TypeScript recognizes window.fbq
 
 type FbqEventName =
   | 'PageView'

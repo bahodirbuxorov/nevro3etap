@@ -13,6 +13,10 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      meta: [
+        { name: 'robots', content: 'index, follow' },
+        { name: 'googlebot', content: 'index, follow' }
+      ],
       script: [
         {
           children: `!function(f,b,e,v,n,t,s)

@@ -119,7 +119,7 @@
 							/>
 						</div>
 					</div>
-					<button type="submit" class="consult-popup__submit btn--main" :disabled="isSubmitting">
+					<button id="submit-lead-btn" type="submit" class="consult-popup__submit btn--main" :disabled="isSubmitting">
 						{{ isSubmitting ? 'ЮБОРИЛМОҚДА...' : 'ЮБОРИШ' }}
 					</button>
 				</form>
@@ -273,6 +273,12 @@ async function submitForm() {
 			toast.error(`❌ ${validateResult.message}`);
 			return;
 		} else {
+			// Trigger Meta Pixel Lead Event
+			if (typeof window !== 'undefined' && window.fbq) {
+				window.fbq('track', 'Lead', {
+					content_name: selectedPurpose.value || 'lead_form'
+				});
+			}
 			savePhone(normalizedPhone);
 			name.value = '';
 			phone.value = '+998';

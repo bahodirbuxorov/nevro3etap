@@ -17,13 +17,8 @@ export default defineEventHandler(async (event) => {
 	}
 
 	const results = await Promise.allSettled([
-		sendToTelegram(packet, {
-			telegramBotToken: config.telegramBotToken,
-			telegramChatId: config.telegramChatId,
-		}),
-		sendToBitrix(packet, {
-			bitrixWebhookUrl: config.bitrixWebhookUrl,
-		}),
+		sendToTelegram(packet, config),
+		sendToBitrix(packet, config),
 	]);
 
 	// Log failures for debugging
