@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     // Server-side only — .env orqali override qilinadi
     telegramBotToken: '',
     telegramChatId: '',
+    telegramChatIdNevroslim3: '',
     bitrixWebhookUrl: '',
   },
 

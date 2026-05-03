@@ -62,7 +62,7 @@ export async function sendToTelegram(
 		utm_medium?: string;
 		source_direction?: string;
 	},
-	config: { telegramBotToken: string; telegramChatId: string },
+	config: { telegramBotToken: string; telegramChatId: string; telegramChatIdNevroslim3?: string },
 	host: string = '',
 ) {
 	const hostname = host ? host.split(':')[0].toLowerCase() : 'nevroslim.uz';
@@ -112,18 +112,29 @@ export async function sendToTelegram(
 	const text = lines.join('\n');
 
 	const url = `https://api.telegram.org/bot${config.telegramBotToken}/sendMessage`;
-	const chatId = Number(config.telegramChatId);
+	let chatId = Number(config.telegramChatId);
 
-	const messageThreadId = DOMAIN_TOPIC_MAP[hostname] || 2; // Default to 2
+	if (hostname === 'nevroslim3.vercel.app') {
+		chatId = Number(config.telegramChatIdNevroslim3 || '-1002573962693');
+	}
+
+	const messageThreadId = DOMAIN_TOPIC_MAP[hostname]; // Only use topic if defined mapping exists (it might not be needed for the new group if it's not a forum, but we keep it or default to undefined/2)
+
+	const requestBody: any = {
+		chat_id: chatId,
+		text: text,
+	};
+
+	if (messageThreadId !== undefined) {
+		requestBody.message_thread_id = messageThreadId;
+	} else if (chatId === Number(config.telegramChatId)) {
+        requestBody.message_thread_id = 2; // Default for the main group
+    }
 
 	return await $fetch(url, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			chat_id: chatId,
-			message_thread_id: messageThreadId,
-			text,
-		}),
+		body: JSON.stringify(requestBody),
 	});
 }
 
