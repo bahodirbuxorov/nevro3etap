@@ -151,7 +151,15 @@ export async function sendToBitrix(
 		source_direction?: string;
 	},
 	config: { bitrixWebhookUrl: string },
+	host: string = '',
 ) {
+	const hostname = host ? host.split(':')[0].toLowerCase() : 'nevroslim.uz';
+	
+	if (hostname !== 'nevroslim3.vercel.app') {
+		console.log(`[Bitrix] Domain ${hostname} is currently ignored for Bitrix leads`);
+		return;
+	}
+
 	if (!config.bitrixWebhookUrl) {
 		console.warn('[Bitrix] Webhook URL is missing in runtimeConfig');
 		return;

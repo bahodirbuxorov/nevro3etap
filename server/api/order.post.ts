@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
 
 	const results = await Promise.allSettled([
 		sendToTelegram(packet, config, host),
-		sendToBitrix(packet, config),
+		sendToBitrix(packet, config, host),
 	]);
 
 	// Log failures for debugging
