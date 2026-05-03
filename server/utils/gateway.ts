@@ -16,6 +16,15 @@ const REGION_LABELS: Record<string, string> = {
 	'44': "Qoraqalpog'iston Respublikasi",
 };
 
+const DOMAIN_TOPIC_MAP: Record<string, number> = {
+	'1.nevroslim.uz': 4,
+	'nevroslim.uz': 2,
+	'2.nevroslim.uz': 7,
+	'3.nevroslim.uz': 9,
+	'4.nevroslim.uz': 11,
+	'5.nevroslim.uz': 13,
+};
+
 export function normalizeOrderPayload(body: Record<string, unknown>) {
 	const rawName = typeof body.name === 'string' ? body.name : '';
 	const rawPhone = typeof body.phone_number === 'string' ? body.phone_number : '';
@@ -54,9 +63,13 @@ export async function sendToTelegram(
 		source_direction?: string;
 	},
 	config: { telegramBotToken: string; telegramChatId: string },
+	host: string = '',
 ) {
+	const hostname = host ? host.split(':')[0].toLowerCase() : 'nevroslim.uz';
+
 	const lines = [
 		'🟢 Nevroslim',
+		`🔗 Manba: ${hostname}`,
 		'📋 Янги мурожаат!',
 		'',
 	];
@@ -101,11 +114,14 @@ export async function sendToTelegram(
 	const url = `https://api.telegram.org/bot${config.telegramBotToken}/sendMessage`;
 	const chatId = Number(config.telegramChatId);
 
+	const messageThreadId = DOMAIN_TOPIC_MAP[hostname] || 2; // Default to 2
+
 	return await $fetch(url, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			chat_id: chatId,
+			message_thread_id: messageThreadId,
 			text,
 		}),
 	});

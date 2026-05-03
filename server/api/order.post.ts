@@ -4,6 +4,7 @@ export default defineEventHandler(async (event) => {
 	const body = await readBody(event);
 	const packet = normalizeOrderPayload(body ?? {});
 	const config = useRuntimeConfig();
+	const host = getRequestHeader(event, 'host') || '';
 
 	if (!packet.name || packet.phone_number.length < 5) {
 		throw createError({
@@ -17,7 +18,7 @@ export default defineEventHandler(async (event) => {
 	}
 
 	const results = await Promise.allSettled([
-		sendToTelegram(packet, config),
+		sendToTelegram(packet, config, host),
 		sendToBitrix(packet, config),
 	]);
 
