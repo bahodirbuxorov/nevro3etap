@@ -50,7 +50,7 @@
 				</h2>
 				<div class="how-in">
 					<div class="how-left">
-						<img src="~/assets/images/png/how.png" alt="how" />
+						<img src="~/assets/images/webp/how.webp" alt="how" />
 					</div>
 					<div class="how-right">
 						<div class="how-item" data-aos="fade-right" data-aos-delay="50">
@@ -121,7 +121,7 @@
 				</h2>
 				<div class="how-in how--reverse">
 					<div class="how-left">
-						<img src="~/assets/images/png/how2.jpg" alt="how" />
+						<img src="~/assets/images/webp/how2.webp" alt="how" />
 					</div>
 					<div class="how-right column-2">
 						<div class="how-item" data-aos="fade-right" data-aos-delay="50">
@@ -210,29 +210,29 @@
 						}" :breakpoints="breakpointsGallery">
 							<SwiperSlide>
 								<div class="gallery-slider__slide">
-									<a data-fancybox="gallery2" href="/png/gallery-1.png">
-										<img src="/png/gallery-1.png" />
+									<a data-fancybox="gallery2" href="/webp/gallery-1.webp">
+										<img src="/webp/gallery-1.webp" />
 									</a>
 								</div>
 							</SwiperSlide>
 							<SwiperSlide>
 								<div class="gallery-slider__slide">
-									<a data-fancybox="gallery2" href="/png/gallery-6.png">
-										<img src="/png/gallery-6.png" />
+									<a data-fancybox="gallery2" href="/webp/gallery-6.webp">
+										<img src="/webp/gallery-6.webp" />
 									</a>
 								</div>
 							</SwiperSlide>
 							<SwiperSlide>
 								<div class="gallery-slider__slide">
-									<a data-fancybox="gallery2" href="/png/gallery-7.png">
-										<img src="/png/gallery-7.png" />
+									<a data-fancybox="gallery2" href="/webp/gallery-7.webp">
+										<img src="/webp/gallery-7.webp" />
 									</a>
 								</div>
 							</SwiperSlide>
 							<SwiperSlide>
 								<div class="gallery-slider__slide">
-									<a data-fancybox="gallery2" href="/png/gallery-8.png">
-										<img src="/png/gallery-8.png" />
+									<a data-fancybox="gallery2" href="/webp/gallery-8.webp">
+										<img src="/webp/gallery-8.webp" />
 									</a>
 								</div>
 							</SwiperSlide>
@@ -339,7 +339,7 @@
 		<!-- <section class="reasons">
 			<div class="image">
 				<div class="container">
-					<img src="~/assets/images/png/about.jpg" alt="about" />
+					<img src="~/assets/images/webp/about.jpg" alt="about" />
 				</div>
 			</div>
 			<div class="container">
@@ -416,7 +416,7 @@
 		<section class="benefits">
 			<div class="image">
 				<div class="container">
-					<img src="~/assets/images/png/ttb.png" alt="takib" />
+					<img src="~/assets/images/webp/ttb.webp" alt="takib" />
 				</div>
 			</div>
 			<div class="container">
