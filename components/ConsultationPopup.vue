@@ -217,6 +217,13 @@ function rinseDigits(raw: string) {
 	return raw.replace(/\D/g, '');
 }
 
+function createEventId() {
+	if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+		return crypto.randomUUID();
+	}
+	return `lead_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+}
+
 function isPhoneSubmitted(phoneNumber: string) {
 	try {
 		const phones = JSON.parse(localStorage.getItem('submitted_phones') || '[]');
@@ -248,6 +255,7 @@ async function submitForm() {
 	isSubmitting.value = true;
 
 	try {
+		const leadEventId = createEventId();
 		const purposeLabels: Record<string, string> = {
 			treatment: 'Даъволаниб шифо топишим керак',
 			price: 'Буюртма бермокчиман',
@@ -265,6 +273,7 @@ async function submitForm() {
 				purpose: selectedPurpose.value,
 				purpose_label: purposeLabels[selectedPurpose.value!] || '',
 				problems: problemLabels,
+				event_id: leadEventId,
 			...getUtm(),
 			},
 		});
@@ -277,7 +286,7 @@ async function submitForm() {
 			if (typeof window !== 'undefined' && window.fbq) {
 				window.fbq('track', 'Lead', {
 					content_name: selectedPurpose.value || 'lead_form'
-				});
+				}, { eventID: leadEventId });
 			}
 			savePhone(normalizedPhone);
 			name.value = '';
