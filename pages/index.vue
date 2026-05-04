@@ -579,8 +579,8 @@
 						}">
 							<SwiperSlide>
 								<div class="about-slider__slide">
-									<a data-fancybox="gallery" href="/new-certificate.jpg">
-										<img src="/new-certificate.jpg" />
+									<a data-fancybox="gallery" href="/new-certificate.webp">
+										<img src="/new-certificate.webp" />
 									</a>
 								</div>
 							</SwiperSlide>
