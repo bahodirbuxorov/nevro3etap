@@ -26,10 +26,10 @@
         Telegram каналимизга ўтилмоқда... {{ countdown }}
       </p>
       <div class="actions">
-        <a href="tel:+998712021818" target="_blank" rel="noopener" class="btn btn--primary">
+        <a href="tel:+998712021818" data-meta="contact-phone" target="_blank" rel="noopener" class="btn btn--primary">
           Qo'ng'iroq qilish
         </a>
-        <a href="https://t.me/NEVROSLIM" target="_blank" rel="noopener" class="btn btn--ghost">
+        <a href="https://t.me/NEVROSLIM" data-meta="contact-telegram" target="_blank" rel="noopener" class="btn btn--ghost">
           Telegram orqali bog'lanish
         </a>
       </div>

@@ -21,7 +21,7 @@
 								Юқори самарадорлик
 							</div>
 						</div>
-						<button id="header-btn-desktop" type="button" @click="openConsultPopup" class="header-btn btn--main" data-aos="fade-right" data-aos-delay="300">
+						<button id="header-btn-desktop" data-meta="lead-open" type="button" @click="openConsultPopup" class="header-btn btn--main" data-aos="fade-right" data-aos-delay="300">
 							Маслаҳат олиш
 						</button>
 						<p class="header-desc" data-aos="fade-right">
@@ -34,7 +34,7 @@
 							<img src="~/assets/images/webp/certificate.webp" width="100" height="auto" alt="Certificate" />
 						</div>
 					</div>
-					<button id="header-btn-mobile" type="button" @click="openConsultPopup" class="header-btn btn--main header--mobile" data-aos="fade-right" data-aos-delay="300">
+					<button id="header-btn-mobile" data-meta="lead-open" type="button" @click="openConsultPopup" class="header-btn btn--main header--mobile" data-aos="fade-right" data-aos-delay="300">
 						Маслаҳат олиш
 					</button>
 				</div>
@@ -550,7 +550,7 @@
 							src="https://optim.tildacdn.one/tild6338-3865-4637-b438-346266393938/-/resize/186x/-/format/webp/Leaves_Overlay_1_4.png"
 							width="186" height="auto" alt="Img" />
 					</div>
-					<button id="benefits-btn" type="button" @click="openConsultPopup" class="who-bottom__btn btn--main">
+					<button id="benefits-btn" data-meta="lead-open" type="button" @click="openConsultPopup" class="who-bottom__btn btn--main">
 						Маслаҳат олиш
 					</button>
 					<div class="who-bottom__img2">
@@ -658,7 +658,7 @@
 							src="https://optim.tildacdn.one/tild6338-3865-4637-b438-346266393938/-/resize/186x/-/format/webp/Leaves_Overlay_1_4.png"
 							width="186" height="auto" alt="Img" />
 					</div>
-					<button id="order-btn" type="button" @click="openConsultPopup" class="who-bottom__btn btn--main">Маслаҳат олиш </button>
+					<button id="order-btn" data-meta="lead-open" type="button" @click="openConsultPopup" class="who-bottom__btn btn--main">Маслаҳат олиш </button>
 					<div class="who-bottom__img2">
 						<img
 							src="https://optim.tildacdn.one/tild6639-3835-4564-b263-633834316438/-/resize/302x/-/format/webp/Leaves_Overlay_1_5.png"
