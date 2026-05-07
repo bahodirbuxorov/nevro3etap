@@ -275,16 +275,10 @@ async function submitForm() {
 		} else {
 			savePhone(normalizedPhone);
 
-			// Lead eventini FAQAT 1 marta yuborish.
-			// isSubmitting guard yuqorida qo'yilgan — double-submit imkonsiz.
-			// sessionStorage — brauzer tab yopilgunga qadar qayta otishdan himoya.
-			if (typeof window !== 'undefined' && window.fbq) {
-				const alreadySent = sessionStorage.getItem('fbq_lead_sent');
-				if (!alreadySent) {
-					sessionStorage.setItem('fbq_lead_sent', '1');
-					window.fbq('track', 'Lead');
-				}
-			}
+			// fbq('track', 'Lead') — olib tashlandi.
+			// Sabab: Meta o'zi avtomatik (codeless) 1 ta Lead event yuboradi.
+			// Agar biz ham qo'shsak → 2 ta Lead chiqadi.
+			// Yechim: faqat Meta'ning codeless eventiga tayanamiz.
 
 			name.value = '';
 			phone.value = '+998';
