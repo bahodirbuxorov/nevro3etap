@@ -274,6 +274,18 @@ async function submitForm() {
 			return;
 		} else {
 			savePhone(normalizedPhone);
+
+			// Lead eventini FAQAT 1 marta yuborish.
+			// isSubmitting guard yuqorida qo'yilgan — double-submit imkonsiz.
+			// sessionStorage — brauzer tab yopilgunga qadar qayta otishdan himoya.
+			if (typeof window !== 'undefined' && window.fbq) {
+				const alreadySent = sessionStorage.getItem('fbq_lead_sent');
+				if (!alreadySent) {
+					sessionStorage.setItem('fbq_lead_sent', '1');
+					window.fbq('track', 'Lead');
+				}
+			}
+
 			name.value = '';
 			phone.value = '+998';
 			emit('submitted');
