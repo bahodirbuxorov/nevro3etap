@@ -20,7 +20,9 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          // Faqat init — PageView plugin (fbq.client.ts) tomonidan yuboriladi
+          // Faqat init — PageView plugin (fbq.client.ts) tomonidan yuboriladi.
+          // autoConfig=false: Meta auto-eventlarini o'chiradi (Lead, InitiateCheckout).
+          // Aks holda Meta o'zi ham Lead yuboradi → duplikat bo'ladi.
           children: `!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -29,6 +31,7 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+fbq('set', 'autoConfig', false, '1362385449249859');
 fbq('init', '1362385449249859');`,
           type: 'text/javascript'
         }
