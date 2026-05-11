@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   css: ["~/assets/scss/main.scss"],
 
   nitro: {
-    preset: 'cloudflare-module',
+    preset: process.env.NODE_ENV === 'development' ? 'node-server' : 'cloudflare-module',
   },
 
   runtimeConfig: {
