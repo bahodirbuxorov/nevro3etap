@@ -1,6 +1,10 @@
 name = "nevro3etap"
+main = ".output/server/index.mjs"
 compatibility_date = "2026-05-11"
 compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = ".output/public"
 
 [vars]
 NUXT_TELEGRAM_BOT_TOKEN = ""
