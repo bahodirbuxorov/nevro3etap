@@ -1,0 +1,10 @@
+name = "nevro3etap"
+compatibility_date = "2026-05-11"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+NUXT_TELEGRAM_BOT_TOKEN = ""
+NUXT_TELEGRAM_CHAT_ID = ""
+NUXT_TELEGRAM_CHAT_ID_NEVROSLIM3 = ""
+NUXT_BITRIX_WEBHOOK_URL = ""
+NUXT_PUBLIC_PIXEL_MAP = ""

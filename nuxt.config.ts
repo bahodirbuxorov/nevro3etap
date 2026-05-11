@@ -4,12 +4,19 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/scss/main.scss"],
 
+  nitro: {
+    preset: 'cloudflare-module',
+  },
+
   runtimeConfig: {
-    // Server-side only — .env orqali override qilinadi
+    // Server-side only — Cloudflare dashboard va .env orqali override qilinadi
     telegramBotToken: '',
     telegramChatId: '',
     telegramChatIdNevroslim3: '',
     bitrixWebhookUrl: '',
+    public: {
+      pixelMap: '',
+    }
   },
 
   app: {
