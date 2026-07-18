@@ -5,7 +5,15 @@ export default defineNuxtConfig({
   css: ["~/assets/scss/main.scss"],
 
   nitro: {
-    preset: process.env.NODE_ENV === 'development' ? 'node-server' : 'cloudflare-module',
+    // Deploy target aniqlanadi:
+    // - Vercel CI (VERCEL=1) → 'vercel' (Vercel'ning native output formati)
+    // - dev → 'node-server'
+    // - qolgani (Cloudflare wrangler build/deploy) → 'cloudflare-module'
+    // NITRO_PRESET env berilsa — u hammasidan ustun.
+    preset: process.env.NITRO_PRESET
+      || (process.env.VERCEL ? 'vercel'
+        : process.env.NODE_ENV === 'development' ? 'node-server'
+          : 'cloudflare-module'),
   },
 
   runtimeConfig: {
