@@ -672,6 +672,8 @@
 			</div>
 		</section>
 
+		<InlineOrderForm />
+
 
 		<ConsultationPopup
 			:is-open="isConsultPopupOpen"
