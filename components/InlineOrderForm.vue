@@ -49,9 +49,13 @@
 						</select>
 					</div>
 
+					<!-- Diqqat: id/atributlarda "lead" so'zi BO'LMASIN — Meta'ning codeless
+					     (Event Setup Tool / avtomatik) qoidalari shunday nomlarga ilashadi va
+					     tugma bosilishini o'zi "Lead" deb yuboradi (cs_est: true, eventID'siz).
+					     Lead faqat submitForm() ichida, forma success bo'lganda otiladi. -->
 					<button
-						id="submit-lead-inline"
-						data-meta="lead-submit"
+						id="inline-order-submit"
+						data-meta="order-submit"
 						type="submit"
 						class="inline-order__submit btn--main"
 						:disabled="isSubmitting"
