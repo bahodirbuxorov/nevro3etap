@@ -143,6 +143,14 @@ function savePhone(phoneNumber: string) {
 	} catch {}
 }
 
+// Meta Lead — FAQAT /api/order muvaffaqiyatli javob qaytargandan keyin.
+// Tugma bosilishi (codeless) hisoblanmaydi: nuxt.config.ts da autoConfig=false.
+function trackLead(phoneNumber: string) {
+	if (typeof window === 'undefined' || !window.fbq) return;
+	// eventID — kelajakda server-side (CAPI) dedup uchun barqaror kalit
+	window.fbq('track', 'Lead', { content_name: 'inline-order-form' }, { eventID: `lead-${phoneNumber}` });
+}
+
 async function submitForm() {
 	if (isSubmitting.value) return;
 
@@ -171,8 +179,8 @@ async function submitForm() {
 			return;
 		} else {
 			savePhone(normalizedPhone);
+			trackLead(normalizedPhone);
 
-			// fbq('track', 'Lead') — olib tashlandi (Meta codeless Lead yuboradi).
 			name.value = '';
 			phone.value = '+998';
 			region.value = '';

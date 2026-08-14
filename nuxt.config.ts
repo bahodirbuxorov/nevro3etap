@@ -37,6 +37,9 @@ export default defineNuxtConfig({
         {
           // Meta Pixel — init + initial PageView shu yerda.
           // SPA navigatsiya PageView'lari plugins/fbq.client.ts da.
+          // autoConfig=false: Meta'ning avtomatik (codeless) eventlarini o'chiradi —
+          // aks holda oddiy tugma bosilishi ham "Lead" deb hisoblanadi.
+          // Lead FAQAT forma muvaffaqiyatli yuborilganda: components/InlineOrderForm.vue.
           children: `!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -45,6 +48,7 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+fbq('set', 'autoConfig', false, '1362385449249859');
 fbq('init', '1362385449249859');
 fbq('track', 'PageView');`,
           type: 'text/javascript'

@@ -16,7 +16,9 @@ interface Window {
   fbq: (
     action: 'track' | 'init' | 'trackCustom',
     eventName: FbqEventName,
-    params?: Record<string, unknown>
+    params?: Record<string, unknown>,
+    // 4-argument: Meta'ning dedup/tracking opsiyalari (masalan CAPI uchun eventID)
+    options?: { eventID?: string }
   ) => void;
   _fbq?: unknown;
 }
