@@ -49,10 +49,6 @@
 						</select>
 					</div>
 
-					<!-- Diqqat: id/atributlarda "lead" so'zi BO'LMASIN — Meta'ning codeless
-					     (Event Setup Tool / avtomatik) qoidalari shunday nomlarga ilashadi va
-					     tugma bosilishini o'zi "Lead" deb yuboradi (cs_est: true, eventID'siz).
-					     Lead faqat submitForm() ichida, forma success bo'lganda otiladi. -->
 					<button
 						id="inline-order-submit"
 						data-meta="order-submit"
@@ -147,14 +143,6 @@ function savePhone(phoneNumber: string) {
 	} catch {}
 }
 
-// Meta Lead — FAQAT /api/order muvaffaqiyatli javob qaytargandan keyin.
-// Tugma bosilishi (codeless) hisoblanmaydi: nuxt.config.ts da autoConfig=false.
-function trackLead(phoneNumber: string) {
-	if (typeof window === 'undefined' || !window.fbq) return;
-	// eventID — kelajakda server-side (CAPI) dedup uchun barqaror kalit
-	window.fbq('track', 'Lead', { content_name: 'inline-order-form' }, { eventID: `lead-${phoneNumber}` });
-}
-
 async function submitForm() {
 	if (isSubmitting.value) return;
 
@@ -183,7 +171,6 @@ async function submitForm() {
 			return;
 		} else {
 			savePhone(normalizedPhone);
-			trackLead(normalizedPhone);
 
 			name.value = '';
 			phone.value = '+998';
