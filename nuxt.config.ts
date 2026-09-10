@@ -45,6 +45,12 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1033859056095788');
 fbq('track', 'PageView');`,
           type: 'text/javascript'
+        },
+        {
+          // SAIVO tracker (api.meta.saivo.uz) — o'z analitika servisimiz (Adtru snippet).
+          // wid = shu sayt uchun berilgan workspace identifikatori.
+          src: 'https://api.meta.saivo.uz/tracker.js?wid=9056a3cb-4ab7-4db9-af59-65dfe5963295',
+          async: true
         }
       ],
       noscript: [
