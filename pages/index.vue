@@ -563,12 +563,24 @@ section {
 			margin: 0 auto;
 		}
 
+		// Product art reaches the chip column. Decor + bottle only line up in the
+		// desktop proportion (bottle = 0.6875 × decor width, offset 0.15), so both
+		// scale from one --nv-art width chosen so the bottle's right edge stops
+		// 4px before the chips; the decor's stump then tucks under them.
+		--nv-chips: 144px;
+		--nv-art: calc((104% - var(--nv-chips) - 4px) / 0.8375);
+
 		&__decor {
-			width: 72%;
+			left: -4%;
+			width: var(--nv-art);
+			max-width: none;
 		}
 
 		&__bottle {
-			width: 50%;
+			left: calc(-4% + var(--nv-art) * 0.15);
+			bottom: -2%;
+			width: calc(var(--nv-art) * 0.6875);
+			max-width: none;
 		}
 
 		&__actions {
@@ -598,7 +610,7 @@ section {
 		}
 
 		&__visual {
-			aspect-ratio: 1.12;
+			aspect-ratio: 0.98;
 		}
 
 		&__brain {
@@ -607,16 +619,7 @@ section {
 			width: 50%;
 		}
 
-		&__decor {
-			left: -4%;
-			width: 64%;
-		}
-
-		&__bottle {
-			left: 5%;
-			bottom: -2%;
-			width: 43%;
-		}
+		--nv-chips: 110px;
 
 		&__badge {
 			width: 78px;
@@ -669,6 +672,10 @@ section {
 }
 
 @media (max-width: 380px) {
+	.hero__visual {
+		aspect-ratio: 1.04;
+	}
+
 	.hero__title {
 		font-size: 29px;
 	}
