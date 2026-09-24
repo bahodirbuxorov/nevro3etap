@@ -13,7 +13,7 @@
 
       <h1 class="title">Ma'lumotlar qabul qilindi!</h1>
       <p class="subtitle">
-        Tez orada maslahatchilarimiz siz bilan bog'lanadi! Agar қўшимча саволларингиз бўлса,
+        Tez orada mutaxassislarimiz siz bilan bog'lanadi! Agar қўшимча саволларингиз бўлса,
         quyidagi контактлар орқали мурожаат қилинг.
       </p>
 
@@ -42,7 +42,7 @@
         <div class="step active">
           <span class="badge">2</span>
           <div>
-            <h3>Maslahatchi bog'lanadi</h3>
+            <h3>Mutaxassis bog'lanadi</h3>
             <p>Тетиклик ва хотиржамлик сари илк қадам!</p>
           </div>
         </div>
