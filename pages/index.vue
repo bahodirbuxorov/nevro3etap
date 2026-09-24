@@ -106,11 +106,21 @@
 		<!-- ═════ Ingredients ═════ -->
 		<section class="ing" id="tarkibi">
 			<div class="nv-wrap">
+				<figure class="ing__poster">
+					<img
+						src="~/assets/images/v2/ingredients-poster.webp"
+						width="1122"
+						height="1402"
+						alt="Nevroslim tarkibi: melissa, moychechak, yalpiz, valeriana, zveroboy, limon balzami, do'lana"
+						loading="lazy"
+					/>
+				</figure>
+
 				<h2 class="nv-title">Mahsulot tarkibidagi «ekstrakt»larning tabiiy xususiyatlari</h2>
 				<p class="nv-sub">Tabiatning eng yaxshi ne’matlari</p>
 
 				<div class="ing__grid">
-					<article v-for="i in ingredients" :key="i.img" class="ing__card">
+					<article v-for="(i, k) in ingredients" :key="i.img" class="ing__card" :style="{ '--i': k }">
 						<div class="ing__img">
 							<img :src="img(i.img)" :alt="i.name" loading="lazy" />
 						</div>
@@ -839,6 +849,20 @@ section {
 	padding: 72px 0;
 	background: url('~/assets/images/v2/section-bg.webp') center / cover no-repeat, #f1f8ec;
 
+	&__poster {
+		max-width: 560px;
+		margin: 0 auto 40px;
+		border-radius: 24px;
+		overflow: hidden;
+		box-shadow: 0 18px 44px rgba(11, 61, 34, 0.18);
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+	}
+
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
@@ -888,6 +912,9 @@ section {
 			max-width: 88%;
 			max-height: 88%;
 			object-fit: contain;
+			// gentle idle float; --i staggers each card so they don't move in sync
+			animation: nv-herb-float 4.6s ease-in-out infinite;
+			animation-delay: calc(var(--i, 0) * -0.37s);
 		}
 	}
 
@@ -899,6 +926,11 @@ section {
 
 	@media (max-width: $sm) {
 		padding: 48px 0;
+
+		&__poster {
+			margin-bottom: 28px;
+			border-radius: 18px;
+		}
 
 		&__grid {
 			grid-template-columns: repeat(2, 1fr);
@@ -927,6 +959,23 @@ section {
 		&__img {
 			width: 78%;
 		}
+	}
+}
+
+@keyframes nv-herb-float {
+	0%,
+	100% {
+		transform: translateY(0) rotate(-2deg);
+	}
+
+	50% {
+		transform: translateY(-7px) rotate(2deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ing__img img {
+		animation: none;
 	}
 }
 
