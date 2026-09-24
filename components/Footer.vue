@@ -13,13 +13,9 @@
 				<a href="/#tarkibi">Tarkibi</a>
 				<a href="/#fikrlar">Mijozlar fikri</a>
 				<a href="/#sertifikat">Sertifikatlar</a>
-				<a href="/#savollar">Savol-javob</a>
 			</nav>
 
 			<div class="nv-foot__contact">
-				<a class="nv-foot__phone" data-meta="contact-phone" href="tel:+998712021818">
-					<NvIcon name="phone" :size="18" /> +998 (71) 202-18-18
-				</a>
 				<div class="nv-foot__socials">
 					<a href="https://www.youtube.com/@Nevroslim" data-meta="contact-youtube" target="_blank" rel="noopener" aria-label="YouTube">
 						<img src="~/assets/images/svg/youtube.svg" alt="" />
@@ -81,20 +77,9 @@
 		}
 	}
 
-	&__phone {
-		display: inline-flex;
-		align-items: center;
-		gap: 8px;
-		color: #fff;
-		font-weight: 800;
-		font-size: 18px;
-		white-space: nowrap;
-	}
-
 	&__socials {
 		display: flex;
 		gap: 10px;
-		margin-top: 14px;
 
 		a {
 			display: grid;

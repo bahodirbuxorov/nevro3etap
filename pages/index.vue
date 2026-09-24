@@ -27,11 +27,8 @@
 
 					<div class="hero__actions">
 						<button type="button" id="hero-btn" data-meta="order-scroll" class="nv-btn" @click="scrollToOrderForm">
-							Bepul maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
+							Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
 						</button>
-						<a href="tel:+998712021818" data-meta="contact-phone" class="hero__call">
-							<span><NvIcon name="phone" :size="18" /></span> +998 (71) 202-18-18
-						</a>
 					</div>
 					<p class="hero__note">Ariza qoldiring — konsultantimiz siz bilan bog'lanadi.</p>
 				</div>
@@ -72,8 +69,9 @@
 				<div class="about__col">
 					<h2 class="nv-title about__title">Nevroslim nima?</h2>
 					<p class="about__text">
-						Nevroslim — asab tizimi va umumiy xotirjamlikni qo'llab-quvvatlashga mo'ljallangan, tabiiy
-						o'simlik komponentlari asosidagi sirop.
+						Nevroslim — asabiylik, stress, vahima va qo'rquv hissi, ruhiy zo'riqish hamda nevrozga xos
+						bezovtalik holatlarida umumiy xotirjamlikni qo'llab-quvvatlashga mo'ljallangan tabiiy o'simlik
+						komponentlari asosidagi sirop.
 					</p>
 					<ul class="about__icons">
 						<li v-for="a in aboutIcons" :key="a.label">
@@ -86,19 +84,6 @@
 				<div class="about__product">
 					<img src="~/assets/images/v2/about-bottles.webp" width="504" height="470" alt="Nevroslim siropi" loading="lazy" />
 				</div>
-
-				<div class="about__col">
-					<h2 class="nv-title about__title">Nega aynan Nevroslim?</h2>
-					<ul class="about__why">
-						<li v-for="w in why" :key="w.title">
-							<span><NvIcon :name="w.icon" :size="22" /></span>
-							<div>
-								<b>{{ w.title }}</b>
-								<p>{{ w.text }}</p>
-							</div>
-						</li>
-					</ul>
-				</div>
 			</div>
 		</section>
 
@@ -106,7 +91,7 @@
 		<section class="ing" id="tarkibi">
 			<div class="nv-wrap">
 				<h2 class="nv-title">Tarkibi</h2>
-				<p class="nv-sub">Nevroslimning tarkibi 16 ta tabiiy komponentdan iborat.</p>
+				<p class="nv-sub">Nevroslimning tarkibi 15 xil tabiiy ekstraktlardan iborat.</p>
 
 				<div class="ing__grid">
 					<article v-for="i in ingredients" :key="i.img" class="ing__card">
@@ -120,7 +105,7 @@
 
 				<div class="nv-center">
 					<button type="button" id="ing-btn" data-meta="order-scroll" class="nv-btn" @click="scrollToOrderForm">
-						Bepul maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
+						Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
 					</button>
 				</div>
 			</div>
@@ -191,7 +176,7 @@
 		<!-- ═════ How to order ═════ -->
 		<section class="steps" id="buyurtma">
 			<div class="nv-wrap">
-				<h2 class="nv-title">Buyurtma berish juda oson</h2>
+				<h2 class="nv-title">Buyurtma berish uchun:</h2>
 				<p class="nv-sub">Nevroslimni olish uchun atigi 3 ta qadam yetarli.</p>
 
 				<ol class="steps__row">
@@ -207,22 +192,6 @@
 			</div>
 		</section>
 
-		<!-- ═════ FAQ ═════ -->
-		<section class="faq" id="savollar">
-			<div class="nv-wrap">
-				<h2 class="nv-title">Tez-tez so'raladigan savollar</h2>
-				<div class="faq__grid">
-					<details v-for="q in faq" :key="q.q" class="faq__item">
-						<summary>
-							{{ q.q }}
-							<span class="faq__plus"><NvIcon name="plus" :size="18" :stroke="2.5" /></span>
-						</summary>
-						<p>{{ q.a }}</p>
-					</details>
-				</div>
-			</div>
-		</section>
-
 		<!-- ═════ Final CTA + order form ═════ -->
 		<section class="final">
 			<img class="final__bg" src="~/assets/images/v2/cta-bg.webp" alt="" aria-hidden="true" loading="lazy" />
@@ -232,13 +201,10 @@
 					<h2 class="final__title">Xotirjam hayot <span>hozir boshlanadi!</span></h2>
 					<p>Nevroslim — tabiiy komponentlar yordamida sizning kundalik xotirjamligingizni qo'llab-quvvatlaydi.</p>
 					<ul>
-						<li><NvIcon name="check" :size="18" :stroke="3" /> Bepul konsultatsiya</li>
+						<li><NvIcon name="check" :size="18" :stroke="3" /> Mutaxassis maslahati</li>
 						<li><NvIcon name="check" :size="18" :stroke="3" /> O'zbekiston bo'ylab yetkazib berish</li>
 						<li><NvIcon name="check" :size="18" :stroke="3" /> Original mahsulot</li>
 					</ul>
-					<a href="tel:+998712021818" data-meta="contact-phone" class="final__call">
-						<NvIcon name="phone" :size="20" /> +998 (71) 202-18-18
-					</a>
 				</div>
 				<InlineOrderForm />
 			</div>
@@ -254,7 +220,7 @@ useHead({
 	title: 'Nevroslim — asab tizimi uchun tabiiy sirop',
 	htmlAttrs: { lang: 'uz' },
 	meta: [
-		{ name: 'description', content: "Nevroslim — asab tizimini qo'llab-quvvatlash, stressni kamaytirish va sifatli uyqu uchun 16 ta tabiiy komponentli sirop. Bepul maslahat oling." },
+		{ name: 'description', content: "Nevroslim — asab tizimini qo'llab-quvvatlash, stressni kamaytirish va sifatli uyqu uchun 15 xil tabiiy ekstraktli sirop. Mutaxassis maslahatini oling." },
 	],
 	link: [
 		{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -275,21 +241,24 @@ const heroFeatures = [
 ];
 
 const heroChips = [
+	{ icon: 'frown', label: "Qo'rquv" },
+	{ icon: 'alert', label: 'Vahima' },
 	{ icon: 'zap', label: 'Stress' },
-	{ icon: 'frown', label: 'Asabiylik' },
+	{ icon: 'flame', label: 'Asabiylik' },
 	{ icon: 'activity', label: "Bosh og'rig'i" },
-	{ icon: 'moon', label: 'Uyqusizlik' },
 	{ icon: 'brain', label: 'Xotira zaifligi' },
-	{ icon: 'battery', label: 'Charchoq' },
+	{ icon: 'moon', label: 'Uyqusizlik' },
 ];
 
 const symptoms = [
-	{ img: 'symptom-irritable', label: "Tez ta'sirlanish" },
-	{ img: 'symptom-stress', label: "Doimiy zo'riqish" },
-	{ img: 'symptom-sleep', label: 'Uyqudagi muammolar' },
-	{ img: 'symptom-focus', label: 'Diqqatni jamlay olmaslik' },
-	{ img: 'symptom-fatigue', label: 'Kundalik charchoq' },
-	{ img: 'symptom-anxiety', label: 'Ichki bezovtalik' },
+	{ img: 'symptom-fatigue', label: 'Nevroz' },
+	{ img: 'symptom-anxiety', label: "Qo'rquv" },
+	{ img: 'symptom-irritable', label: 'Vahima' },
+	{ img: 'symptom-stress', label: 'Stress' },
+	{ img: 'symptom-nervous', label: 'Asabiylik' },
+	{ img: 'symptom-headache', label: "Bosh og'rig'i" },
+	{ img: 'symptom-focus', label: 'Xotira zaifligi' },
+	{ img: 'symptom-sleep', label: 'Uyqusizlik' },
 ];
 
 const aboutIcons = [
@@ -297,13 +266,6 @@ const aboutIcons = [
 	{ icon: 'shield', label: "Organizmni<br>qo'llab-quvvatlash" },
 	{ icon: 'pill', label: 'Qulay<br>qabul qilish' },
 	{ icon: 'heart', label: 'Kundalik<br>xotirjamlik' },
-];
-
-const why = [
-	{ icon: 'brain', title: "Asab tizimini qo'llab-quvvatlash", text: "Kundalik stress sharoitida organizmga yordam beradi." },
-	{ icon: 'smile', title: 'Emotsional muvozanat', text: 'Xotirjamlik va ichki muvozanatni saqlashga yordam beradi.' },
-	{ icon: 'moon', title: 'Sifatli uyqu va dam olish', text: "Sokin uyqu va to'laqonli dam olishni qo'llab-quvvatlaydi." },
-	{ icon: 'target', title: 'Diqqat va xotira', text: "Kundalik faollik va diqqatni jamlashni qo'llab-quvvatlaydi." },
 ];
 
 const ingredients = [
@@ -320,7 +282,6 @@ const ingredients = [
 	{ img: 'ing-zanjabil', name: 'Zanjabil', text: "Immunitet va ichki muvozanatni qo'llab-quvvatlaydi" },
 	{ img: 'ing-nard', name: 'Nard', text: "Tinchlantiruvchi xushbo'y ildiz" },
 	{ img: 'ing-yalpiz', name: 'Yalpiz', text: 'Tetiklik va yengillik baxsh etadi' },
-	{ img: 'ing-kardamon', name: 'Kardamon', text: 'Tetiklik va yaxshi hazmga yordam beradi' },
 	{ img: 'ing-propolis', name: 'Propolis', text: "Organizm himoyasini qo'llab-quvvatlaydi" },
 	{ img: 'ing-mumiyo', name: 'Mumiyo', text: 'Ichki quvvatni tiklashga yordam beradi' },
 ];
@@ -332,17 +293,6 @@ const steps = [
 	{ icon: 'clipboard', title: 'Ariza qoldiring', text: 'Ismingiz va telefon raqamingizni qoldiring.' },
 	{ icon: 'phone', title: 'Konsultatsiya oling', text: "Mutaxassisimiz siz bilan bog'lanib, savollaringizga javob beradi." },
 	{ icon: 'truck', title: 'Yetkazib berishni kuting', text: 'Manzilingizni tasdiqlang va mahsulotni qulay usulda qabul qiling.' },
-];
-
-const faq = [
-	{ q: 'Nevroslim nima?', a: "Nevroslim — asab tizimi va umumiy xotirjamlikni qo'llab-quvvatlash uchun tabiiy o'simlik komponentlari asosidagi sirop." },
-	{ q: 'Bir shishada qancha sirop bor?', a: 'Bir shishada 200 ml sirop mavjud.' },
-	{ q: 'Tarkibida nimalar bor?', a: "Tarkibi 16 ta tabiiy komponentdan iborat: ginkgo biloba, valeriana, do'lana, limon o't, zanjabil, mumiyo va boshqalar. To'liq ro'yxat yuqoridagi \"Tarkibi\" bo'limida." },
-	{ q: 'Yetkazib berish qancha vaqt oladi?', a: "Muddat manzilingizga bog'liq. Maslahatchimiz buyurtmani tasdiqlashda aniq muddatni aytadi." },
-	{ q: 'Qanday qabul qilinadi?', a: "Qabul qilish tartibi qadoqdagi yo'riqnomada ko'rsatilgan. Maslahatchimiz sizga batafsil tushuntirib beradi." },
-	{ q: "To'lov qanday amalga oshiriladi?", a: "To'lov usullari haqida maslahatchimiz buyurtmani tasdiqlashda batafsil ma'lumot beradi." },
-	{ q: 'Kimlarga tavsiya etiladi?', a: "Tez-tez stress, asabiylik, uyqu buzilishi, charchoq va diqqat pasayishini sezadigan kattalarga. Aniq tavsiya uchun maslahatchi bilan bog'laning." },
-	{ q: "Nojo'ya ta'sirlari bormi?", a: "Tarkibi tabiiy komponentlardan iborat. Biror komponentga individual sezuvchanlik bo'lishi mumkin, shuning uchun homiladorlik, emizish yoki surunkali kasallik holatlarida shifokor bilan maslahatlashing." },
 ];
 
 function scrollToOrderForm(e?: Event) {
@@ -504,31 +454,6 @@ section {
 		align-items: center;
 		gap: 12px 16px;
 		margin-top: 28px;
-	}
-
-	&__call {
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
-		min-height: 54px;
-		padding: 8px 22px 8px 8px;
-		border-radius: 999px;
-		background: #fff;
-		border: 1.5px solid var(--nv-line);
-		color: var(--nv-green-800);
-		font-weight: 800;
-		font-size: 17px;
-		white-space: nowrap;
-
-		span {
-			display: grid;
-			place-items: center;
-			width: 38px;
-			height: 38px;
-			border-radius: 50%;
-			background: var(--nv-green-600);
-			color: #fff;
-		}
 	}
 
 	&__note {
@@ -713,10 +638,8 @@ section {
 			flex-direction: column;
 			align-items: stretch;
 
-			.nv-btn,
-			.hero__call {
+			.nv-btn {
 				width: 100%;
-				justify-content: center;
 			}
 		}
 
@@ -761,8 +684,8 @@ section {
 
 	&__grid {
 		display: grid;
-		grid-template-columns: repeat(6, 1fr);
-		gap: 16px;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px;
 		margin-top: 32px;
 	}
 
@@ -791,13 +714,7 @@ section {
 		}
 	}
 
-	@media (max-width: $lg) {
-		&__grid {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-
-	@media (max-width: $sm) {
+	@media (max-width: $md) {
 		padding: 48px 0;
 
 		&__grid {
@@ -825,8 +742,8 @@ section {
 	&__in {
 		position: relative;
 		display: grid;
-		grid-template-columns: 1fr 0.9fr 1fr;
-		gap: 32px;
+		grid-template-columns: 1.1fr 0.9fr;
+		gap: 48px;
 		align-items: center;
 	}
 
@@ -879,47 +796,6 @@ section {
 		filter: drop-shadow(0 22px 26px rgba(11, 61, 34, 0.25));
 	}
 
-	&__why {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
-		margin-top: 18px;
-
-		li {
-			display: flex;
-			gap: 14px;
-			align-items: flex-start;
-			padding: 14px 16px;
-			border-radius: 16px;
-			background: #fff;
-			border: 1px solid var(--nv-line);
-		}
-
-		span {
-			display: grid;
-			place-items: center;
-			flex-shrink: 0;
-			width: 42px;
-			height: 42px;
-			border-radius: 12px;
-			background: var(--nv-green-600);
-			color: #fff;
-		}
-
-		b {
-			display: block;
-			font-size: 15px;
-			color: var(--nv-green-800);
-		}
-
-		p {
-			margin-top: 3px;
-			font-size: 13.5px;
-			line-height: 1.45;
-			color: var(--nv-muted);
-		}
-	}
-
 	@media (max-width: $lg) {
 		&__in {
 			grid-template-columns: 1fr;
@@ -961,8 +837,8 @@ section {
 
 	&__grid {
 		display: grid;
-		grid-template-columns: repeat(8, 1fr);
-		gap: 14px;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 16px;
 		margin-top: 32px;
 	}
 
@@ -1011,9 +887,9 @@ section {
 		}
 	}
 
-	@media (max-width: 1180px) {
+	@media (max-width: 860px) {
 		&__grid {
-			grid-template-columns: repeat(4, 1fr);
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 
@@ -1353,78 +1229,6 @@ section {
 	}
 }
 
-// ───────── FAQ
-.faq {
-	padding: 64px 0 72px;
-	background: var(--nv-green-50);
-
-	&__grid {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 12px 20px;
-		align-items: start;
-		margin-top: 32px;
-	}
-
-	&__item {
-		border-radius: 14px;
-		background: #fff;
-		border: 1px solid var(--nv-line);
-		overflow: hidden;
-
-		summary {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 12px;
-			min-height: 56px;
-			padding: 14px 18px;
-			font-weight: 700;
-			font-size: 15px;
-			color: var(--nv-green-800);
-			cursor: pointer;
-			list-style: none;
-
-			&::-webkit-details-marker {
-				display: none;
-			}
-		}
-
-		p {
-			padding: 0 18px 16px;
-			font-size: 14px;
-			line-height: 1.6;
-			color: var(--nv-muted);
-		}
-
-		&[open] .faq__plus {
-			transform: rotate(45deg);
-			background: var(--nv-green-600);
-			color: #fff;
-		}
-	}
-
-	&__plus {
-		display: grid;
-		place-items: center;
-		flex-shrink: 0;
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		background: var(--nv-green-100);
-		color: var(--nv-green-600);
-		transition: transform 0.2s ease, background 0.2s ease;
-	}
-
-	@media (max-width: $md) {
-		padding: 48px 0;
-
-		&__grid {
-			grid-template-columns: 1fr;
-		}
-	}
-}
-
 // ───────── Final CTA
 .final {
 	overflow: hidden;
@@ -1497,16 +1301,6 @@ section {
 				}
 			}
 		}
-	}
-
-	&__call {
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
-		margin-top: 22px;
-		font-size: 20px;
-		font-weight: 800;
-		color: var(--nv-green-800);
 	}
 
 	@media (max-width: 1100px) {

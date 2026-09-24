@@ -1,7 +1,7 @@
 <template>
 	<div class="nv-form" id="order-form">
-		<h3 class="nv-form__title">Bepul maslahat oling</h3>
-		<p class="nv-form__sub">Ma'lumotlaringizni qoldiring, maslahatchimiz tez orada siz bilan bog'lanadi.</p>
+		<h3 class="nv-form__title">Maslahat oling</h3>
+		<p class="nv-form__sub">Ma'lumotlaringizni qoldiring, mutaxassisimiz tez orada siz bilan bog'lanadi.</p>
 
 		<form @submit.prevent="submitForm" class="nv-form__form">
 			<label class="nv-form__field">
@@ -49,7 +49,7 @@
 				class="nv-btn nv-form__submit"
 				:disabled="isSubmitting"
 			>
-				{{ isSubmitting ? 'YUBORILMOQDA...' : 'BEPUL MASLAHAT OLISH' }}
+				{{ isSubmitting ? 'YUBORILMOQDA...' : 'MASLAHAT OLISH' }}
 				<NvIcon v-if="!isSubmitting" name="arrow" :size="18" :stroke="2.5" />
 			</button>
 			<p class="nv-form__note">Ma'lumotlaringiz uchinchi shaxslarga berilmaydi.</p>
@@ -60,18 +60,15 @@
 			<div class="duplicate-popup">
 				<button class="duplicate-popup__close" @click="isDuplicateModal = false" aria-label="Yopish">&times;</button>
 				<div class="duplicate-popup__icon">
-					<NvIcon name="phone" :size="30" />
+					<NvIcon name="check" :size="30" :stroke="2.5" />
 				</div>
 				<h3 class="duplicate-popup__title">Siz avval ham murojaat qoldirgansiz!</h3>
 				<p class="duplicate-popup__text">
 					Menejerlarimiz tez orada siz bilan bog'lanadi. Iltimos, kutib turing!
 				</p>
 				<div class="duplicate-popup__actions">
-					<a href="tel:+998712021818" data-meta="contact-phone" class="duplicate-popup__btn duplicate-popup__btn--primary">
-						Qo'ng'iroq qilish
-					</a>
-					<a href="https://t.me/NEVROSLIM" data-meta="contact-telegram" target="_blank" rel="noopener" class="duplicate-popup__btn duplicate-popup__btn--ghost">
-						Telegram
+					<a href="https://t.me/NEVROSLIM" data-meta="contact-telegram" target="_blank" rel="noopener" class="duplicate-popup__btn duplicate-popup__btn--primary">
+						Telegram orqali bog'lanish
 					</a>
 				</div>
 			</div>

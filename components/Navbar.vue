@@ -9,10 +9,7 @@
 				<a v-for="l in links" :key="l.href" :href="l.href" @click="open = false">{{ l.label }}</a>
 			</nav>
 
-			<a href="tel:+998712021818" data-meta="contact-phone" class="nv-head__phone">
-				<span class="nv-head__phone-ic"><NvIcon name="phone" :size="16" /></span>
-				+998 (71) 202-18-18
-			</a>
+			<a href="/#order-form" data-meta="order-scroll" class="nv-btn nv-btn--sm nv-head__cta">Maslahat olish</a>
 
 			<button type="button" class="nv-head__burger" :aria-expanded="open" aria-label="Menyu" @click="open = !open">
 				<NvIcon :name="open ? 'close' : 'menu'" :size="26" />
@@ -29,7 +26,6 @@ const links = [
 	{ href: '/#fikrlar', label: 'Mijozlar fikri' },
 	{ href: '/#sertifikat', label: 'Sertifikatlar' },
 	{ href: '/#buyurtma', label: 'Buyurtma' },
-	{ href: '/#savollar', label: 'Savol-javob' },
 ];
 
 const open = ref(false);
@@ -96,32 +92,8 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
 		}
 	}
 
-	&__phone {
-		display: inline-flex;
-		align-items: center;
-		gap: 8px;
+	&__cta {
 		flex-shrink: 0;
-		padding: 9px 18px 9px 9px;
-		border-radius: 999px;
-		background: var(--nv-green-600);
-		color: #fff;
-		font-weight: 800;
-		font-size: 15px;
-		white-space: nowrap;
-		transition: background 0.15s;
-
-		&:hover {
-			background: var(--nv-green-700);
-		}
-	}
-
-	&__phone-ic {
-		display: grid;
-		place-items: center;
-		width: 28px;
-		height: 28px;
-		border-radius: 50%;
-		background: rgba(255, 255, 255, 0.18);
 	}
 
 	&__burger {
@@ -145,7 +117,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
 			gap: 12px;
 		}
 
-		&__phone {
+		&__cta {
 			margin-left: auto;
 		}
 
@@ -183,16 +155,10 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
 			width: 132px;
 		}
 
-		&__phone {
-			padding: 6px;
-			font-size: 0;
-			gap: 0;
-		}
-
-		&__phone-ic {
-			width: 32px;
-			height: 32px;
-			font-size: 16px;
+		&__cta {
+			min-height: 40px;
+			padding: 8px 14px;
+			font-size: 12px;
 		}
 	}
 }
