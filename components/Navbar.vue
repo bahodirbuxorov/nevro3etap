@@ -24,7 +24,6 @@ const links = [
 	{ href: '/#mahsulot', label: 'Mahsulot haqida' },
 	{ href: '/#tarkibi', label: 'Tarkibi' },
 	{ href: '/#fikrlar', label: 'Mijozlar fikri' },
-	{ href: '/#sertifikat', label: 'Sertifikatlar' },
 	{ href: '/#buyurtma', label: 'Buyurtma' },
 ];
 

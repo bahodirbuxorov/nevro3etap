@@ -35,7 +35,23 @@
 
 				<div class="hero__visual">
 					<img class="hero__brain" src="~/assets/images/v2/hero-brain.webp" alt="" aria-hidden="true" />
-					<img class="hero__bottles" src="~/assets/images/v2/hero-bottles.webp" width="545" height="487" alt="Nevroslim siropi" />
+					<img
+						class="hero__decor"
+						src="~/assets/images/v2/hero-decor.webp"
+						width="1327"
+						height="1186"
+						alt=""
+						aria-hidden="true"
+						fetchpriority="high"
+					/>
+					<img
+						class="hero__bottle"
+						src="~/assets/images/v2/hero-bottle.webp"
+						width="1024"
+						height="1536"
+						alt="Nevroslim siropi, 200 ml"
+						fetchpriority="high"
+					/>
 					<img class="hero__badge" src="~/assets/images/v2/badge-100.webp" width="331" height="357" alt="100% tabiiy komponentlar" />
 
 					<ul class="hero__chips" aria-label="Nevroslim yordam beradigan holatlar">
@@ -136,39 +152,6 @@
 						<img :src="`https://i.ytimg.com/vi/${v}/oardefault.jpg`" alt="" loading="lazy" width="270" height="480" />
 						<span class="rev__play"><NvIcon name="play" :size="26" /></span>
 					</a>
-				</div>
-			</div>
-		</section>
-
-		<!-- ═════ Certificates ═════ -->
-		<section class="cert" id="sertifikat">
-			<div class="nv-wrap cert__in">
-				<div class="cert__copy">
-					<h2 class="nv-title cert__title">Sertifikatlar va sifat kafolati</h2>
-					<p class="cert__text">
-						Nevroslim mahsuloti barcha zarur talablar asosida ishlab chiqariladi va sifat nazoratidan o'tgan.
-					</p>
-					<ul class="cert__badges">
-						<li><span><NvIcon name="file" :size="22" /></span>Sertifikatlangan mahsulot</li>
-						<li><span><NvIcon name="shield" :size="22" /></span>Sifat nazorati</li>
-						<li><span><NvIcon name="award" :size="22" /></span>Original mahsulot kafolati</li>
-					</ul>
-					<a href="/new-certificate.webp" data-fancybox="certs" class="nv-btn nv-btn--green nv-btn--sm">
-						Sertifikatlarni ko'rish <NvIcon name="arrow" :size="16" :stroke="2.5" />
-					</a>
-				</div>
-
-				<div class="cert__docs">
-					<a href="/webp/about-img-2.webp" data-fancybox="certs" class="cert__doc cert__doc--back">
-						<img src="/webp/about-img-2.webp" alt="Sertifikat" loading="lazy" width="595" height="842" />
-					</a>
-					<a href="/new-certificate.webp" class="cert__doc cert__doc--front" @click.prevent="openCerts">
-						<img src="/new-certificate.webp" alt="Nevroslim sertifikati" loading="lazy" width="894" height="1280" />
-					</a>
-				</div>
-
-				<div class="cert__product">
-					<img src="~/assets/images/v2/cert-bottles.webp" width="528" height="460" alt="Nevroslim siropi" loading="lazy" />
 				</div>
 			</div>
 		</section>
@@ -299,13 +282,6 @@ function scrollToOrderForm(e?: Event) {
 	if (e) e.preventDefault();
 	const el = document.getElementById('order-form');
 	if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-function openCerts() {
-	Fancybox.show(
-		[{ src: '/new-certificate.webp' }, { src: '/webp/about-img-2.webp' }],
-		{},
-	);
 }
 
 onMounted(() => {
@@ -478,14 +454,31 @@ section {
 		filter: drop-shadow(0 0 40px rgba(255, 220, 120, 0.35));
 	}
 
-	&__bottles {
+	&__decor {
 		position: absolute;
-		left: 0;
+		z-index: 1;
+		left: -4%;
 		bottom: 0;
-		width: 70%;
-		max-width: 450px;
+		width: 80%;
+		max-width: 520px;
 		height: auto;
-		filter: drop-shadow(0 24px 30px rgba(11, 61, 34, 0.3));
+		filter: drop-shadow(0 18px 24px rgba(11, 61, 34, 0.24));
+		pointer-events: none;
+	}
+
+	&__bottle {
+		position: absolute;
+		z-index: 2;
+		left: 8%;
+		bottom: -2%;
+		width: 55%;
+		max-width: 355px;
+		height: auto;
+		filter: drop-shadow(0 24px 28px rgba(11, 61, 34, 0.3));
+		transform-origin: 50% 82%;
+		will-change: transform;
+		animation: nv-product-float 5.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+		pointer-events: none;
 	}
 
 	&__badge {
@@ -495,7 +488,7 @@ section {
 		width: 118px;
 		height: auto;
 		filter: drop-shadow(0 8px 14px rgba(120, 80, 0, 0.3));
-		animation: nv-float 5s ease-in-out infinite;
+		transform: rotate(-4deg);
 	}
 
 	&__chips {
@@ -606,8 +599,15 @@ section {
 			width: 60%;
 		}
 
-		&__bottles {
-			width: 76%;
+		&__decor {
+			left: -5%;
+			width: 84%;
+		}
+
+		&__bottle {
+			left: 6%;
+			bottom: -3%;
+			width: 59%;
 		}
 
 		&__badge {
@@ -660,20 +660,21 @@ section {
 	}
 }
 
-@keyframes nv-float {
+@keyframes nv-product-float {
 	0%,
 	100% {
-		transform: translateY(0) rotate(-4deg);
+		transform: translate3d(0, 0, 0) rotate(-0.65deg);
 	}
 
 	50% {
-		transform: translateY(-8px) rotate(2deg);
+		transform: translate3d(0, -10px, 0) rotate(0.65deg);
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.hero__badge {
+	.hero__bottle {
 		animation: none;
+		transform: none;
 	}
 }
 
@@ -897,20 +898,31 @@ section {
 		padding: 48px 0;
 
 		&__grid {
-			grid-template-columns: repeat(3, 1fr);
-			gap: 8px;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 10px;
 		}
 
 		&__card {
-			padding: 10px 6px 12px;
+			padding: 12px 10px 14px;
 
 			h3 {
-				font-size: 12.5px;
+				font-size: 14px;
 			}
 
 			p {
-				display: none;
+				font-size: 12px;
 			}
+
+			// 15 cards in 2 columns: centre the last one
+			&:last-child:nth-child(odd) {
+				grid-column: 1 / -1;
+				justify-self: center;
+				width: calc(50% - 5px);
+			}
+		}
+
+		&__img {
+			width: 78%;
 		}
 	}
 }
@@ -1011,145 +1023,10 @@ section {
 	}
 }
 
-// ───────── Certificates
-.cert {
-	padding: 72px 0;
-	background: linear-gradient(180deg, var(--nv-green-50), #eaf5e2);
-
-	&__in {
-		display: grid;
-		grid-template-columns: 1fr 0.9fr 1fr;
-		gap: 28px;
-		align-items: center;
-	}
-
-	&__title {
-		text-align: left;
-		font-size: clamp(28px, 3vw, 38px);
-	}
-
-	&__text {
-		margin-top: 14px;
-		color: var(--nv-muted);
-		line-height: 1.6;
-	}
-
-	&__badges {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		margin: 22px 0 26px;
-
-		li {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			font-weight: 700;
-			color: var(--nv-green-800);
-		}
-
-		span {
-			display: grid;
-			place-items: center;
-			width: 42px;
-			height: 42px;
-			border-radius: 12px;
-			background: #fff;
-			color: var(--nv-green-600);
-			box-shadow: 0 4px 12px rgba(18, 74, 40, 0.08);
-		}
-	}
-
-	&__docs {
-		position: relative;
-		height: 380px;
-	}
-
-	&__doc {
-		position: absolute;
-		top: 50%;
-		display: block;
-		width: 58%;
-		border: 6px solid #fff;
-		border-radius: 6px;
-		background: #fff;
-		box-shadow: 0 16px 32px rgba(11, 61, 34, 0.2);
-		transition: transform 0.25s ease;
-
-		img {
-			display: block;
-			width: 100%;
-			height: auto;
-		}
-
-		&--back {
-			left: 6%;
-			transform: translateY(-50%) rotate(-8deg);
-		}
-
-		&--front {
-			right: 6%;
-			transform: translateY(-50%) rotate(4deg);
-
-			&:hover {
-				transform: translateY(-52%) rotate(2deg);
-			}
-		}
-	}
-
-	&__product img {
-		display: block;
-		width: 100%;
-		height: auto;
-		filter: drop-shadow(0 22px 26px rgba(11, 61, 34, 0.25));
-	}
-
-	@media (max-width: $lg) {
-		&__in {
-			grid-template-columns: 1fr 1fr;
-		}
-
-		&__copy {
-			grid-column: 1 / -1;
-			text-align: center;
-		}
-
-		&__title {
-			text-align: center;
-		}
-
-		&__badges {
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: center;
-		}
-	}
-
-	@media (max-width: $sm) {
-		padding: 48px 0;
-
-		&__in {
-			grid-template-columns: 1fr;
-		}
-
-		&__badges {
-			flex-direction: column;
-			align-items: flex-start;
-			max-width: 280px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		&__docs {
-			height: 300px;
-		}
-	}
-}
-
 // ───────── Steps
 .steps {
 	padding: 72px 0;
-	background: #fff;
+	background: linear-gradient(180deg, var(--nv-green-50), #eaf5e2);
 
 	&__row {
 		display: grid;
@@ -1165,7 +1042,7 @@ section {
 		gap: 16px;
 		padding: 22px;
 		border-radius: 20px;
-		background: var(--nv-green-50);
+		background: #fff;
 		border: 1px solid var(--nv-line);
 
 		em {

@@ -3,7 +3,7 @@
 		<div class="nv-wrap nv-foot__in">
 			<div class="nv-foot__brand">
 				<img src="~/assets/images/v2/logo-white.svg" width="176" height="36" alt="Nevroslim" />
-				<p>Ishlab chiqaruvchi: AL-HAYAT-MED</p>
+				<p>Eksklyuziv distribyutor: AL-HAYAT-MED</p>
 				<p>Sayohat ko'chasi, 2-uy, Toshkent shahri, Mirzo Ulug'bek tumani</p>
 			</div>
 
@@ -12,7 +12,6 @@
 				<a href="/#mahsulot">Mahsulot haqida</a>
 				<a href="/#tarkibi">Tarkibi</a>
 				<a href="/#fikrlar">Mijozlar fikri</a>
-				<a href="/#sertifikat">Sertifikatlar</a>
 			</nav>
 
 			<div class="nv-foot__contact">
