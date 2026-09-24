@@ -1,0 +1,128 @@
+// Nevroslim v2 (green nature redesign) — shared tokens and primitives.
+// Section-specific styles live scoped inside each component/page.
+
+:root {
+  --nv-green-900: #0b3d22;
+  --nv-green-800: #0f4a28;
+  --nv-green-700: #16623a;
+  --nv-green-600: #1d7a3f;
+  --nv-green-500: #2c9a48;
+  --nv-green-100: #e5f3df;
+  --nv-green-50: #f3f9ef;
+  --nv-gold-1: #f9d774;
+  --nv-gold-2: #e7a928;
+  --nv-gold-3: #b9780f;
+  --nv-ink: #16301f;
+  --nv-muted: #4f6857;
+  --nv-line: #d6e8cf;
+  --nv-radius: 18px;
+  --nv-shadow: 0 10px 30px rgba(18, 74, 40, 0.1);
+  --nv-font: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --nv-serif: 'Lora', Georgia, 'Times New Roman', serif;
+}
+
+body {
+  font-family: var(--nv-font);
+  color: var(--nv-ink);
+  background: var(--nv-green-50);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+}
+
+.nv-wrap {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media (max-width: 640px) {
+    padding: 0 16px;
+  }
+}
+
+.nv-title {
+  font-family: var(--nv-serif);
+  font-weight: 700;
+  color: var(--nv-green-800);
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.nv-sub {
+  text-align: center;
+  color: var(--nv-muted);
+  font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 1.55;
+  margin: 10px auto 0;
+  max-width: 60ch;
+}
+
+// Primary CTA — gold pill. No "lead" wording in class/id/data attrs:
+// Meta's codeless matcher latches onto such names (see git fb58435).
+.nv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--nv-font);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #3b2400;
+  background: linear-gradient(180deg, var(--nv-gold-1) 0%, var(--nv-gold-2) 60%, var(--nv-gold-3) 100%);
+  box-shadow: 0 8px 20px rgba(185, 120, 15, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.04);
+    box-shadow: 0 12px 26px rgba(185, 120, 15, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--nv-green-500);
+    outline-offset: 3px;
+  }
+
+  &--green {
+    color: #fff;
+    background: linear-gradient(180deg, var(--nv-green-500), var(--nv-green-700));
+    box-shadow: 0 8px 20px rgba(22, 98, 58, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    &:hover {
+      box-shadow: 0 12px 26px rgba(22, 98, 58, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  &--sm {
+    min-height: 44px;
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .nv-btn {
+    transition: none;
+  }
+}

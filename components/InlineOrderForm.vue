@@ -1,81 +1,74 @@
 <template>
-	<section class="inline-order" id="order-form">
-		<div class="container">
-			<div class="inline-order__card">
-				<h2 class="inline-order__title">Буюртма қолдиринг</h2>
-				<p class="inline-order__subtitle">
-					Маълумотларингизни қолдиринг — малакали маслаҳатчиларимиз тез орада сиз билан боғланади
-				</p>
+	<div class="nv-form" id="order-form">
+		<h3 class="nv-form__title">Bepul maslahat oling</h3>
+		<p class="nv-form__sub">Ma'lumotlaringizni qoldiring, maslahatchimiz tez orada siz bilan bog'lanadi.</p>
 
-				<form @submit.prevent="submitForm" class="inline-order__form">
-					<div class="inline-order__field">
-						<label class="inline-order__label">Исмингиз</label>
-						<input
-							required
-							v-model="name"
-							type="text"
-							class="inline-order__input"
-							placeholder="Исмингизни киритинг"
-						/>
-					</div>
+		<form @submit.prevent="submitForm" class="nv-form__form">
+			<label class="nv-form__field">
+				<span class="nv-form__label">Ismingiz</span>
+				<input required v-model="name" type="text" autocomplete="given-name" class="nv-form__input" placeholder="Ismingizni kiriting" />
+			</label>
 
-					<div class="inline-order__field">
-						<label class="inline-order__label">Телефон рақам</label>
-						<input
-							pattern="\+998\(\d{2}\)\s\d{3}\s\d{2}\s\d{2}"
-							required
-							autocomplete="off"
-							v-model="phone"
-							type="text"
-							class="inline-order__input"
-							v-maska
-							data-maska="+998(##) ### ## ##"
-							placeholder="+998(__) ___ __ __"
-						/>
-					</div>
+			<label class="nv-form__field">
+				<span class="nv-form__label">Telefon raqam</span>
+				<input
+					pattern="\+998\(\d{2}\)\s\d{3}\s\d{2}\s\d{2}"
+					required
+					autocomplete="off"
+					inputmode="tel"
+					v-model="phone"
+					type="text"
+					class="nv-form__input"
+					v-maska
+					data-maska="+998(##) ### ## ##"
+					placeholder="+998(__) ___ __ __"
+				/>
+			</label>
 
-					<div class="inline-order__field">
-						<label class="inline-order__label">Вилоят</label>
-						<select
-							required
-							v-model="region"
-							class="inline-order__input inline-order__select"
-							:class="{ 'inline-order__select--placeholder': !region }"
-						>
-							<option value="" disabled>Вилоятни танланг</option>
-							<option v-for="r in regionOptions" :key="r.value" :value="r.value">
-								{{ r.label }}
-							</option>
-						</select>
-					</div>
+			<label class="nv-form__field">
+				<span class="nv-form__label">Viloyat</span>
+				<select
+					required
+					v-model="region"
+					class="nv-form__input nv-form__select"
+					:class="{ 'is-placeholder': !region }"
+				>
+					<option value="" disabled>Viloyatni tanlang</option>
+					<option v-for="r in regionOptions" :key="r.value" :value="r.value">
+						{{ r.label }}
+					</option>
+				</select>
+			</label>
 
-					<button
-						id="inline-order-submit"
-						data-meta="order-submit"
-						type="submit"
-						class="inline-order__submit btn--main"
-						:disabled="isSubmitting"
-					>
-						{{ isSubmitting ? 'ЮБОРИЛМОҚДА...' : 'ЮБОРИШ' }}
-					</button>
-				</form>
-			</div>
-		</div>
+			<!-- Keep "lead" out of id/data attrs: Meta's codeless matcher latches onto it (git fb58435).
+			     Lead is counted by Meta's URL rule on /thanks, reached only after /api/order succeeds. -->
+			<button
+				id="inline-order-submit"
+				data-meta="order-submit"
+				type="submit"
+				class="nv-btn nv-form__submit"
+				:disabled="isSubmitting"
+			>
+				{{ isSubmitting ? 'YUBORILMOQDA...' : 'BEPUL MASLAHAT OLISH' }}
+				<NvIcon v-if="!isSubmitting" name="arrow" :size="18" :stroke="2.5" />
+			</button>
+			<p class="nv-form__note">Ma'lumotlaringiz uchinchi shaxslarga berilmaydi.</p>
+		</form>
 
 		<!-- Duplicate modal -->
 		<div class="duplicate-overlay" v-if="isDuplicateModal" @click.self="isDuplicateModal = false">
 			<div class="duplicate-popup">
-				<button class="duplicate-popup__close" @click="isDuplicateModal = false">&times;</button>
+				<button class="duplicate-popup__close" @click="isDuplicateModal = false" aria-label="Yopish">&times;</button>
 				<div class="duplicate-popup__icon">
-					<IconsPhone />
+					<NvIcon name="phone" :size="30" />
 				</div>
-				<h1 class="duplicate-popup__title">Сиз олдин ҳам мурожаат қолдиргансиз!</h1>
+				<h3 class="duplicate-popup__title">Siz avval ham murojaat qoldirgansiz!</h3>
 				<p class="duplicate-popup__text">
-					Менежерларимиз тез орада siz билан боғланади. Илтимос, кутиб туринг!
+					Menejerlarimiz tez orada siz bilan bog'lanadi. Iltimos, kutib turing!
 				</p>
 				<div class="duplicate-popup__actions">
 					<a href="tel:+998712021818" data-meta="contact-phone" class="duplicate-popup__btn duplicate-popup__btn--primary">
-						Қўнғироқ қилиш
+						Qo'ng'iroq qilish
 					</a>
 					<a href="https://t.me/NEVROSLIM" data-meta="contact-telegram" target="_blank" rel="noopener" class="duplicate-popup__btn duplicate-popup__btn--ghost">
 						Telegram
@@ -83,7 +76,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 </template>
 
 <script lang="ts" setup>
@@ -187,114 +180,103 @@ async function submitForm() {
 }
 </script>
 
-<style scoped>
-.inline-order {
-	position: relative;
-	padding: clamp(40px, 6vw, 72px) 0;
-	background: #e4f1ff;
-}
-
-.inline-order__card {
-	width: min(560px, 100%);
-	margin: 0 auto;
+<style scoped lang="scss">
+.nv-form {
 	background: #fff;
-	border-radius: 24px;
-	padding: clamp(28px, 5vw, 48px);
-	box-shadow: 0 10px 40px rgba(31, 90, 254, 0.1);
-}
+	border-radius: 22px;
+	padding: clamp(22px, 3vw, 32px);
+	box-shadow: 0 20px 50px rgba(11, 61, 34, 0.18);
+	scroll-margin-top: 90px;
 
-.inline-order__title {
-	text-align: center;
-	font-size: clamp(26px, 3.4vw, 34px);
-	font-weight: 800;
-	color: #1a1a2e;
-	margin: 0 0 10px;
-	line-height: 1.25;
-}
+	&__title {
+		font-family: var(--nv-serif);
+		font-size: clamp(22px, 2.4vw, 28px);
+		color: var(--nv-green-800);
+		line-height: 1.2;
+	}
 
-.inline-order__subtitle {
-	text-align: center;
-	font-size: clamp(14px, 1.8vw, 16px);
-	color: #7a8699;
-	font-weight: 500;
-	margin: 0 auto 28px;
-	max-width: 42ch;
-	line-height: 1.5;
-}
+	&__sub {
+		margin-top: 6px;
+		font-size: 14px;
+		color: var(--nv-muted);
+		line-height: 1.5;
+	}
 
-.inline-order__form {
-	display: flex;
-	flex-direction: column;
-	gap: 18px;
-}
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		margin-top: 18px;
+	}
 
-.inline-order__field {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-}
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
 
-.inline-order__label {
-	font-size: 14px;
-	font-weight: 600;
-	color: #555;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-}
+	&__label {
+		font-size: 13px;
+		font-weight: 700;
+		color: var(--nv-green-800);
+	}
 
-.inline-order__input {
-	width: 100%;
-	padding: 16px 20px;
-	border-radius: 12px;
-	outline: none;
-	border: 2px solid #e0e0e0;
-	font-size: 16px;
-	font-weight: 400;
-	background: #fff;
-	transition: all 0.2s;
-	color: #1a1a2e;
-}
+	&__input {
+		width: 100%;
+		min-height: 52px;
+		padding: 14px 18px;
+		border-radius: 14px;
+		border: 1.5px solid var(--nv-line);
+		background: var(--nv-green-50);
+		font: 500 16px/1.2 var(--nv-font);
+		color: var(--nv-ink);
+		outline: none;
+		transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
 
-.inline-order__input:focus {
-	border-color: #1f5afe;
-	box-shadow: 0 0 0 3px rgba(31, 90, 254, 0.1);
-}
+		&:focus {
+			border-color: var(--nv-green-500);
+			background: #fff;
+			box-shadow: 0 0 0 4px rgba(44, 154, 72, 0.15);
+		}
+	}
 
-.inline-order__select {
-	appearance: none;
-	-webkit-appearance: none;
-	cursor: pointer;
-	padding-right: 44px;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-	background-repeat: no-repeat;
-	background-position: right 18px center;
-}
+	&__select {
+		appearance: none;
+		-webkit-appearance: none;
+		cursor: pointer;
+		padding-right: 44px;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2316623a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 18px center;
 
-.inline-order__select--placeholder {
-	color: #999;
-}
+		&.is-placeholder {
+			color: #8a9a8f;
+		}
+	}
 
-.inline-order__submit {
-	width: 100%;
-	border: none;
-	animation: none;
-	border-radius: 12px;
-	padding: 18px;
-	font-size: 18px;
-	margin-top: 6px;
-	cursor: pointer;
-}
+	&__submit {
+		width: 100%;
+		margin-top: 4px;
 
-.inline-order__submit:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
+		&:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+			transform: none;
+		}
+	}
+
+	&__note {
+		text-align: center;
+		font-size: 12px;
+		color: var(--nv-muted);
+	}
 }
 
 /* ── Duplicate overlay ── */
 .duplicate-overlay {
 	position: fixed;
 	inset: 0;
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(6, 30, 16, 0.55);
 	z-index: 1100;
 	display: grid;
 	place-items: center;
@@ -304,102 +286,81 @@ async function submitForm() {
 
 .duplicate-popup {
 	position: relative;
-	width: min(480px, 100%);
+	width: min(460px, 100%);
 	background: #fff;
-	border-radius: 20px;
-	padding: clamp(24px, 4vw, 40px);
-	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-}
+	border-radius: 22px;
+	padding: clamp(24px, 4vw, 36px);
+	text-align: center;
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 
-.duplicate-popup__close {
-	position: absolute;
-	top: 12px;
-	right: 16px;
-	background: none;
-	border: none;
-	font-size: 28px;
-	color: #999;
-	cursor: pointer;
-	line-height: 1;
-	transition: color 0.2s;
-}
-
-.duplicate-popup__close:hover {
-	color: #333;
-}
-
-.duplicate-popup__icon {
-	width: 64px;
-	height: 64px;
-	margin: 0 auto 16px;
-	svg {
-		width: 100%;
-		height: 100%;
-		color: #2e8b57;
+	&__close {
+		position: absolute;
+		top: 10px;
+		right: 14px;
+		font-size: 28px;
+		line-height: 1;
+		color: #8a9a8f;
+		padding: 6px;
 	}
-}
 
-.duplicate-popup__title {
-	text-align: center;
-	font-size: clamp(18px, 2.4vw, 24px);
-	font-weight: 800;
-	color: #163321;
-	margin: 0 0 8px;
-}
+	&__icon {
+		display: grid;
+		place-items: center;
+		width: 64px;
+		height: 64px;
+		margin: 0 auto 14px;
+		border-radius: 50%;
+		background: var(--nv-green-100);
+		color: var(--nv-green-600);
+	}
 
-.duplicate-popup__text {
-	text-align: center;
-	font-size: 14px;
-	color: #587a66;
-	margin: 0 auto 20px;
-	max-width: 44ch;
-}
+	&__title {
+		font-family: var(--nv-serif);
+		font-size: clamp(19px, 2.4vw, 23px);
+		color: var(--nv-green-800);
+		margin-bottom: 8px;
+	}
 
-.duplicate-popup__actions {
-	display: flex;
-	gap: 10px;
-	justify-content: center;
-	flex-wrap: wrap;
-}
+	&__text {
+		font-size: 14px;
+		color: var(--nv-muted);
+		margin: 0 auto 20px;
+		max-width: 40ch;
+	}
 
-.duplicate-popup__btn {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 12px 24px;
-	border-radius: 10px;
-	font-weight: 700;
-	font-size: 14px;
-	text-decoration: none;
-	transition: transform 0.12s, filter 0.2s;
-}
+	&__actions {
+		display: flex;
+		gap: 10px;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
 
-.duplicate-popup__btn:active {
-	transform: translateY(1px);
-}
+	&__btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 46px;
+		padding: 12px 24px;
+		border-radius: 999px;
+		font-weight: 800;
+		font-size: 14px;
 
-.duplicate-popup__btn--primary {
-	background: linear-gradient(180deg, #2e8b57, #1b6e44);
-	color: #fff;
-}
+		&--primary {
+			background: linear-gradient(180deg, var(--nv-green-500), var(--nv-green-700));
+			color: #fff;
+		}
 
-.duplicate-popup__btn--primary:hover {
-	filter: brightness(1.05);
-}
-
-.duplicate-popup__btn--ghost {
-	background: rgba(46, 139, 87, 0.08);
-	color: #1b6e44;
-}
-
-.duplicate-popup__btn--ghost:hover {
-	background: rgba(46, 139, 87, 0.14);
+		&--ghost {
+			background: var(--nv-green-100);
+			color: var(--nv-green-700);
+		}
+	}
 }
 
 @keyframes popupIn {
 	from {
 		opacity: 0;
-		transform: scale(0.95);
+		transform: scale(0.96);
 	}
 	to {
 		opacity: 1;
@@ -414,7 +375,6 @@ async function submitForm() {
 
 	.duplicate-popup__btn {
 		width: 100%;
-		text-align: center;
 	}
 }
 </style>

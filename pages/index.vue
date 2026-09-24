@@ -1,818 +1,1538 @@
 <template>
-	<main>
-		<header class="header">
-			<div class="container">
-				<div class="header-in">
-					<div class="header-left">
-						<h1 class="header-title">
-							Nevroslim - <span>Асаб касалликларининг</span> барча турларига тавсия етилади!
-						</h1>
-						<div class="header-items">
-							<div class="header-items__item" data-aos="fade-right" data-aos-delay="200">
-								<IconsCheck />
-								Табиий маҳсулот
-							</div>
-							<div class="header-items__item" data-aos="fade-right">
-								<IconsCheck />
-								Ножўя таъсирларсиз
-							</div>
-							<div class="header-items__item" data-aos="fade-right" data-aos-delay="100">
-								<IconsCheck />
-								Юқори самарадорлик
-							</div>
-						</div>
-						<button id="header-btn-desktop" data-meta="order-scroll" type="button" @click="scrollToOrderForm" class="header-btn btn--main" data-aos="fade-right" data-aos-delay="300">
-							Маслаҳат олиш
+	<main class="nv">
+		<!-- ═════ Hero ═════ -->
+		<section class="hero" id="top">
+			<img class="hero__bg" src="~/assets/images/v2/hero-bg.webp" alt="" aria-hidden="true" fetchpriority="high" />
+			<img class="hero__leaf hero__leaf--l" src="~/assets/images/v2/leaves-left.webp" alt="" aria-hidden="true" />
+
+			<div class="nv-wrap hero__in">
+				<div class="hero__copy">
+					<span class="hero__eyebrow">
+						<NvIcon name="leaf" :size="16" /> Asab tizimi uchun
+					</span>
+					<h1 class="hero__title">
+						Xotirjam hayot va sifatli uyqu sari <span>birinchi qadam!</span>
+					</h1>
+					<p class="hero__text">
+						Nevroslim — asab tizimini qo'llab-quvvatlash, stressni kamaytirish va umumiy xotirjamlik
+						uchun tabiiy komponentlar majmuasi.
+					</p>
+
+					<ul class="hero__feats">
+						<li v-for="f in heroFeatures" :key="f.label">
+							<span class="hero__feat-ic"><NvIcon :name="f.icon" :size="24" /></span>
+							<span v-html="f.label"></span>
+						</li>
+					</ul>
+
+					<div class="hero__actions">
+						<button type="button" id="hero-btn" data-meta="order-scroll" class="nv-btn" @click="scrollToOrderForm">
+							Bepul maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
 						</button>
-						<p class="header-desc" data-aos="fade-right">
-							Доимий стресс ва безовталикдан чарчаган бўлсангиз, биз билан боғланинг!
-						</p>
+						<a href="tel:+998712021818" data-meta="contact-phone" class="hero__call">
+							<span><NvIcon name="phone" :size="18" /></span> +998 (71) 202-18-18
+						</a>
 					</div>
-					<div class="header-right" data-aos="fade-left">
-						<img src="~/assets/images/webp/dori.webp" width="500" height="auto" alt="Product" />
-						<div class="header-certificate">
-							<img src="~/assets/images/webp/certificate.webp" width="100" height="auto" alt="Certificate" />
+					<p class="hero__note">Ariza qoldiring — konsultantimiz siz bilan bog'lanadi.</p>
+				</div>
+
+				<div class="hero__visual">
+					<img class="hero__brain" src="~/assets/images/v2/hero-brain.webp" alt="" aria-hidden="true" />
+					<img class="hero__bottles" src="~/assets/images/v2/hero-bottles.webp" width="545" height="487" alt="Nevroslim siropi" />
+					<img class="hero__badge" src="~/assets/images/v2/badge-100.webp" width="331" height="357" alt="100% tabiiy komponentlar" />
+
+					<ul class="hero__chips" aria-label="Nevroslim yordam beradigan holatlar">
+						<li v-for="c in heroChips" :key="c.label">
+							<span><NvIcon :name="c.icon" :size="16" /></span>{{ c.label }}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═════ Symptoms ═════ -->
+		<section class="sym">
+			<div class="nv-wrap">
+				<h2 class="nv-title">Agar sizda quyidagi holatlar bo'lsa...</h2>
+				<p class="nv-sub">Nevroslim sizning kundalik hayotingizni yengillashtirishga yordam beradi.</p>
+
+				<div class="sym__grid">
+					<figure v-for="s in symptoms" :key="s.img" class="sym__card">
+						<img :src="img(s.img)" :alt="s.label" width="316" height="352" loading="lazy" />
+						<figcaption>{{ s.label }}</figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═════ About ═════ -->
+		<section class="about" id="mahsulot">
+			<img class="about__leaf" src="~/assets/images/v2/leaves-corner.webp" alt="" aria-hidden="true" loading="lazy" />
+			<div class="nv-wrap about__in">
+				<div class="about__col">
+					<h2 class="nv-title about__title">Nevroslim nima?</h2>
+					<p class="about__text">
+						Nevroslim — asab tizimi va umumiy xotirjamlikni qo'llab-quvvatlashga mo'ljallangan, tabiiy
+						o'simlik komponentlari asosidagi sirop.
+					</p>
+					<ul class="about__icons">
+						<li v-for="a in aboutIcons" :key="a.label">
+							<span><NvIcon :name="a.icon" :size="26" /></span>
+							<b v-html="a.label"></b>
+						</li>
+					</ul>
+				</div>
+
+				<div class="about__product">
+					<img src="~/assets/images/v2/about-bottles.webp" width="504" height="470" alt="Nevroslim siropi" loading="lazy" />
+				</div>
+
+				<div class="about__col">
+					<h2 class="nv-title about__title">Nega aynan Nevroslim?</h2>
+					<ul class="about__why">
+						<li v-for="w in why" :key="w.title">
+							<span><NvIcon :name="w.icon" :size="22" /></span>
+							<div>
+								<b>{{ w.title }}</b>
+								<p>{{ w.text }}</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═════ Ingredients ═════ -->
+		<section class="ing" id="tarkibi">
+			<div class="nv-wrap">
+				<h2 class="nv-title">Tarkibi</h2>
+				<p class="nv-sub">Nevroslimning tarkibi 16 ta tabiiy komponentdan iborat.</p>
+
+				<div class="ing__grid">
+					<article v-for="i in ingredients" :key="i.img" class="ing__card">
+						<div class="ing__img">
+							<img :src="img(i.img)" :alt="i.name" loading="lazy" />
 						</div>
-					</div>
-					<button id="header-btn-mobile" data-meta="order-scroll" type="button" @click="scrollToOrderForm" class="header-btn btn--main header--mobile" data-aos="fade-right" data-aos-delay="300">
-						Маслаҳат олиш
+						<h3>{{ i.name }}</h3>
+						<p>{{ i.text }}</p>
+					</article>
+				</div>
+
+				<div class="nv-center">
+					<button type="button" id="ing-btn" data-meta="order-scroll" class="nv-btn" @click="scrollToOrderForm">
+						Bepul maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
 					</button>
 				</div>
 			</div>
-		</header>
+		</section>
 
-		<Testimonials />
+		<!-- ═════ Reviews ═════ -->
+		<section class="rev" id="fikrlar">
+			<div class="nv-wrap">
+				<div class="rev__head">
+					<div>
+						<h2 class="nv-title rev__title">Mijozlarimiz fikrlari</h2>
+						<p class="rev__sub">Haqiqiy odamlar, haqiqiy natijalar. Nevroslimni tanlagan mijozlarimizning video fikrlari.</p>
+					</div>
+					<a href="https://www.youtube.com/@Nevroslim/shorts" target="_blank" rel="noopener" data-meta="contact-youtube" class="nv-btn nv-btn--green nv-btn--sm">
+						Barcha fikrlarni ko'rish <NvIcon name="arrow" :size="16" :stroke="2.5" />
+					</a>
+				</div>
 
-		<section class="how">
-			<div class="container">
-				<h2 class="how__title main-title">
-					<span>"Неврослим"</span> нима учун керак?
-				</h2>
-				<div class="how-in">
-					<div class="how-left">
-						<img src="~/assets/images/webp/how.webp" alt="how" />
-					</div>
-					<div class="how-right">
-						<div class="how-item" data-aos="fade-right" data-aos-delay="50">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Кундалик толиқиш ва бошдаги оғирлик</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="100">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Тушкун кайфият ва қувватсизлик</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="150">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Зеҳн ва хотирани мустаҳкамлаш</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="200">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Кучли зўриқиш ва безовталик</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="250">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Уйқу сифати ва ички ҳаяжон</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="300">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Кайфиятнинг пастлиги ва ҳолсизлик</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="350">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Иштиёқсизлик ва фаоллик етишмаслиги</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="400">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Сабабсиз безовталик</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="450">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Кўкрак қафасидаги ноқулайлик ҳисси</p>
-						</div>
-					</div>
+				<div class="rev__row">
+					<a
+						v-for="(v, n) in videos"
+						:key="v"
+						class="rev__card"
+						data-fancybox="reviews"
+						:href="`https://www.youtube.com/watch?v=${v}`"
+						:aria-label="`Mijoz fikri ${n + 1}`"
+					>
+						<img :src="`https://i.ytimg.com/vi/${v}/oardefault.jpg`" alt="" loading="lazy" width="270" height="480" />
+						<span class="rev__play"><NvIcon name="play" :size="26" /></span>
+					</a>
 				</div>
 			</div>
 		</section>
 
-		<hr>
-
-		<section class="how">
-			<div class="container">
-				<h2 class="how__title main-title">
-					Асабийлик ва стрессга <span class="red-text">беэътибор бўлиш</span> нималарга олиб келади?
-				</h2>
-				<div class="how-in how--reverse">
-					<div class="how-left">
-						<img src="~/assets/images/webp/how2.webp" alt="how" />
-					</div>
-					<div class="how-right column-2">
-						<div class="how-item" data-aos="fade-right" data-aos-delay="50">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Ички қўрқув ва ҳаяжон</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="100">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Ўзига ишонч пастлиги</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="150">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Кучли ҳавотир</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="200">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Тез жаҳл чиқиши ва ҳолсизлик</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="250">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Нафас олишдаги ноқулайлик</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="300">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Умумий ҳолатнинг ёмонлашиши</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="350">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Тунги безовталик</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="400">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Стресс - ички сиқилишлар</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="450">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Ҳаётга бўлган қизиқишнинг пасайиши</p>
-						</div>
-						<div class="how-item" data-aos="fade-right" data-aos-delay="450">
-							<div class="how-icon">
-								<IconsUnd />
-							</div>
-							<p class="how-text">Доимий зўриқиш ҳисси</p>
-						</div>
-					</div>
+		<!-- ═════ Certificates ═════ -->
+		<section class="cert" id="sertifikat">
+			<div class="nv-wrap cert__in">
+				<div class="cert__copy">
+					<h2 class="nv-title cert__title">Sertifikatlar va sifat kafolati</h2>
+					<p class="cert__text">
+						Nevroslim mahsuloti barcha zarur talablar asosida ishlab chiqariladi va sifat nazoratidan o'tgan.
+					</p>
+					<ul class="cert__badges">
+						<li><span><NvIcon name="file" :size="22" /></span>Sertifikatlangan mahsulot</li>
+						<li><span><NvIcon name="shield" :size="22" /></span>Sifat nazorati</li>
+						<li><span><NvIcon name="award" :size="22" /></span>Original mahsulot kafolati</li>
+					</ul>
+					<a href="/new-certificate.webp" data-fancybox="certs" class="nv-btn nv-btn--green nv-btn--sm">
+						Sertifikatlarni ko'rish <NvIcon name="arrow" :size="16" :stroke="2.5" />
+					</a>
 				</div>
 
-				<!-- <p class="how-bottom">
-					Асабийлик ва стресс узоқ давом этса, <span>ҳаёт сифати</span> сезиларли даражада пасайиши мумкин.
-				</p> -->
-			</div>
-		</section>
-
-		<!-- <section class="gallery">
-			<div class="container">
-				<h1 class="gallery__title main-title">
-					МИЖОЗЛАРИМИЗНИНГ <span>МУВАФФАҚИЯТЛАРИ</span>
-				</h1>
-				<div class="gallery-slider full">
-					<div class="gallery-slider__main">
-						<button class="gallery-slider__button gallery-slider__prev prev-2">
-							<img src="~/assets/images/svg/about-arrow-left.svg" alt="prev slide" />
-						</button>
-						<Swiper :modules="[Navigation]" effect="fade" :speed="500" :navigation="{
-							nextEl: '.gallery-slider__next.next-2',
-							prevEl: '.gallery-slider__prev.prev-2',
-							disabledClass: 'disabled',
-						}" :breakpoints="breakpointsGallery">
-							<SwiperSlide>
-								<div class="gallery-slider__slide">
-									<a data-fancybox="gallery2" href="/webp/gallery-1.webp">
-										<img src="/webp/gallery-1.webp" />
-									</a>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div class="gallery-slider__slide">
-									<a data-fancybox="gallery2" href="/webp/gallery-6.webp">
-										<img src="/webp/gallery-6.webp" />
-									</a>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div class="gallery-slider__slide">
-									<a data-fancybox="gallery2" href="/webp/gallery-7.webp">
-										<img src="/webp/gallery-7.webp" />
-									</a>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div class="gallery-slider__slide">
-									<a data-fancybox="gallery2" href="/webp/gallery-8.webp">
-										<img src="/webp/gallery-8.webp" />
-									</a>
-								</div>
-							</SwiperSlide>
-						</Swiper>
-						<button class="gallery-slider__button gallery-slider__next next-2">
-							<img src="~/assets/images/svg/about-arrow-left.svg" alt="next slide" />
-						</button>
-					</div>
-				</div>
-			</div>
-		</section> -->
-
-		<!-- <section class="pill-age">
-			<div class="container">
-				<h2 class="pill-age__title main-title">
-					<span>"Неврослим"</span> кимлар учун тавсия этилади?
-				</h2>
-
-				<div class="pill-age__row">
-					<div class="pill-age__left">
-						<div class="pill-card">
-							<h5 class="pill-card__title">3 ёшдан 12 ёшгача</h5>
-							<ul class="pill-card__options">
-								<li class="pill-card__option">
-									<IconsCheck />
-									<p>Болаларда диққат ва зеҳнни оширади</p>
-								</li>
-								<li class="pill-card__option">
-									<IconsCheck />
-									<p>Тез чарчаш ва йиғлоқиликнинг олдини олади</p>
-								</li>
-								<li class="pill-card__option">
-									<IconsCheck />
-									<p>Умумий қувватни оширади</p>
-								</li>
-							</ul>
-
-							<div class="pill-card__image">
-								<img src="~/assets/images/webp/pill-age-child.webp" alt="for childs" />
-							</div>
-						</div>
-						<div class="pill-card">
-							<h5 class="pill-card__title">12 ёшдан 30 ёшгача</h5>
-							<ul class="pill-card__options">
-								<li class="pill-card__option">
-									<IconsCheck />
-									<p>Ички хотиржамлик ва тетиклик беради</p>
-								</li>
-								<li class="pill-card__option">
-									<IconsCheck />
-									<p>Ўрганиш қобилиятини яхшилайди</p>
-								</li>
-								<li class="pill-card__option">
-									<IconsCheck />
-									<p>Кайфиятни кўтариб, уйқуни тинчлантиради</p>
-								</li>
-							</ul>
-
-							<div class="pill-card__image">
-								<img src="~/assets/images/webp/pill-age-child.webp" alt="for childs" />
-							</div>
-						</div>
-						<div class="pill-card">
-							<h5 class="pill-card__title">30 ёшдан 65 ёшгача</h5>
-							<ul class="pill-card__options">
-								<li class="pill-card__option">
-									<IconsCheck />
-									<p>Мия фаоллигини қўллаб-қувватлайди</p>
-								</li>
-								<li class="pill-card__option">
-									<IconsCheck />
-									<p>Ички мувозанатни сақлашга ёрдам беради</p>
-								</li>
-								<li class="pill-card__option">
-									<IconsCheck />
-									<p>Кундалик зўриқиш ва ноқулайликда самарали</p>
-								</li>
-							</ul>
-
-							<div class="pill-card__image">
-								<img src="~/assets/images/webp/pill-age-child.webp" alt="for childs" />
-							</div>
-						</div>
-					</div>
-					<div class="pill-age__right">
-						<div class="pill-age__circle">
-							<div class="pill-age__image">
-								<img src="~/assets/images/webp/pill-age-pill.webp" alt="image pill" />
-							</div>
-						</div>
-					</div>
+				<div class="cert__docs">
+					<a href="/webp/about-img-2.webp" data-fancybox="certs" class="cert__doc cert__doc--back">
+						<img src="/webp/about-img-2.webp" alt="Sertifikat" loading="lazy" width="595" height="842" />
+					</a>
+					<a href="/new-certificate.webp" class="cert__doc cert__doc--front" @click.prevent="openCerts">
+						<img src="/new-certificate.webp" alt="Nevroslim sertifikati" loading="lazy" width="894" height="1280" />
+					</a>
 				</div>
 
-				<div class="pill-order">
-					<h3 class="pill-order__title">
-						Ўзингиз ва оилангиз хотиржамлигига беэътибор бўлманг
-					</h3>
-					<a href="#contact" @click="scrollToOrderForm" class="pill-order__btn btn--main"> Буюртма бериш </a>
-					<p class="pill-order__desc">Оилангиз фаровонлиги ўз қўлингизда!</p>
-				</div>
-			</div>
-		</section> -->
-
-		<!-- <section class="reasons">
-			<div class="image">
-				<div class="container">
-					<img src="~/assets/images/webp/about.jpg" alt="about" />
-				</div>
-			</div>
-			<div class="container">
-				<h2 class="reasons__title main-title">
-					<span>"НЕВРОСЛИМ"</span> маҳсулоти ҳақида
-				</h2>
-
-				<div class="reasons__row">
-					<div class="reason">
-						<div class="reason__main">
-							<div class="reason__number">
-								<p class="reason__circle">1</p>
-							</div>
-							<p class="reason__name">
-								Турли ҳид ва таъм берувчи воситалар, ширинлаштирувчи моддалар каби сунъий ва синтетик маҳсулотлардан
-								холи.
-							</p>
-						</div>
-					</div>
-					<div class="reason">
-						<div class="reason__main">
-							<div class="reason__number">
-								<p class="reason__circle">2</p>
-							</div>
-							<p class="reason__name">
-								Ножўя таъсирларсиз ва болалар учун хавфсиз (натурал таркиб)
-							</p>
-						</div>
-					</div>
-					<div class="reason">
-						<div class="reason__main">
-							<div class="reason__number">
-								<p class="reason__circle">3</p>
-							</div>
-							<p class="reason__name">
-								Синовдан ўтган — 5 йилдан бери халқимиз томонидан севиб истеъмол қилинади.
-							</p>
-						</div>
-					</div>
-					<div class="reason">
-						<div class="reason__main">
-							<div class="reason__number">
-								<p class="reason__circle">4</p>
-							</div>
-							<p class="reason__name">
-								Маҳсулотимиздан мамнун бўлганлар 1000+
-							</p>
-						</div>
-					</div>
-					<div class="reason">
-						<div class="reason__main">
-							<div class="reason__number">
-								<p class="reason__circle">5</p>
-							</div>
-							<p class="reason__name">
-								Ўзбекистон бўйлаб етказиб бериш хизмати мутлақо бепул
-							</p>
-						</div>
-					</div>
-					<div class="reason">
-						<div class="reason__main">
-							<div class="reason__number">
-								<p class="reason__circle">6</p>
-							</div>
-							<p class="reason__name">
-								Органик — ГМО қўшимчалари ва бўёқлар қўшилмаган
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section> -->
-
-		<section class="benefits">
-			<div class="image">
-				<div class="container">
-					<img src="~/assets/images/webp/ttb.webp" alt="takib" />
-				</div>
-			</div>
-			<div class="container">
-				<h2 class="benefits__title main-title">
-					Маҳсулот таркибидаги <span>"экстракт"</span> ларнинг табиий хусусиятлари
-				</h2>
-				<div class="benefits__row">
-					<div class="benefit" data-aos-delay="50">
-						<div class="benefit__main">
-							<div class="benefit__number">
-								<p class="benefit__circle">1</p>
-							</div>
-							<div class="benefit__row">
-								<div class="benefit__left">
-									<h4 class="benefit__name">Гинкго билоба</h4>
-									<p class="benefit__desc">
-										Фаолликни оширади ва диққатни жамлашга ёрдам беради.
-									</p>
-								</div>
-								<div class="benefit__img">
-									<img src="~/assets/images/webp/benefit-img.webp" alt="benefit" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="benefit" data-aos-delay="100">
-						<div class="benefit__main">
-							<div class="benefit__number">
-								<p class="benefit__circle">2</p>
-							</div>
-							<div class="benefit__row">
-								<div class="benefit__left">
-									<h4 class="benefit__name">Валериана</h4>
-									<p class="benefit__desc">
-										Стресс ва безовталикни енгиллаштирадиган табиий восита, дам олишга ва уйқу сифатини яхшилашга ёрдам беради.
-									</p>
-								</div>
-								<div class="benefit__img">
-									<img
-										src="https://optim.tildacdn.one/tild3337-6131-4864-b063-303337313035/-/resize/272x/-/format/webp/6-2-1.png"
-										alt="benefit" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="benefit" data-aos-delay="150">
-						<div class="benefit__main">
-							<div class="benefit__number">
-								<p class="benefit__circle">3</p>
-							</div>
-							<div class="benefit__row">
-								<div class="benefit__left">
-									<h4 class="benefit__name">Қора андиз</h4>
-									<p class="benefit__desc">
-										Мия фаолиятини қўллаб-қувватлайди, умумий ҳолатга енгиллик ва тетиклик бағишлайди.
-									</p>
-								</div>
-								<div class="benefit__img">
-									<img
-										src="https://optim.tildacdn.one/tild3536-6464-4836-b635-396135663666/-/resize/416x/-/format/webp/6-3-1.png"
-										alt="benefit" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="benefit" data-aos-delay="200">
-						<div class="benefit__main">
-							<div class="benefit__number">
-								<p class="benefit__circle">4</p>
-							</div>
-							<div class="benefit__row">
-								<div class="benefit__left">
-									<h4 class="benefit__name">Занжабил</h4>
-									<p class="benefit__desc">
-										Иммунитет тизимини мустаҳкамлаш ва ички мувозанатни сақлаш учун муҳим табиий компонент.
-									</p>
-								</div>
-								<div class="benefit__img">
-									<img
-										src="https://optim.tildacdn.one/tild3163-3834-4234-a234-333633343065/-/resize/344x/-/format/webp/6-4-1.png"
-										alt="benefit" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="benefit" data-aos-delay="250">
-						<div class="benefit__main">
-							<div class="benefit__number">
-								<p class="benefit__circle">5</p>
-							</div>
-							<div class="benefit__row">
-								<div class="benefit__left">
-									<h4 class="benefit__name">Мумиё</h4>
-									<p class="benefit__desc">
-										Умумий ҳолатни яхшилайди, ички қувватни тиклайди ва терининг табиий ҳолатини сақлайди.
-									</p>
-								</div>
-								<div class="benefit__img">
-									<img
-										src="https://optim.tildacdn.one/tild3335-3430-4264-b835-313939653666/-/resize/488x/-/format/webp/6-5-1.png"
-										alt="benefit" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="benefit" data-aos-delay="300">
-						<div class="benefit__main">
-							<div class="benefit__number">
-								<p class="benefit__circle">6</p>
-							</div>
-							<div class="benefit__row">
-								<div class="benefit__left">
-									<h4 class="benefit__name">Долчин</h4>
-									<p class="benefit__desc">
-										Умумий фаровонликни яхшилайди, ички хотиржамликни таъминлайди ва кундалик зўриқишларни камайтиради.
-									</p>
-								</div>
-								<div class="benefit__img">
-									<img
-										src="https://optim.tildacdn.one/tild3137-3562-4539-b364-313232393935/-/resize/386x/-/format/webp/6-6-1.png"
-										alt="benefit" />
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="who-bottom">
-					<div class="who-bottom__img1">
-						<img
-							src="https://optim.tildacdn.one/tild6338-3865-4637-b438-346266393938/-/resize/186x/-/format/webp/Leaves_Overlay_1_4.png"
-							width="186" height="auto" alt="Img" />
-					</div>
-					<button id="benefits-btn" data-meta="order-scroll" type="button" @click="scrollToOrderForm" class="who-bottom__btn btn--main">
-						Маслаҳат олиш
-					</button>
-					<div class="who-bottom__img2">
-						<img
-							src="https://optim.tildacdn.one/tild6639-3835-4564-b263-633834316438/-/resize/302x/-/format/webp/Leaves_Overlay_1_5.png"
-							width="302" height="auto" alt="Img" />
-					</div>
+				<div class="cert__product">
+					<img src="~/assets/images/v2/cert-bottles.webp" width="528" height="460" alt="Nevroslim siropi" loading="lazy" />
 				</div>
 			</div>
 		</section>
 
-		<section class="about">
-			<div class="container">
-				<h2 class="about__title main-title">
-					Сертификатлар
-				</h2>
+		<!-- ═════ How to order ═════ -->
+		<section class="steps" id="buyurtma">
+			<div class="nv-wrap">
+				<h2 class="nv-title">Buyurtma berish juda oson</h2>
+				<p class="nv-sub">Nevroslimni olish uchun atigi 3 ta qadam yetarli.</p>
 
-				<div class="about-slider">
-					<div class="about-slider__main">
-						<Swiper :modules="[Navigation, Pagination]" effect="fade" :speed="500" :navigation="{
-							nextEl: '.about-slider__prev',
-							prevEl: '.about-slider__next',
-							disabledClass: 'disabled',
-						}" :slidesPerView="1" :space-between="30" :centeredSlides="true" :pagination="{
-							clickable: true,
-						}">
-							<SwiperSlide>
-								<div class="about-slider__slide">
-									<a data-fancybox="gallery" href="/new-certificate.webp">
-										<img src="/new-certificate.webp" />
-									</a>
-								</div>
-							</SwiperSlide>
-							<SwiperSlide>
-								<div class="about-slider__slide">
-									<a data-fancybox="gallery" href="/webp/about-img-2.webp">
-										<img src="/webp/about-img-2.webp" />
-									</a>
-								</div>
-							</SwiperSlide>
-						</Swiper>
-					</div>
-
-					<button class="about-slider__button about-slider__prev">
-						<img src="~/assets/images/svg/about-arrow-left.svg" alt="prev slide" />
-					</button>
-					<button class="about-slider__button about-slider__next">
-						<img src="~/assets/images/svg/about-arrow-left.svg" alt="next slide" />
-					</button>
-				</div>
-
+				<ol class="steps__row">
+					<li v-for="(s, n) in steps" :key="s.title" class="steps__card">
+						<span class="steps__ic"><NvIcon :name="s.icon" :size="28" /></span>
+						<div>
+							<em>0{{ n + 1 }}</em>
+							<h3>{{ s.title }}</h3>
+							<p>{{ s.text }}</p>
+						</div>
+					</li>
+				</ol>
 			</div>
 		</section>
 
-		<section class="order">
-			<div class="container">
-				<h1 class="order__title main-title">
-					Қандай қилиб буюртма берилади?
-				</h1>
-
-				<div class="order__row">
-					<div class="order__left">
-						<div class="order-card">
-							<div class="order-card__main">
-								<div class="order-card__img">
-									<img src="~/assets/images/webp/order-phone.webp" alt="order with phone" />
-								</div>
-								<p class="order-card__name">
-									Шу сайтимиз орқали маълумотларингизни қолдиринг
-								</p>
-							</div>
-						</div>
-						<div class="order-card">
-							<div class="order-card__main">
-								<div class="order-card__img">
-									<img src="~/assets/images/webp/order-phone.webp" alt="order with phone" />
-								</div>
-								<p class="order-card__name">
-									Малакали маслаҳатчиларимиз сиз билан боғланади
-								</p>
-							</div>
-						</div>
-						<div class="order-card">
-							<div class="order-card__main">
-								<div class="order-card__img">
-									<img src="~/assets/images/webp/order-phone.webp" alt="order with phone" />
-								</div>
-								<p class="order-card__name">
-									Етказиб бериш вақтида манзилингизни тасдиқланг
-								</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="order__right">
-						<div class="order__image">
-							<img src="~/assets/images/webp/order-image.webp" alt="operator" />
-						</div>
-					</div>
-				</div>
-
-				<div class="who-bottom">
-					<div class="who-bottom__img1">
-						<img
-							src="https://optim.tildacdn.one/tild6338-3865-4637-b438-346266393938/-/resize/186x/-/format/webp/Leaves_Overlay_1_4.png"
-							width="186" height="auto" alt="Img" />
-					</div>
-					<button id="order-btn" data-meta="order-scroll" type="button" @click="scrollToOrderForm" class="who-bottom__btn btn--main">Маслаҳат олиш </button>
-					<div class="who-bottom__img2">
-						<img
-							src="https://optim.tildacdn.one/tild6639-3835-4564-b263-633834316438/-/resize/302x/-/format/webp/Leaves_Overlay_1_5.png"
-							width="302" height="auto" alt="Img" />
-					</div>
-				</div>
-
-				<div class="order__clouds">
-					<img src="~/assets/images/webp/clouds.webp" alt="clouds" />
+		<!-- ═════ FAQ ═════ -->
+		<section class="faq" id="savollar">
+			<div class="nv-wrap">
+				<h2 class="nv-title">Tez-tez so'raladigan savollar</h2>
+				<div class="faq__grid">
+					<details v-for="q in faq" :key="q.q" class="faq__item">
+						<summary>
+							{{ q.q }}
+							<span class="faq__plus"><NvIcon name="plus" :size="18" :stroke="2.5" /></span>
+						</summary>
+						<p>{{ q.a }}</p>
+					</details>
 				</div>
 			</div>
 		</section>
 
-		<InlineOrderForm />
+		<!-- ═════ Final CTA + order form ═════ -->
+		<section class="final">
+			<img class="final__bg" src="~/assets/images/v2/cta-bg.webp" alt="" aria-hidden="true" loading="lazy" />
+			<div class="nv-wrap final__in">
+				<img class="final__man" src="~/assets/images/v2/cta-man.webp" width="621" height="394" alt="" aria-hidden="true" loading="lazy" />
+				<div class="final__copy">
+					<h2 class="final__title">Xotirjam hayot <span>hozir boshlanadi!</span></h2>
+					<p>Nevroslim — tabiiy komponentlar yordamida sizning kundalik xotirjamligingizni qo'llab-quvvatlaydi.</p>
+					<ul>
+						<li><NvIcon name="check" :size="18" :stroke="3" /> Bepul konsultatsiya</li>
+						<li><NvIcon name="check" :size="18" :stroke="3" /> O'zbekiston bo'ylab yetkazib berish</li>
+						<li><NvIcon name="check" :size="18" :stroke="3" /> Original mahsulot</li>
+					</ul>
+					<a href="tel:+998712021818" data-meta="contact-phone" class="final__call">
+						<NvIcon name="phone" :size="20" /> +998 (71) 202-18-18
+					</a>
+				</div>
+				<InlineOrderForm />
+			</div>
+		</section>
 	</main>
 </template>
 
-<script lang="js" setup>
-import moment from 'moment';
-//===============================-< imports >-===============================
-//> funcybox
-import { Fancybox } from "@fancyapps/ui";
+<script lang="ts" setup>
+import { Fancybox } from '@fancyapps/ui';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
-// swiper
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-const modules = [Navigation];
-const breakpoints = {
-	480: {
-		slidesPerView: 1,
-		spaceBetween: 10,
-	},
-	768: {
-		slidesPerView: 1.5,
-		spaceBetween: 12,
-	},
-}
-const commentsBreakpoints = {
-	480: {
-		slidesPerView: 1.5,
-		spaceBetween: 10,
-	},
-	768: {
-		slidesPerView: 2.5,
-		spaceBetween: 12,
-	},
-	1024: {
-		slidesPerView: 4,
-		spaceBetween: 20,
-	},
-}
-const breakpointsGallery = {
-	480: {
-		slidesPerView: 1.5,
-		spaceBetween: 10,
-	},
-	768: {
-		slidesPerView: 2.5,
-		spaceBetween: 12,
-	},
-	1024: {
-		slidesPerView: 3,
-		spaceBetween: 20,
-	},
-}
 
+useHead({
+	title: 'Nevroslim — asab tizimi uchun tabiiy sirop',
+	htmlAttrs: { lang: 'uz' },
+	meta: [
+		{ name: 'description', content: "Nevroslim — asab tizimini qo'llab-quvvatlash, stressni kamaytirish va sifatli uyqu uchun 16 ta tabiiy komponentli sirop. Bepul maslahat oling." },
+	],
+	link: [
+		{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+		{ rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+		{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Manrope:wght@500;600;700;800&display=swap' },
+	],
+});
 
-//===============================-< play audio >-===============================
-//> variables
-const players = ref("")
-let playedIndex = ref(null);
-//> functions
-function playAudio(event, index) {
-	players.value.forEach(audio => {
-		const player = audio.querySelector('.audio__player')
-		player.pause();
-	})
+// All v2 assets are resolved through Vite so they get hashed URLs.
+const assets = import.meta.glob('../assets/images/v2/*.webp', { eager: true, import: 'default' }) as Record<string, string>;
+const img = (name: string) => assets[`../assets/images/v2/${name}.webp`];
 
-	playedIndex.value = index;
-	const player = event.target.closest('.audio').querySelector('.audio__player')
-	player.play();
-}
-function pauseAudio(event) {
-	playedIndex.value = null;
-	const player = event.target.closest('.audio').querySelector('.audio__player')
-	player.pause();
-}
+const heroFeatures = [
+	{ icon: 'leaf', label: 'Tabiiy<br>komponentlar' },
+	{ icon: 'shield', label: 'Asab tizimini<br>mustahkamlash' },
+	{ icon: 'brain', label: 'Stressni<br>kamaytirish' },
+	{ icon: 'moon', label: 'Sifatli uyquni<br>qo\'llab-quvvatlash' },
+];
 
-//===============================-< coutdown >-===============================
-//> variables
-///=============================- coutdown -=================================
-//variables
-let deadline = ref(moment(new Date()).add(1, 'day').format("MM.DD.YYYY"));
+const heroChips = [
+	{ icon: 'zap', label: 'Stress' },
+	{ icon: 'frown', label: 'Asabiylik' },
+	{ icon: 'activity', label: "Bosh og'rig'i" },
+	{ icon: 'moon', label: 'Uyqusizlik' },
+	{ icon: 'brain', label: 'Xotira zaifligi' },
+	{ icon: 'battery', label: 'Charchoq' },
+];
 
+const symptoms = [
+	{ img: 'symptom-irritable', label: "Tez ta'sirlanish" },
+	{ img: 'symptom-stress', label: "Doimiy zo'riqish" },
+	{ img: 'symptom-sleep', label: 'Uyqudagi muammolar' },
+	{ img: 'symptom-focus', label: 'Diqqatni jamlay olmaslik' },
+	{ img: 'symptom-fatigue', label: 'Kundalik charchoq' },
+	{ img: 'symptom-anxiety', label: 'Ichki bezovtalik' },
+];
 
-let days = ref("00");
-let hours = ref("00");
-let minutes = ref("00");
-let seconds = ref("00");
-let expired = ref(false);
+const aboutIcons = [
+	{ icon: 'leaf', label: 'Tabiiy<br>komponentlar' },
+	{ icon: 'shield', label: "Organizmni<br>qo'llab-quvvatlash" },
+	{ icon: 'pill', label: 'Qulay<br>qabul qilish' },
+	{ icon: 'heart', label: 'Kundalik<br>xotirjamlik' },
+];
 
-function theTime() {
-	var ctx = this;
-	console.log(deadline.value);
+const why = [
+	{ icon: 'brain', title: "Asab tizimini qo'llab-quvvatlash", text: "Kundalik stress sharoitida organizmga yordam beradi." },
+	{ icon: 'smile', title: 'Emotsional muvozanat', text: 'Xotirjamlik va ichki muvozanatni saqlashga yordam beradi.' },
+	{ icon: 'moon', title: 'Sifatli uyqu va dam olish', text: "Sokin uyqu va to'laqonli dam olishni qo'llab-quvvatlaydi." },
+	{ icon: 'target', title: 'Diqqat va xotira', text: "Kundalik faollik va diqqatni jamlashni qo'llab-quvvatlaydi." },
+];
 
+const ingredients = [
+	{ img: 'ing-ginkgo', name: 'Ginkgo Biloba', text: "Miya qon aylanishi va diqqatni qo'llab-quvvatlaydi" },
+	{ img: 'ing-amarant', name: 'Amarant', text: 'Organizmni foydali moddalar bilan boyitadi' },
+	{ img: 'ing-steviya', name: 'Steviya', text: "Tabiiy shirinlik beruvchi o'simlik" },
+	{ img: 'ing-dolana', name: "Do'lana mevalari va guli", text: "Yurak va asab tizimini qo'llab-quvvatlaydi" },
+	{ img: 'ing-valeriana', name: 'Valeriana', text: 'Xotirjamlik va sokin uyquga yordam beradi' },
+	{ img: 'ing-limon-ot', name: "Limon o't", text: 'Asabiy taranglikni yumshatishga yordam beradi' },
+	{ img: 'ing-tograyhon', name: "Tog'rayhon", text: 'Tinchlantiruvchi xususiyatga ega' },
+	{ img: 'ing-qora-andiz', name: 'Qora andiz', text: "Umumiy tetiklikni qo'llab-quvvatlaydi" },
+	{ img: 'ing-dolchin', name: 'Dolchin', text: 'Organizmga quvvat va iliqlik beradi' },
+	{ img: 'ing-arslonquyruq', name: 'Arslonquyruq', text: 'Asabni tinchlantirishga yordam beradi' },
+	{ img: 'ing-zanjabil', name: 'Zanjabil', text: "Immunitet va ichki muvozanatni qo'llab-quvvatlaydi" },
+	{ img: 'ing-nard', name: 'Nard', text: "Tinchlantiruvchi xushbo'y ildiz" },
+	{ img: 'ing-yalpiz', name: 'Yalpiz', text: 'Tetiklik va yengillik baxsh etadi' },
+	{ img: 'ing-kardamon', name: 'Kardamon', text: 'Tetiklik va yaxshi hazmga yordam beradi' },
+	{ img: 'ing-propolis', name: 'Propolis', text: "Organizm himoyasini qo'llab-quvvatlaydi" },
+	{ img: 'ing-mumiyo', name: 'Mumiyo', text: 'Ichki quvvatni tiklashga yordam beradi' },
+];
 
-	// Countdown loop
-	var x = setInterval(function () {
-		// Difference between the 2 dates
-		let countDownDate = new Date(deadline.value.replace(/-/g, "/")).getTime();
-		let now = new Date().getTime();
-		let diff = countDownDate - now;
-		// Time conversion to days, hours, minutes and seconds
-		let tdays = Math.floor(diff / (1000 * 60 * 60 * 24));
-		let thours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		let tminutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-		let tseconds = Math.floor((diff % (1000 * 60)) / 1000);
+// YouTube Shorts ids of real customer reviews
+const videos = ['_tZkM6ZkBJY', 'JG9eIsaMxtE', 'n1kFxCCc_Ls', '2efcDJVr3uE'];
 
-		// Keep 2 digits
-		days.value = tdays < 10 ? "0" + tdays : tdays;
-		hours.value = thours < 10 ? "0" + thours : thours;
-		minutes.value = tminutes < 10 ? "0" + tminutes : tminutes;
-		seconds.value = tseconds < 10 ? "0" + tseconds : tseconds;
+const steps = [
+	{ icon: 'clipboard', title: 'Ariza qoldiring', text: 'Ismingiz va telefon raqamingizni qoldiring.' },
+	{ icon: 'phone', title: 'Konsultatsiya oling', text: "Mutaxassisimiz siz bilan bog'lanib, savollaringizga javob beradi." },
+	{ icon: 'truck', title: 'Yetkazib berishni kuting', text: 'Manzilingizni tasdiqlang va mahsulotni qulay usulda qabul qiling.' },
+];
 
-		// Check for time expiration
-		if (diff < 0) {
-			clearInterval(x);
-			expired.value = true;
-		}
-	}, 1000);
-}
+const faq = [
+	{ q: 'Nevroslim nima?', a: "Nevroslim — asab tizimi va umumiy xotirjamlikni qo'llab-quvvatlash uchun tabiiy o'simlik komponentlari asosidagi sirop." },
+	{ q: 'Bir shishada qancha sirop bor?', a: 'Bir shishada 200 ml sirop mavjud.' },
+	{ q: 'Tarkibida nimalar bor?', a: "Tarkibi 16 ta tabiiy komponentdan iborat: ginkgo biloba, valeriana, do'lana, limon o't, zanjabil, mumiyo va boshqalar. To'liq ro'yxat yuqoridagi \"Tarkibi\" bo'limida." },
+	{ q: 'Yetkazib berish qancha vaqt oladi?', a: "Muddat manzilingizga bog'liq. Maslahatchimiz buyurtmani tasdiqlashda aniq muddatni aytadi." },
+	{ q: 'Qanday qabul qilinadi?', a: "Qabul qilish tartibi qadoqdagi yo'riqnomada ko'rsatilgan. Maslahatchimiz sizga batafsil tushuntirib beradi." },
+	{ q: "To'lov qanday amalga oshiriladi?", a: "To'lov usullari haqida maslahatchimiz buyurtmani tasdiqlashda batafsil ma'lumot beradi." },
+	{ q: 'Kimlarga tavsiya etiladi?', a: "Tez-tez stress, asabiylik, uyqu buzilishi, charchoq va diqqat pasayishini sezadigan kattalarga. Aniq tavsiya uchun maslahatchi bilan bog'laning." },
+	{ q: "Nojo'ya ta'sirlari bormi?", a: "Tarkibi tabiiy komponentlardan iborat. Biror komponentga individual sezuvchanlik bo'lishi mumkin, shuning uchun homiladorlik, emizish yoki surunkali kasallik holatlarida shifokor bilan maslahatlashing." },
+];
 
-
-//===============================-< on page load >-===============================
-//> variables
-//> functions
-onMounted(() => {
-	Fancybox.bind("[data-fancybox]", {
-	})
-
-	theTime();
-})
-
-
-
-
-function scrollToOrderForm(e) {
+function scrollToOrderForm(e?: Event) {
 	if (e) e.preventDefault();
 	const el = document.getElementById('order-form');
 	if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
+function openCerts() {
+	Fancybox.show(
+		[{ src: '/new-certificate.webp' }, { src: '/webp/about-img-2.webp' }],
+		{},
+	);
+}
+
+onMounted(() => {
+	Fancybox.bind('[data-fancybox]', {});
+});
+
+onBeforeUnmount(() => {
+	Fancybox.unbind('[data-fancybox]');
+});
 </script>
 
-<style></style>
+<style scoped lang="scss">
+$lg: 1024px;
+$md: 768px;
+$sm: 560px;
+
+.nv {
+	overflow-x: clip;
+}
+
+.nv-center {
+	display: flex;
+	justify-content: center;
+	margin-top: 32px;
+}
+
+section {
+	position: relative;
+}
+
+// ───────── Hero
+.hero {
+	overflow: hidden;
+	padding: 40px 0 56px;
+	background: #eaf5e2;
+
+	&__bg {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0.9;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		background: linear-gradient(90deg, rgba(246, 251, 242, 0.97) 0%, rgba(246, 251, 242, 0.9) 38%, rgba(246, 251, 242, 0.25) 62%, rgba(246, 251, 242, 0) 100%);
+	}
+
+	&__leaf {
+		position: absolute;
+		z-index: 2;
+		top: 0;
+		width: 110px;
+		opacity: 0.95;
+		pointer-events: none;
+
+		&--l {
+			left: -18px;
+		}
+	}
+
+	&__in {
+		position: relative;
+		z-index: 3;
+		display: grid;
+		grid-template-columns: 1fr 1.05fr;
+		gap: 24px;
+		align-items: center;
+	}
+
+	&__eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 16px;
+		border-radius: 999px;
+		background: var(--nv-green-600);
+		color: #fff;
+		font-size: 13px;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	&__title {
+		margin-top: 18px;
+		font-family: var(--nv-serif);
+		font-weight: 700;
+		font-size: clamp(34px, 4.6vw, 58px);
+		line-height: 1.08;
+		letter-spacing: -0.015em;
+		color: var(--nv-green-900);
+
+		span {
+			color: var(--nv-green-500);
+		}
+	}
+
+	&__text {
+		margin-top: 16px;
+		max-width: 46ch;
+		font-size: clamp(15px, 1.4vw, 17px);
+		line-height: 1.6;
+		color: var(--nv-muted);
+	}
+
+	&__feats {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 12px;
+		margin-top: 24px;
+		max-width: 540px;
+
+		li {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 8px;
+			text-align: center;
+			font-size: 12.5px;
+			font-weight: 700;
+			line-height: 1.3;
+			color: var(--nv-green-800);
+		}
+	}
+
+	&__feat-ic {
+		display: grid;
+		place-items: center;
+		width: 54px;
+		height: 54px;
+		border-radius: 50%;
+		background: linear-gradient(180deg, var(--nv-green-500), var(--nv-green-700));
+		color: #fff;
+		box-shadow: 0 6px 16px rgba(22, 98, 58, 0.28);
+	}
+
+	&__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 12px 16px;
+		margin-top: 28px;
+	}
+
+	&__call {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		min-height: 54px;
+		padding: 8px 22px 8px 8px;
+		border-radius: 999px;
+		background: #fff;
+		border: 1.5px solid var(--nv-line);
+		color: var(--nv-green-800);
+		font-weight: 800;
+		font-size: 17px;
+		white-space: nowrap;
+
+		span {
+			display: grid;
+			place-items: center;
+			width: 38px;
+			height: 38px;
+			border-radius: 50%;
+			background: var(--nv-green-600);
+			color: #fff;
+		}
+	}
+
+	&__note {
+		margin-top: 12px;
+		font-size: 13px;
+		color: var(--nv-muted);
+	}
+
+	// visual
+	&__visual {
+		position: relative;
+		min-height: 520px;
+	}
+
+	&__brain {
+		position: absolute;
+		top: -24px;
+		right: 13%;
+		width: 60%;
+		max-width: 390px;
+		opacity: 0.95;
+		filter: drop-shadow(0 0 40px rgba(255, 220, 120, 0.35));
+	}
+
+	&__bottles {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 70%;
+		max-width: 450px;
+		height: auto;
+		filter: drop-shadow(0 24px 30px rgba(11, 61, 34, 0.3));
+	}
+
+	&__badge {
+		position: absolute;
+		top: 0;
+		left: 2%;
+		width: 118px;
+		height: auto;
+		filter: drop-shadow(0 8px 14px rgba(120, 80, 0, 0.3));
+		animation: nv-float 5s ease-in-out infinite;
+	}
+
+	&__chips {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		li {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 7px 16px 7px 7px;
+			border-radius: 999px;
+			background: rgba(11, 61, 34, 0.78);
+			backdrop-filter: blur(6px);
+			-webkit-backdrop-filter: blur(6px);
+			color: #fff;
+			font-size: 13px;
+			font-weight: 700;
+			white-space: nowrap;
+		}
+
+		span {
+			display: grid;
+			place-items: center;
+			width: 28px;
+			height: 28px;
+			border-radius: 50%;
+			background: var(--nv-green-500);
+		}
+	}
+
+	@media (max-width: $lg) {
+		padding: 28px 0 40px;
+
+		&::before {
+			background: linear-gradient(180deg, rgba(246, 251, 242, 0.96) 0%, rgba(246, 251, 242, 0.85) 55%, rgba(246, 251, 242, 0.55) 100%);
+		}
+
+		&__in {
+			grid-template-columns: 1fr;
+		}
+
+		&__copy {
+			display: contents;
+		}
+
+		&__eyebrow {
+			order: 1;
+			justify-self: start;
+		}
+
+		&__title {
+			order: 2;
+			margin-top: 0;
+		}
+
+		&__text {
+			order: 3;
+			margin-top: 0;
+		}
+
+		&__visual {
+			order: 4;
+			min-height: 0;
+			aspect-ratio: 1.1;
+			width: 100%;
+			max-width: 560px;
+			margin: 0 auto;
+		}
+
+		&__actions {
+			order: 5;
+			margin-top: 0;
+		}
+
+		&__note {
+			order: 6;
+			margin-top: -12px;
+		}
+
+		&__feats {
+			order: 7;
+			margin-top: 4px;
+			max-width: none;
+		}
+
+		&__leaf {
+			display: none;
+		}
+	}
+
+	@media (max-width: $sm) {
+		&__title {
+			font-size: 32px;
+		}
+
+		&__visual {
+			aspect-ratio: 1.05;
+		}
+
+		&__brain {
+			right: 18%;
+			width: 60%;
+		}
+
+		&__bottles {
+			width: 76%;
+		}
+
+		&__badge {
+			width: 78px;
+		}
+
+		&__chips {
+			gap: 6px;
+
+			li {
+				padding: 5px 11px 5px 5px;
+				font-size: 11.5px;
+				gap: 6px;
+			}
+
+			span {
+				width: 22px;
+				height: 22px;
+
+				:deep(svg) {
+					width: 13px;
+					height: 13px;
+				}
+			}
+		}
+
+		&__actions {
+			flex-direction: column;
+			align-items: stretch;
+
+			.nv-btn,
+			.hero__call {
+				width: 100%;
+				justify-content: center;
+			}
+		}
+
+		&__feats {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 14px 10px;
+
+			li {
+				flex-direction: row;
+				text-align: left;
+			}
+		}
+
+		&__feat-ic {
+			width: 44px;
+			height: 44px;
+		}
+	}
+}
+
+@keyframes nv-float {
+	0%,
+	100% {
+		transform: translateY(0) rotate(-4deg);
+	}
+
+	50% {
+		transform: translateY(-8px) rotate(2deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero__badge {
+		animation: none;
+	}
+}
+
+// ───────── Symptoms
+.sym {
+	padding: 64px 0;
+	background: #fff;
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: 16px;
+		margin-top: 32px;
+	}
+
+	&__card {
+		margin: 0;
+		border-radius: var(--nv-radius);
+		overflow: hidden;
+		background: var(--nv-green-50);
+		box-shadow: var(--nv-shadow);
+
+		img {
+			display: block;
+			width: 100%;
+			aspect-ratio: 1 / 1.05;
+			height: auto;
+			object-fit: cover;
+		}
+
+		figcaption {
+			padding: 12px 8px 14px;
+			text-align: center;
+			font-weight: 700;
+			font-size: 14px;
+			line-height: 1.3;
+			color: var(--nv-green-800);
+		}
+	}
+
+	@media (max-width: $lg) {
+		&__grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (max-width: $sm) {
+		padding: 48px 0;
+
+		&__grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 12px;
+		}
+	}
+}
+
+// ───────── About
+.about {
+	padding: 72px 0;
+	background: linear-gradient(180deg, var(--nv-green-50), #fff);
+	overflow: hidden;
+
+	&__leaf {
+		position: absolute;
+		right: -30px;
+		top: -20px;
+		width: 180px;
+		opacity: 0.9;
+		pointer-events: none;
+	}
+
+	&__in {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr 0.9fr 1fr;
+		gap: 32px;
+		align-items: center;
+	}
+
+	&__title {
+		text-align: left;
+		font-size: clamp(28px, 3vw, 38px);
+	}
+
+	&__text {
+		margin-top: 14px;
+		color: var(--nv-muted);
+		line-height: 1.65;
+	}
+
+	&__icons {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 10px;
+		margin-top: 24px;
+
+		li {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 8px;
+			text-align: center;
+		}
+
+		span {
+			display: grid;
+			place-items: center;
+			width: 56px;
+			height: 56px;
+			border-radius: 50%;
+			background: var(--nv-green-100);
+			color: var(--nv-green-600);
+		}
+
+		b {
+			font-size: 12px;
+			line-height: 1.3;
+			color: var(--nv-green-800);
+		}
+	}
+
+	&__product img {
+		display: block;
+		width: 100%;
+		height: auto;
+		filter: drop-shadow(0 22px 26px rgba(11, 61, 34, 0.25));
+	}
+
+	&__why {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		margin-top: 18px;
+
+		li {
+			display: flex;
+			gap: 14px;
+			align-items: flex-start;
+			padding: 14px 16px;
+			border-radius: 16px;
+			background: #fff;
+			border: 1px solid var(--nv-line);
+		}
+
+		span {
+			display: grid;
+			place-items: center;
+			flex-shrink: 0;
+			width: 42px;
+			height: 42px;
+			border-radius: 12px;
+			background: var(--nv-green-600);
+			color: #fff;
+		}
+
+		b {
+			display: block;
+			font-size: 15px;
+			color: var(--nv-green-800);
+		}
+
+		p {
+			margin-top: 3px;
+			font-size: 13.5px;
+			line-height: 1.45;
+			color: var(--nv-muted);
+		}
+	}
+
+	@media (max-width: $lg) {
+		&__in {
+			grid-template-columns: 1fr;
+		}
+
+		&__product {
+			order: -1;
+			max-width: 420px;
+			margin: 0 auto;
+		}
+
+		&__title {
+			text-align: center;
+		}
+
+		&__text {
+			text-align: center;
+		}
+	}
+
+	@media (max-width: $sm) {
+		padding: 48px 0;
+
+		&__icons {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 16px;
+		}
+
+		&__leaf {
+			display: none;
+		}
+	}
+}
+
+// ───────── Ingredients
+.ing {
+	padding: 72px 0;
+	background: url('~/assets/images/v2/section-bg.webp') center / cover no-repeat, #f1f8ec;
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(8, 1fr);
+		gap: 14px;
+		margin-top: 32px;
+	}
+
+	&__card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 14px 10px 16px;
+		border-radius: 16px;
+		background: #fff;
+		box-shadow: 0 6px 18px rgba(18, 74, 40, 0.07);
+		text-align: center;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+		&:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 14px 28px rgba(18, 74, 40, 0.13);
+		}
+
+		h3 {
+			margin-top: 10px;
+			font-size: 14px;
+			font-weight: 800;
+			line-height: 1.25;
+			color: var(--nv-green-800);
+		}
+
+		p {
+			margin-top: 4px;
+			font-size: 11.5px;
+			line-height: 1.4;
+			color: var(--nv-muted);
+		}
+	}
+
+	&__img {
+		display: grid;
+		place-items: center;
+		width: 100%;
+		aspect-ratio: 1;
+
+		img {
+			max-width: 88%;
+			max-height: 88%;
+			object-fit: contain;
+		}
+	}
+
+	@media (max-width: 1180px) {
+		&__grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	@media (max-width: $sm) {
+		padding: 48px 0;
+
+		&__grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 8px;
+		}
+
+		&__card {
+			padding: 10px 6px 12px;
+
+			h3 {
+				font-size: 12.5px;
+			}
+
+			p {
+				display: none;
+			}
+		}
+	}
+}
+
+// ───────── Reviews
+.rev {
+	padding: 72px 0;
+	background: #fff;
+
+	&__head {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 16px 24px;
+		flex-wrap: wrap;
+	}
+
+	&__title {
+		text-align: left;
+	}
+
+	&__sub {
+		margin-top: 8px;
+		color: var(--nv-muted);
+		font-size: 15px;
+	}
+
+	&__row {
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: calc((100% - 3 * 20px) / 4);
+		gap: 20px;
+		margin-top: 28px;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		padding-bottom: 6px;
+		scrollbar-width: thin;
+	}
+
+	&__card {
+		position: relative;
+		display: block;
+		aspect-ratio: 9 / 16;
+		border-radius: 18px;
+		overflow: hidden;
+		background: var(--nv-green-900);
+		scroll-snap-align: start;
+		box-shadow: var(--nv-shadow);
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.3s ease;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.45));
+		}
+
+		&:hover img {
+			transform: scale(1.04);
+		}
+	}
+
+	&__play {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		z-index: 1;
+		display: grid;
+		place-items: center;
+		width: 60px;
+		height: 60px;
+		margin: -30px 0 0 -30px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.92);
+		color: var(--nv-green-600);
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+		padding-left: 3px;
+	}
+
+	@media (max-width: $lg) {
+		&__row {
+			grid-auto-columns: 38%;
+		}
+	}
+
+	@media (max-width: $sm) {
+		padding: 48px 0;
+
+		&__row {
+			grid-auto-columns: 62%;
+		}
+	}
+}
+
+// ───────── Certificates
+.cert {
+	padding: 72px 0;
+	background: linear-gradient(180deg, var(--nv-green-50), #eaf5e2);
+
+	&__in {
+		display: grid;
+		grid-template-columns: 1fr 0.9fr 1fr;
+		gap: 28px;
+		align-items: center;
+	}
+
+	&__title {
+		text-align: left;
+		font-size: clamp(28px, 3vw, 38px);
+	}
+
+	&__text {
+		margin-top: 14px;
+		color: var(--nv-muted);
+		line-height: 1.6;
+	}
+
+	&__badges {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin: 22px 0 26px;
+
+		li {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			font-weight: 700;
+			color: var(--nv-green-800);
+		}
+
+		span {
+			display: grid;
+			place-items: center;
+			width: 42px;
+			height: 42px;
+			border-radius: 12px;
+			background: #fff;
+			color: var(--nv-green-600);
+			box-shadow: 0 4px 12px rgba(18, 74, 40, 0.08);
+		}
+	}
+
+	&__docs {
+		position: relative;
+		height: 380px;
+	}
+
+	&__doc {
+		position: absolute;
+		top: 50%;
+		display: block;
+		width: 58%;
+		border: 6px solid #fff;
+		border-radius: 6px;
+		background: #fff;
+		box-shadow: 0 16px 32px rgba(11, 61, 34, 0.2);
+		transition: transform 0.25s ease;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		&--back {
+			left: 6%;
+			transform: translateY(-50%) rotate(-8deg);
+		}
+
+		&--front {
+			right: 6%;
+			transform: translateY(-50%) rotate(4deg);
+
+			&:hover {
+				transform: translateY(-52%) rotate(2deg);
+			}
+		}
+	}
+
+	&__product img {
+		display: block;
+		width: 100%;
+		height: auto;
+		filter: drop-shadow(0 22px 26px rgba(11, 61, 34, 0.25));
+	}
+
+	@media (max-width: $lg) {
+		&__in {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		&__copy {
+			grid-column: 1 / -1;
+			text-align: center;
+		}
+
+		&__title {
+			text-align: center;
+		}
+
+		&__badges {
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	}
+
+	@media (max-width: $sm) {
+		padding: 48px 0;
+
+		&__in {
+			grid-template-columns: 1fr;
+		}
+
+		&__badges {
+			flex-direction: column;
+			align-items: flex-start;
+			max-width: 280px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		&__docs {
+			height: 300px;
+		}
+	}
+}
+
+// ───────── Steps
+.steps {
+	padding: 72px 0;
+	background: #fff;
+
+	&__row {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+		margin-top: 32px;
+		counter-reset: none;
+	}
+
+	&__card {
+		position: relative;
+		display: flex;
+		gap: 16px;
+		padding: 22px;
+		border-radius: 20px;
+		background: var(--nv-green-50);
+		border: 1px solid var(--nv-line);
+
+		em {
+			font-style: normal;
+			font-family: var(--nv-serif);
+			font-weight: 700;
+			font-size: 20px;
+			color: var(--nv-green-500);
+		}
+
+		h3 {
+			margin-top: 2px;
+			font-size: 17px;
+			font-weight: 800;
+			color: var(--nv-green-800);
+		}
+
+		p {
+			margin-top: 6px;
+			font-size: 14px;
+			line-height: 1.5;
+			color: var(--nv-muted);
+		}
+
+		&:not(:last-child)::after {
+			content: '';
+			position: absolute;
+			right: -17px;
+			top: 50%;
+			z-index: 1;
+			width: 14px;
+			height: 14px;
+			border-top: 3px solid var(--nv-green-500);
+			border-right: 3px solid var(--nv-green-500);
+			transform: translateY(-50%) rotate(45deg);
+		}
+	}
+
+	&__ic {
+		display: grid;
+		place-items: center;
+		flex-shrink: 0;
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		background: linear-gradient(180deg, var(--nv-green-500), var(--nv-green-700));
+		color: #fff;
+	}
+
+	@media (max-width: $md) {
+		padding: 48px 0;
+
+		&__row {
+			grid-template-columns: 1fr;
+			gap: 14px;
+		}
+
+		&__card:not(:last-child)::after {
+			display: none;
+		}
+	}
+}
+
+// ───────── FAQ
+.faq {
+	padding: 64px 0 72px;
+	background: var(--nv-green-50);
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 12px 20px;
+		align-items: start;
+		margin-top: 32px;
+	}
+
+	&__item {
+		border-radius: 14px;
+		background: #fff;
+		border: 1px solid var(--nv-line);
+		overflow: hidden;
+
+		summary {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			min-height: 56px;
+			padding: 14px 18px;
+			font-weight: 700;
+			font-size: 15px;
+			color: var(--nv-green-800);
+			cursor: pointer;
+			list-style: none;
+
+			&::-webkit-details-marker {
+				display: none;
+			}
+		}
+
+		p {
+			padding: 0 18px 16px;
+			font-size: 14px;
+			line-height: 1.6;
+			color: var(--nv-muted);
+		}
+
+		&[open] .faq__plus {
+			transform: rotate(45deg);
+			background: var(--nv-green-600);
+			color: #fff;
+		}
+	}
+
+	&__plus {
+		display: grid;
+		place-items: center;
+		flex-shrink: 0;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background: var(--nv-green-100);
+		color: var(--nv-green-600);
+		transition: transform 0.2s ease, background 0.2s ease;
+	}
+
+	@media (max-width: $md) {
+		padding: 48px 0;
+
+		&__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+}
+
+// ───────── Final CTA
+.final {
+	overflow: hidden;
+	padding: 64px 0;
+	background: #dff0d4;
+
+	&__bg {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&__in {
+		position: relative;
+		display: grid;
+		grid-template-columns: 0.95fr 1fr 0.95fr;
+		gap: 24px;
+		align-items: center;
+	}
+
+	&__man {
+		align-self: end;
+		width: 100%;
+		height: auto;
+		margin-bottom: -64px;
+		// the cutout is a photo crop — fade its hard side/top edges into the leaves
+		-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%), linear-gradient(0deg, #000 70%, transparent 100%);
+		-webkit-mask-composite: source-in;
+		mask-image: linear-gradient(90deg, transparent 0, #000 14%, #000 86%, transparent 100%), linear-gradient(0deg, #000 70%, transparent 100%);
+		mask-composite: intersect;
+	}
+
+	&__title {
+		font-family: var(--nv-serif);
+		font-weight: 700;
+		font-size: clamp(30px, 3.4vw, 44px);
+		line-height: 1.1;
+		color: var(--nv-green-900);
+
+		span {
+			display: block;
+			color: var(--nv-green-500);
+		}
+	}
+
+	&__copy {
+		> p {
+			margin-top: 14px;
+			line-height: 1.6;
+			color: var(--nv-muted);
+		}
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			margin-top: 18px;
+
+			li {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				font-weight: 700;
+				color: var(--nv-green-800);
+
+				:deep(svg) {
+					color: var(--nv-green-500);
+				}
+			}
+		}
+	}
+
+	&__call {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		margin-top: 22px;
+		font-size: 20px;
+		font-weight: 800;
+		color: var(--nv-green-800);
+	}
+
+	@media (max-width: 1100px) {
+		&__in {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		&__man {
+			display: none;
+		}
+	}
+
+	@media (max-width: $md) {
+		padding: 48px 0;
+
+		&__in {
+			grid-template-columns: 1fr;
+		}
+
+		&__copy {
+			text-align: center;
+
+			ul {
+				align-items: center;
+			}
+		}
+	}
+}
+</style>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232 48" fill="none">
+  <defs>
+    <linearGradient id="lf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4caf3e"/>
+      <stop offset="1" stop-color="#17692f"/>
+    </linearGradient>
+  </defs>
+  <path d="M20 44C9 40 3 30 6 16c9 3 16 11 14 28Z" fill="url(#lf)"/>
+  <path d="M22 44c-1-16 6-29 20-36 4 17-5 31-20 36Z" fill="url(#lf)"/>
+  <path d="M21 43c1-10 6-20 14-27" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+  <path d="M19 43c-1-8-5-15-10-21" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>
+  <text x="52" y="35" font-family="Manrope, Arial, sans-serif" font-size="27" font-weight="800" letter-spacing=".5" fill="#0f4a28">NEVROSLIM</text>
+</svg>
