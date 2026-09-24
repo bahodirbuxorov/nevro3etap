@@ -53,13 +53,14 @@
 						fetchpriority="high"
 					/>
 					<img class="hero__badge" src="~/assets/images/v2/badge-100.webp" width="331" height="357" alt="100% tabiiy komponentlar" />
-
-					<ul class="hero__chips" aria-label="Nevroslim yordam beradigan holatlar">
-						<li v-for="c in heroChips" :key="c.label">
-							<span><NvIcon :name="c.icon" :size="16" /></span>{{ c.label }}
-						</li>
-					</ul>
 				</div>
+
+				<!-- Sits over the visual on desktop, drops below it on tablet/mobile -->
+				<ul class="hero__chips" aria-label="Nevroslim yordam beradigan holatlar">
+					<li v-for="c in heroChips" :key="c.label">
+						<span><NvIcon :name="c.icon" :size="16" /></span>{{ c.label }}
+					</li>
+				</ul>
 			</div>
 		</section>
 
@@ -106,8 +107,8 @@
 		<!-- ═════ Ingredients ═════ -->
 		<section class="ing" id="tarkibi">
 			<div class="nv-wrap">
-				<h2 class="nv-title">Tarkibi</h2>
-				<p class="nv-sub">Nevroslimning tarkibi 15 xil tabiiy ekstraktlardan iborat.</p>
+				<h2 class="nv-title">Mahsulot tarkibidagi «ekstrakt»larning tabiiy xususiyatlari</h2>
+				<p class="nv-sub">Tabiatning eng yaxshi ne’matlari</p>
 
 				<div class="ing__grid">
 					<article v-for="i in ingredients" :key="i.img" class="ing__card">
@@ -475,14 +476,12 @@ section {
 		max-width: 355px;
 		height: auto;
 		filter: drop-shadow(0 24px 28px rgba(11, 61, 34, 0.3));
-		transform-origin: 50% 82%;
-		will-change: transform;
-		animation: nv-product-float 5.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 		pointer-events: none;
 	}
 
 	&__badge {
 		position: absolute;
+		z-index: 3;
 		top: 0;
 		left: 2%;
 		width: 118px;
@@ -493,7 +492,8 @@ section {
 
 	&__chips {
 		position: absolute;
-		right: 0;
+		z-index: 3;
+		right: 20px;
 		top: 50%;
 		transform: translateY(-50%);
 		display: flex;
@@ -564,18 +564,29 @@ section {
 			margin: 0 auto;
 		}
 
-		&__actions {
+		&__chips {
 			order: 5;
+			position: static;
+			transform: none;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 8px;
+			margin-top: -4px;
+		}
+
+		&__actions {
+			order: 6;
 			margin-top: 0;
 		}
 
 		&__note {
-			order: 6;
+			order: 7;
 			margin-top: -12px;
 		}
 
 		&__feats {
-			order: 7;
+			order: 8;
 			margin-top: 4px;
 			max-width: none;
 		}
@@ -591,7 +602,8 @@ section {
 		}
 
 		&__visual {
-			aspect-ratio: 1.05;
+			aspect-ratio: 1.3;
+			max-width: 330px;
 		}
 
 		&__brain {
@@ -615,12 +627,13 @@ section {
 		}
 
 		&__chips {
-			gap: 6px;
+			gap: 6px 5px;
+			margin-top: -8px;
 
 			li {
-				padding: 5px 11px 5px 5px;
-				font-size: 11.5px;
-				gap: 6px;
+				padding: 4px 9px 4px 4px;
+				font-size: 11px;
+				gap: 5px;
 			}
 
 			span {
@@ -660,21 +673,13 @@ section {
 	}
 }
 
-@keyframes nv-product-float {
-	0%,
-	100% {
-		transform: translate3d(0, 0, 0) rotate(-0.65deg);
+@media (max-width: 380px) {
+	.hero__visual {
+		max-width: 270px;
 	}
 
-	50% {
-		transform: translate3d(0, -10px, 0) rotate(0.65deg);
-	}
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.hero__bottle {
-		animation: none;
-		transform: none;
+	.hero__title {
+		font-size: 29px;
 	}
 }
 
