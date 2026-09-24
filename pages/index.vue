@@ -53,14 +53,13 @@
 						fetchpriority="high"
 					/>
 					<img class="hero__badge" src="~/assets/images/v2/badge-100.webp" width="331" height="357" alt="100% tabiiy komponentlar" />
-				</div>
 
-				<!-- Sits over the visual on desktop, drops below it on tablet/mobile -->
-				<ul class="hero__chips" aria-label="Nevroslim yordam beradigan holatlar">
-					<li v-for="c in heroChips" :key="c.label">
-						<span><NvIcon :name="c.icon" :size="16" /></span>{{ c.label }}
-					</li>
-				</ul>
+					<ul class="hero__chips" aria-label="Nevroslim yordam beradigan holatlar">
+						<li v-for="c in heroChips" :key="c.label">
+							<span><NvIcon :name="c.icon" :size="16" /></span>{{ c.label }}
+						</li>
+					</ul>
+				</div>
 			</div>
 		</section>
 
@@ -493,7 +492,7 @@ section {
 	&__chips {
 		position: absolute;
 		z-index: 3;
-		right: 20px;
+		right: 0;
 		top: 50%;
 		transform: translateY(-50%);
 		display: flex;
@@ -564,29 +563,26 @@ section {
 			margin: 0 auto;
 		}
 
-		&__chips {
-			order: 5;
-			position: static;
-			transform: none;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 8px;
-			margin-top: -4px;
+		&__decor {
+			width: 72%;
+		}
+
+		&__bottle {
+			width: 50%;
 		}
 
 		&__actions {
-			order: 6;
+			order: 5;
 			margin-top: 0;
 		}
 
 		&__note {
-			order: 7;
+			order: 6;
 			margin-top: -12px;
 		}
 
 		&__feats {
-			order: 8;
+			order: 7;
 			margin-top: 4px;
 			max-width: none;
 		}
@@ -602,24 +598,24 @@ section {
 		}
 
 		&__visual {
-			aspect-ratio: 1.3;
-			max-width: 330px;
+			aspect-ratio: 1.12;
 		}
 
 		&__brain {
-			right: 18%;
-			width: 60%;
+			top: -8px;
+			right: 30%;
+			width: 50%;
 		}
 
 		&__decor {
-			left: -5%;
-			width: 84%;
+			left: -4%;
+			width: 64%;
 		}
 
 		&__bottle {
-			left: 6%;
-			bottom: -3%;
-			width: 59%;
+			left: 5%;
+			bottom: -2%;
+			width: 43%;
 		}
 
 		&__badge {
@@ -627,8 +623,7 @@ section {
 		}
 
 		&__chips {
-			gap: 6px 5px;
-			margin-top: -8px;
+			gap: 6px;
 
 			li {
 				padding: 4px 9px 4px 4px;
@@ -674,10 +669,6 @@ section {
 }
 
 @media (max-width: 380px) {
-	.hero__visual {
-		max-width: 270px;
-	}
-
 	.hero__title {
 		font-size: 29px;
 	}
