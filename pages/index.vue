@@ -110,7 +110,7 @@
 						src="~/assets/images/v2/ingredients-poster.webp"
 						width="1122"
 						height="1402"
-						alt="Nevroslim tarkibi: melissa, moychechak, yalpiz, valeriana, zveroboy, limon balzami, do'lana"
+						alt="Nevroslimning tarkibi: ginkgo biloba, amarant, yalpiz, do'lana, valeriana"
 						loading="lazy"
 					/>
 				</figure>
