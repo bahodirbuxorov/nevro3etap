@@ -34,7 +34,6 @@
 				</div>
 
 				<div class="hero__visual">
-					<img class="hero__brain" src="~/assets/images/v2/hero-brain.webp" alt="" aria-hidden="true" />
 					<img
 						class="hero__decor"
 						src="~/assets/images/v2/hero-decor.webp"
@@ -454,16 +453,6 @@ section {
 		min-height: 520px;
 	}
 
-	&__brain {
-		position: absolute;
-		top: -24px;
-		right: 13%;
-		width: 60%;
-		max-width: 390px;
-		opacity: 0.95;
-		filter: drop-shadow(0 0 40px rgba(255, 220, 120, 0.35));
-	}
-
 	&__decor {
 		position: absolute;
 		z-index: 1;
@@ -620,13 +609,7 @@ section {
 		}
 
 		&__visual {
-			aspect-ratio: 0.98;
-		}
-
-		&__brain {
-			top: -8px;
-			right: 30%;
-			width: 50%;
+			aspect-ratio: 1.12;
 		}
 
 		--nv-chips: 110px;
@@ -683,7 +666,7 @@ section {
 
 @media (max-width: 380px) {
 	.hero__visual {
-		aspect-ratio: 1.04;
+		aspect-ratio: 1.15;
 	}
 
 	.hero__title {
