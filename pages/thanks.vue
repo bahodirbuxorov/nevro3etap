@@ -62,7 +62,7 @@
 </template>
 
 <script setup>
-setPageLayout('thanks')
+definePageMeta({ layout: 'thanks' })
 
 const countdown = ref(3);
 
