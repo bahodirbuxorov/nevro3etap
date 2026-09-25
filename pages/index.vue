@@ -46,8 +46,8 @@
 					<img
 						class="hero__side-bottle hero__side-bottle--left"
 						src="~/assets/images/v2/hero-bottle-left.png"
-						width="1327"
-						height="1186"
+						width="625"
+						height="1097"
 						alt=""
 						aria-hidden="true"
 						fetchpriority="high"
@@ -55,8 +55,8 @@
 					<img
 						class="hero__side-bottle hero__side-bottle--right"
 						src="~/assets/images/v2/hero-bottle-right.png"
-						width="1327"
-						height="1186"
+						width="639"
+						height="1095"
 						alt=""
 						aria-hidden="true"
 						fetchpriority="high"
@@ -486,21 +486,22 @@ section {
 	&__side-bottle {
 		position: absolute;
 		z-index: 2;
-		left: -4%;
-		bottom: 0;
-		width: 80%;
-		max-width: 520px;
+		bottom: 7%;
+		width: 34%;
+		max-width: 220px;
 		height: auto;
 		will-change: transform;
 		pointer-events: none;
 
 		&--left {
-			transform-origin: 34% 74%;
+			left: 5%;
+			transform-origin: 50% 92%;
 			animation: nv-side-bottle-left 3.1s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 		}
 
 		&--right {
-			transform-origin: 69% 75%;
+			left: 35%;
+			transform-origin: 50% 92%;
 			animation: nv-side-bottle-right 3.35s cubic-bezier(0.45, 0, 0.55, 1) -0.9s infinite;
 		}
 	}
@@ -618,9 +619,16 @@ section {
 		}
 
 		&__side-bottle {
-			left: -4%;
-			width: var(--nv-art);
-			max-width: none;
+			width: 34%;
+			max-width: 220px;
+		}
+
+		&__side-bottle--left {
+			left: 5%;
+		}
+
+		&__side-bottle--right {
+			left: 35%;
 		}
 
 		&__bottle {
