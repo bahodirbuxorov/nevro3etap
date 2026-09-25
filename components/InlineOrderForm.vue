@@ -124,6 +124,7 @@ const emit = defineEmits<{
 }>();
 
 const { capture: captureUtm, get: getUtm } = useUtmParams()
+const { dismiss: dismissModal } = useOrderModal();
 onMounted(() => captureUtm())
 
 // Quiz answers go to /api/order as purpose_label + problems; server/utils/gateway.ts
@@ -231,7 +232,8 @@ async function submitForm() {
 			name.value = '';
 			phone.value = '+998';
 			emit('submitted');
-			navigateTo('/thanks');
+			await navigateTo('/thanks');
+			dismissModal();
 		}
 	} catch (error) {
 		console.error('Xatolik:', error);

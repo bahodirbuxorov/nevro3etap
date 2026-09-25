@@ -64,5 +64,8 @@ const filled = computed(() => FILLED.has(props.name));
 	display: inline-block;
 	flex-shrink: 0;
 	vertical-align: middle;
+	/* Clicks land on the parent button/link, not the <svg>: the SAIVO tracker
+	   click handler calls className.indexOf and throws on SVGAnimatedString. */
+	pointer-events: none;
 }
 </style>

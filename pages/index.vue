@@ -26,7 +26,7 @@
 					</ul>
 
 					<div class="hero__actions">
-						<button type="button" id="hero-btn" data-meta="order-scroll" class="nv-btn" @click="scrollToOrderForm">
+						<button type="button" id="hero-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
 							Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
 						</button>
 					</div>
@@ -147,7 +147,7 @@
 				</div>
 
 				<div class="nv-center">
-					<button type="button" id="ing-btn" data-meta="order-scroll" class="nv-btn" @click="scrollToOrderForm">
+					<button type="button" id="ing-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
 						Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
 					</button>
 				</div>
@@ -202,7 +202,7 @@
 			</div>
 		</section>
 
-		<!-- ═════ Final CTA + order form ═════ -->
+		<!-- ═════ Final CTA (form opens full screen) ═════ -->
 		<section class="final">
 			<img class="final__bg" src="~/assets/images/v2/cta-bg.webp" alt="" aria-hidden="true" loading="lazy" />
 			<div class="nv-wrap final__in">
@@ -215,8 +215,10 @@
 						<li><NvIcon name="check" :size="18" :stroke="3" /> O'zbekiston bo'ylab yetkazib berish</li>
 						<li><NvIcon name="check" :size="18" :stroke="3" /> Original mahsulot</li>
 					</ul>
+					<button type="button" id="final-btn" data-meta="order-open" class="nv-btn final__btn" @click="openOrder">
+						Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
+					</button>
 				</div>
-				<InlineOrderForm />
 			</div>
 		</section>
 	</main>
@@ -305,11 +307,7 @@ const steps = [
 	{ icon: 'truck', title: 'Yetkazib berishni kuting', text: 'Manzilingizni tasdiqlang va mahsulotni qulay usulda qabul qiling.' },
 ];
 
-function scrollToOrderForm(e?: Event) {
-	if (e) e.preventDefault();
-	const el = document.getElementById('order-form');
-	if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
+const { open: openOrder } = useOrderModal();
 
 onMounted(() => {
 	Fancybox.bind('[data-fancybox]', {});
@@ -1256,8 +1254,8 @@ section {
 	&__in {
 		position: relative;
 		display: grid;
-		grid-template-columns: 0.95fr 1fr 0.95fr;
-		gap: 24px;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
 		align-items: center;
 	}
 
@@ -1313,9 +1311,15 @@ section {
 		}
 	}
 
+	&__btn {
+		margin-top: 26px;
+		min-width: 280px;
+	}
+
 	@media (max-width: 1100px) {
 		&__in {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: 1fr;
+			max-width: 560px;
 		}
 
 		&__man {
@@ -1336,6 +1340,11 @@ section {
 			ul {
 				align-items: center;
 			}
+		}
+
+		&__btn {
+			width: 100%;
+			min-width: 0;
 		}
 	}
 }

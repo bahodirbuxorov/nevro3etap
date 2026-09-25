@@ -9,7 +9,7 @@
 				<a v-for="l in links" :key="l.href" :href="l.href" @click="open = false">{{ l.label }}</a>
 			</nav>
 
-			<a href="/#order-form" data-meta="order-scroll" class="nv-btn nv-btn--sm nv-head__cta">Maslahat olish</a>
+			<button type="button" data-meta="order-open" class="nv-btn nv-btn--sm nv-head__cta" @click="openOrder">Maslahat olish</button>
 
 			<button type="button" class="nv-head__burger" :aria-expanded="open" aria-label="Menyu" @click="open = !open">
 				<NvIcon :name="open ? 'close' : 'menu'" :size="26" />
@@ -28,6 +28,7 @@ const links = [
 ];
 
 const open = ref(false);
+const { open: openOrder } = useOrderModal();
 const scrolled = ref(false);
 
 function onScroll() {
