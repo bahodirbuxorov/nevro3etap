@@ -36,7 +36,25 @@
 				<div class="hero__visual">
 					<img
 						class="hero__decor"
-						src="~/assets/images/v2/hero-decor.webp"
+						src="~/assets/images/v2/hero-decor-static.png"
+						width="1327"
+						height="1186"
+						alt=""
+						aria-hidden="true"
+						fetchpriority="high"
+					/>
+					<img
+						class="hero__side-bottle hero__side-bottle--left"
+						src="~/assets/images/v2/hero-bottle-left.png"
+						width="1327"
+						height="1186"
+						alt=""
+						aria-hidden="true"
+						fetchpriority="high"
+					/>
+					<img
+						class="hero__side-bottle hero__side-bottle--right"
+						src="~/assets/images/v2/hero-bottle-right.png"
 						width="1327"
 						height="1186"
 						alt=""
@@ -144,7 +162,7 @@
 						<h2 class="nv-title rev__title">Mijozlarimiz fikrlari</h2>
 						<p class="rev__sub">Haqiqiy odamlar, haqiqiy natijalar. Nevroslimni tanlagan mijozlarimizning video fikrlari.</p>
 					</div>
-					<a href="https://www.youtube.com/@Nevroslim/shorts" target="_blank" rel="noopener" data-meta="contact-youtube" class="nv-btn nv-btn--green nv-btn--sm">
+					<a href="https://www.instagram.com/nevroslim.uz/" target="_blank" rel="noopener" data-meta="contact-instagram" class="nv-btn nv-btn--green nv-btn--sm">
 						Barcha fikrlarni ko'rish <NvIcon name="arrow" :size="16" :stroke="2.5" />
 					</a>
 				</div>
@@ -455,7 +473,7 @@ section {
 
 	&__decor {
 		position: absolute;
-		z-index: 1;
+		z-index: 3;
 		left: -4%;
 		bottom: 0;
 		width: 80%;
@@ -465,21 +483,45 @@ section {
 		pointer-events: none;
 	}
 
-	&__bottle {
+	&__side-bottle {
 		position: absolute;
 		z-index: 2;
+		left: -4%;
+		bottom: 0;
+		width: 80%;
+		max-width: 520px;
+		height: auto;
+		will-change: transform;
+		pointer-events: none;
+
+		&--left {
+			transform-origin: 34% 74%;
+			animation: nv-side-bottle-left 4.9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+		}
+
+		&--right {
+			transform-origin: 69% 75%;
+			animation: nv-side-bottle-right 5.3s cubic-bezier(0.45, 0, 0.55, 1) -1.4s infinite;
+		}
+	}
+
+	&__bottle {
+		position: absolute;
+		z-index: 4;
 		left: 8%;
 		bottom: -2%;
 		width: 55%;
 		max-width: 355px;
 		height: auto;
 		filter: drop-shadow(0 24px 28px rgba(11, 61, 34, 0.3));
+		will-change: transform;
+		animation: nv-product-float 5.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 		pointer-events: none;
 	}
 
 	&__badge {
 		position: absolute;
-		z-index: 3;
+		z-index: 5;
 		top: 0;
 		left: 2%;
 		width: 118px;
@@ -490,7 +532,7 @@ section {
 
 	&__chips {
 		position: absolute;
-		z-index: 3;
+		z-index: 6;
 		right: 0;
 		top: 50%;
 		transform: translateY(-50%);
@@ -570,6 +612,12 @@ section {
 		--nv-art: calc((104% - var(--nv-chips) - 4px) / 0.8375);
 
 		&__decor {
+			left: -4%;
+			width: var(--nv-art);
+			max-width: none;
+		}
+
+		&__side-bottle {
 			left: -4%;
 			width: var(--nv-art);
 			max-width: none;
@@ -661,6 +709,47 @@ section {
 			width: 44px;
 			height: 44px;
 		}
+	}
+}
+
+@keyframes nv-product-float {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	50% {
+		transform: translate3d(0, -10px, 0);
+	}
+}
+
+@keyframes nv-side-bottle-left {
+	0%,
+	100% {
+		transform: rotate(-0.55deg);
+	}
+
+	50% {
+		transform: rotate(0.75deg);
+	}
+}
+
+@keyframes nv-side-bottle-right {
+	0%,
+	100% {
+		transform: rotate(0.55deg);
+	}
+
+	50% {
+		transform: rotate(-0.75deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero__bottle,
+	.hero__side-bottle {
+		animation: none;
+		transform: none;
 	}
 }
 
