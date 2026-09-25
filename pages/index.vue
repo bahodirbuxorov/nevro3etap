@@ -115,7 +115,7 @@
 				</div>
 
 				<div class="about__product">
-					<img src="~/assets/images/v2/about-bottles.webp" width="504" height="470" alt="Nevroslim siropi" loading="lazy" />
+					<img src="~/assets/images/v2/about-bottles.webp" width="1299" height="1211" alt="Nevroslim siropi" loading="lazy" />
 				</div>
 			</div>
 		</section>
