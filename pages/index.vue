@@ -496,12 +496,12 @@ section {
 
 		&--left {
 			transform-origin: 34% 74%;
-			animation: nv-side-bottle-left 4.9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+			animation: nv-side-bottle-left 3.1s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 		}
 
 		&--right {
 			transform-origin: 69% 75%;
-			animation: nv-side-bottle-right 5.3s cubic-bezier(0.45, 0, 0.55, 1) -1.4s infinite;
+			animation: nv-side-bottle-right 3.35s cubic-bezier(0.45, 0, 0.55, 1) -0.9s infinite;
 		}
 	}
 
