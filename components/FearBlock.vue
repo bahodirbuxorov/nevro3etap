@@ -14,31 +14,29 @@
 			</header>
 
 			<!-- today -> tomorrow -->
-			<div class="fear__flow">
-				<div class="fear-col fear-col--now">
-					<p class="fear-col__label">Bugun: sezilayotgan belgilar</p>
-					<ul class="fear-col__list">
-						<li v-for="s in signs" :key="s.img">
-							<img :src="fearImg(s.img)" width="800" height="600" alt="" loading="lazy" />
-							<span>{{ s.title }}</span>
-						</li>
-					</ul>
-				</div>
+			<div class="fear-row fear-row--now">
+				<p class="fear-row__label">Bugun: sezilayotgan belgilar</p>
+				<ul class="fear-row__grid">
+					<li v-for="s in signs" :key="s.img" class="fear-tile">
+						<img :src="fearImg(s.img)" width="800" height="600" alt="" loading="lazy" />
+						<span>{{ s.title }}</span>
+					</li>
+				</ul>
+			</div>
 
-				<div class="fear__arrow" aria-hidden="true">
-					<span class="fear__arrow-ic"><NvIcon name="arrow" :size="24" :stroke="2.6" /></span>
-					<span class="fear__arrow-txt">E'tiborsiz qolsa…</span>
-				</div>
+			<div class="fear__arrow" aria-hidden="true">
+				<span class="fear__arrow-ic"><NvIcon name="arrow" :size="24" :stroke="2.6" /></span>
+				<span class="fear__arrow-txt">E'tiborsiz qolsa…</span>
+			</div>
 
-				<div class="fear-col fear-col--later">
-					<p class="fear-col__label">Ertaga: jiddiy oqibatlar</p>
-					<ul class="fear-col__list">
-						<li v-for="c in consequences" :key="c.img">
-							<img :src="fearImg(c.img)" width="640" height="640" alt="" loading="lazy" />
-							<span>{{ c.title }}</span>
-						</li>
-					</ul>
-				</div>
+			<div class="fear-row fear-row--later">
+				<p class="fear-row__label">Ertaga: jiddiy oqibatlar</p>
+				<ul class="fear-row__grid">
+					<li v-for="c in consequences" :key="c.img" class="fear-tile">
+						<img :src="fearImg(c.img)" width="640" height="640" alt="" loading="lazy" />
+						<span>{{ c.title }}</span>
+					</li>
+				</ul>
 			</div>
 
 			<div class="fear__cta">
@@ -134,36 +132,28 @@ $sm: 560px;
 		color: var(--nv-muted);
 	}
 
-	&__flow {
-		display: grid;
-		grid-template-columns: 1fr auto 1fr;
-		align-items: center;
-		gap: 20px;
-		margin-top: 36px;
-	}
-
 	&__arrow {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
-		gap: 8px;
-		width: 110px;
-		text-align: center;
+		justify-content: center;
+		gap: 10px;
+		margin: 18px 0;
 	}
 
 	&__arrow-ic {
 		display: grid;
 		place-items: center;
-		width: 56px;
-		height: 56px;
+		width: 48px;
+		height: 48px;
 		border-radius: 50%;
 		background: linear-gradient(135deg, var(--nv-gold-2), var(--f-red));
 		color: #fff;
 		box-shadow: 0 10px 22px rgba(214, 58, 47, 0.3);
+		transform: rotate(90deg);
 	}
 
 	&__arrow-txt {
-		font-size: 13px;
+		font-size: 15px;
 		font-weight: 800;
 		color: var(--f-red);
 	}
@@ -194,25 +184,6 @@ $sm: 560px;
 		}
 	}
 
-	@media (max-width: 900px) {
-		&__flow {
-			grid-template-columns: 1fr;
-			gap: 12px;
-		}
-
-		&__arrow {
-			width: auto;
-			flex-direction: row;
-			justify-content: center;
-
-			.fear__arrow-ic {
-				width: 44px;
-				height: 44px;
-				transform: rotate(90deg);
-			}
-		}
-	}
-
 	@media (max-width: $md) {
 		padding: 48px 0;
 
@@ -227,105 +198,116 @@ $sm: 560px;
 	}
 }
 
-// ── today / tomorrow columns
-.fear-col {
-	height: 100%;
-	padding: 20px;
-	border-radius: 20px;
-	background: #fff;
-	border: 1.5px solid var(--nv-line);
-	box-shadow: var(--nv-shadow);
+// ── today / tomorrow rows of photo tiles (same idea as the ingredient cards)
+.fear-row {
+	margin-top: 32px;
 
 	&__label {
-		display: inline-block;
-		padding: 6px 12px;
-		border-radius: 10px;
-		font-size: 14px;
+		display: table;
+		margin: 0 auto 14px;
+		padding: 7px 16px;
+		border-radius: 999px;
+		font-size: 15px;
 		font-weight: 800;
 	}
 
-	&__list {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-		margin-top: 14px;
-
-		li {
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			padding: 6px;
-			border-radius: 12px;
-			background: var(--nv-green-50);
-		}
-
-		img {
-			flex-shrink: 0;
-			width: 52px;
-			height: 52px;
-			border-radius: 10px;
-			object-fit: cover;
-		}
-
-		span {
-			font-size: 15px;
-			font-weight: 700;
-			line-height: 1.3;
-			color: var(--nv-green-900);
-		}
+	&__grid {
+		display: grid;
+		gap: 14px;
 	}
 
-	&--now &__label {
-		background: var(--f-amber-soft);
-		color: var(--f-amber);
+	&--now {
+		.fear-row__label {
+			background: var(--f-amber-soft);
+			color: var(--f-amber);
+		}
+
+		.fear-row__grid {
+			grid-template-columns: repeat(6, 1fr);
+		}
 	}
 
 	&--later {
-		border-color: rgba(214, 58, 47, 0.35);
-		box-shadow: 0 14px 34px rgba(214, 58, 47, 0.12);
+		margin-top: 0;
 
-		.fear-col__label {
+		.fear-row__label {
 			background: var(--f-red-soft);
 			color: var(--f-red);
 		}
 
-		.fear-col__list li {
-			background: #fff7f6;
+		.fear-row__grid {
+			grid-template-columns: repeat(5, 1fr);
 		}
 
-		.fear-col__list span {
-			color: #8f2019;
+		.fear-tile {
+			border-color: rgba(214, 58, 47, 0.35);
+			box-shadow: 0 10px 24px rgba(214, 58, 47, 0.1);
+
+			span {
+				color: #8f2019;
+			}
+		}
+	}
+
+	@media (max-width: 1024px) {
+		&--now .fear-row__grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		&--later .fear-row__grid {
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 
 	@media (max-width: $sm) {
-		padding: 16px 14px;
-
-		// "today" signs as a compact 2-column grid to keep the block short
-		&--now .fear-col__list {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 6px;
-
-			img {
-				width: 40px;
-				height: 40px;
-			}
-
-			span {
-				font-size: 12.5px;
-			}
+		&--now .fear-row__grid,
+		&--later .fear-row__grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 10px;
 		}
 
-		&__list {
-			img {
-				width: 46px;
-				height: 46px;
-			}
+		// 5 tiles in 2 columns: centre the last one
+		&--later .fear-tile:last-child {
+			grid-column: 1 / -1;
+			justify-self: center;
+			width: calc(50% - 5px);
+		}
+	}
+}
 
-			span {
-				font-size: 14px;
-			}
+.fear-tile {
+	display: flex;
+	flex-direction: column;
+	border-radius: 16px;
+	overflow: hidden;
+	background: #fff;
+	border: 1.5px solid var(--nv-line);
+	box-shadow: 0 6px 18px rgba(18, 74, 40, 0.07);
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1;
+		object-fit: cover;
+	}
+
+	span {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 10px 8px 12px;
+		text-align: center;
+		font-size: 14px;
+		font-weight: 800;
+		line-height: 1.3;
+		color: var(--nv-green-900);
+	}
+
+	@media (max-width: 560px) {
+		span {
+			font-size: 13px;
 		}
 	}
 }
