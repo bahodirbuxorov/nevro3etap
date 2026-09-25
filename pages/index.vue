@@ -468,12 +468,13 @@ section {
 	// visual
 	&__visual {
 		position: relative;
+		isolation: isolate;
 		min-height: 520px;
 	}
 
 	&__decor {
 		position: absolute;
-		z-index: 3;
+		z-index: 1;
 		left: -4%;
 		bottom: 0;
 		width: 80%;
@@ -508,7 +509,7 @@ section {
 
 	&__bottle {
 		position: absolute;
-		z-index: 4;
+		z-index: 3;
 		left: 8%;
 		bottom: -2%;
 		width: 55%;
@@ -522,7 +523,7 @@ section {
 
 	&__badge {
 		position: absolute;
-		z-index: 5;
+		z-index: 4;
 		top: 0;
 		left: 2%;
 		width: 118px;
@@ -533,7 +534,7 @@ section {
 
 	&__chips {
 		position: absolute;
-		z-index: 6;
+		z-index: 5;
 		right: 0;
 		top: 50%;
 		transform: translateY(-50%);
