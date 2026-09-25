@@ -80,20 +80,8 @@
 			</div>
 		</section>
 
-		<!-- ═════ Symptoms ═════ -->
-		<section class="sym">
-			<div class="nv-wrap">
-				<h2 class="nv-title">Agar sizda quyidagi holatlar bo'lsa...</h2>
-				<p class="nv-sub">Nevroslim sizning kundalik hayotingizni yengillashtirishga yordam beradi.</p>
-
-				<div class="sym__grid">
-					<figure v-for="s in symptoms" :key="s.img" class="sym__card">
-						<img :src="img(s.img)" :alt="s.label" width="316" height="352" loading="lazy" />
-						<figcaption>{{ s.label }}</figcaption>
-					</figure>
-				</div>
-			</div>
-		</section>
+		<!-- ═════ Warning / self-check block ═════ -->
+		<FearBlock />
 
 		<!-- ═════ About ═════ -->
 		<section class="about" id="mahsulot">
@@ -260,17 +248,6 @@ const heroChips = [
 	{ icon: 'activity', label: "Bosh og'rig'i" },
 	{ icon: 'brain', label: 'Xotira zaifligi' },
 	{ icon: 'moon', label: 'Uyqusizlik' },
-];
-
-const symptoms = [
-	{ img: 'symptom-fatigue', label: 'Nevroz' },
-	{ img: 'symptom-anxiety', label: "Qo'rquv" },
-	{ img: 'symptom-irritable', label: 'Vahima' },
-	{ img: 'symptom-stress', label: 'Stress' },
-	{ img: 'symptom-nervous', label: 'Asabiylik' },
-	{ img: 'symptom-headache', label: "Bosh og'rig'i" },
-	{ img: 'symptom-focus', label: 'Xotira zaifligi' },
-	{ img: 'symptom-sleep', label: 'Uyqusizlik' },
 ];
 
 const aboutIcons = [
@@ -767,53 +744,6 @@ section {
 
 	.hero__title {
 		font-size: 29px;
-	}
-}
-
-// ───────── Symptoms
-.sym {
-	padding: 64px 0;
-	background: #fff;
-
-	&__grid {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: 20px;
-		margin-top: 32px;
-	}
-
-	&__card {
-		margin: 0;
-		border-radius: var(--nv-radius);
-		overflow: hidden;
-		background: var(--nv-green-50);
-		box-shadow: var(--nv-shadow);
-
-		img {
-			display: block;
-			width: 100%;
-			aspect-ratio: 1 / 1.05;
-			height: auto;
-			object-fit: cover;
-		}
-
-		figcaption {
-			padding: 12px 8px 14px;
-			text-align: center;
-			font-weight: 700;
-			font-size: 14px;
-			line-height: 1.3;
-			color: var(--nv-green-800);
-		}
-	}
-
-	@media (max-width: $md) {
-		padding: 48px 0;
-
-		&__grid {
-			grid-template-columns: repeat(2, 1fr);
-			gap: 12px;
-		}
 	}
 }
 
