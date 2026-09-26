@@ -27,7 +27,7 @@
 
 					<div class="hero__actions">
 						<button type="button" id="hero-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
-							Buyurtma berish <NvIcon name="arrow" :size="18" :stroke="2.5" />
+							Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
 						</button>
 					</div>
 					<p class="hero__note">Ariza qoldiring — konsultantimiz siz bilan bog'lanadi.</p>

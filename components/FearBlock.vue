@@ -45,7 +45,7 @@
 					Belgilar kuchaymasidan oldin mutaxassis maslahatini oling.
 				</p>
 				<button type="button" id="fear-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
-					Buyurtma berish <NvIcon name="arrow" :size="18" :stroke="2.5" />
+					Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
 				</button>
 			</div>
 		</div>
