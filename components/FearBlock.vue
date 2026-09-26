@@ -44,12 +44,17 @@
 					<b>Oldini olish — keyin davolashdan ancha oson.</b>
 					Belgilar kuchaymasidan oldin mutaxassis maslahatini oling.
 				</p>
+				<button type="button" id="fear-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
+					Buyurtma berish <NvIcon name="arrow" :size="18" :stroke="2.5" />
+				</button>
 			</div>
 		</div>
 	</section>
 </template>
 
 <script lang="ts" setup>
+const { open: openOrder } = useOrderModal();
+
 const fearAssets = import.meta.glob('../assets/images/v2/fear/*.webp', { eager: true, import: 'default' }) as Record<string, string>;
 const fearImg = (name: string) => fearAssets[`../assets/images/v2/fear/${name}.webp`];
 
@@ -156,8 +161,7 @@ $sm: 560px;
 	&__cta {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		text-align: center;
+		justify-content: space-between;
 		gap: 16px 28px;
 		margin-top: 32px;
 		padding: 20px 26px;

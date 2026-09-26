@@ -120,7 +120,7 @@ onBeforeUnmount(() => {
 	}
 
 	&__inner {
-		width: min(640px, 100%);
+		width: min(560px, 100%);
 		// centred when it fits, top-aligned (no clipping) when it scrolls
 		margin: auto;
 		padding: clamp(16px, 4vw, 40px) 16px 40px;
@@ -142,26 +142,8 @@ onBeforeUnmount(() => {
 			font-size: 30px;
 		}
 
-		:deep(.nv-form__sub),
-		:deep(.nv-form__stepno) {
+		:deep(.nv-form__sub) {
 			font-size: 15px;
-		}
-
-		:deep(.nv-form__option) {
-			min-height: 58px;
-			font-size: 17px;
-		}
-	}
-
-	// wide screens: two columns so all 10 problems fit without scrolling
-	@media (min-width: 900px) {
-		.nv-modal__inner {
-			width: min(820px, 100%);
-		}
-
-		:deep(.nv-form__options) {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
 		}
 	}
 }
