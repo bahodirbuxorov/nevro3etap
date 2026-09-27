@@ -11,10 +11,10 @@
         <span class="pulse" aria-hidden="true" />
       </div>
 
-      <h1 class="title">Ma'lumotlar qabul qilindi!</h1>
+      <h1 class="title">Маълумотлар қабул қилинди!</h1>
       <p class="subtitle">
-        Tez orada mutaxassislarimiz siz bilan bog'lanadi! Agar қўшимча саволларингиз бўлса,
-        quyidagi контактлар орқали мурожаат қилинг.
+        Тез орада мутахассисларимиз сиз билан боғланади! Агар қўшимча саволларингиз бўлса,
+        қуйидаги контактлар орқали мурожаат қилинг.
       </p>
 
       <!-- Optional: show request ID if you passed ?id=XYZ in the redirect
@@ -27,29 +27,29 @@
       </p>
       <div class="actions">
         <a href="https://t.me/NEVROSLIM" data-meta="contact-telegram" target="_blank" rel="noopener" class="btn btn--primary">
-          Telegram orqali bog'lanish
+          Telegram орқали боғланиш
         </a>
       </div>
 
-      <div class="timeline" aria-label="Jarayon bosqichlari">
+      <div class="timeline" aria-label="Жараён босқичлари">
         <div class="step done">
           <span class="badge">1</span>
           <div>
-            <h3>Ariza yuborildi</h3>
-            <p>Ma'lumotlaringiz muvaffaqiyatli qabul qilindi.</p>
+            <h3>Ариза юборилди</h3>
+            <p>Маълумотларингиз муваффақиятли қабул қилинди.</p>
           </div>
         </div>
         <div class="step active">
           <span class="badge">2</span>
           <div>
-            <h3>Mutaxassis bog'lanadi</h3>
+            <h3>Мутахассис боғланади</h3>
             <p>Тетиклик ва хотиржамлик сари илк қадам!</p>
           </div>
         </div>
         <div class="step">
           <span class="badge">3</span>
           <div>
-            <h3>Yetkazib berish</h3>
+            <h3>Етказиб бериш</h3>
             <p>Маъқуллангач, буюртмангиз етказиб берилади.</p>
           </div>
         </div>

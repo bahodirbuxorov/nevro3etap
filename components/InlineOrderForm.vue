@@ -1,17 +1,17 @@
 <template>
 	<div class="nv-form" id="order-form">
 		<div>
-			<h3 class="nv-form__title">Ariza qoldiring</h3>
-			<p class="nv-form__sub">Mutaxassisimiz tez orada siz bilan bog'lanadi.</p>
+			<h3 class="nv-form__title">Ариза қолдиринг</h3>
+			<p class="nv-form__sub">Мутахассисимиз тез орада сиз билан боғланади.</p>
 
 			<form @submit.prevent="submitForm" class="nv-form__form">
 				<label class="nv-form__field">
-					<span class="nv-form__label">Ismingiz</span>
-					<input required v-model="name" type="text" autocomplete="given-name" class="nv-form__input" placeholder="Ismingizni kiriting" />
+					<span class="nv-form__label">Исмингиз</span>
+					<input required v-model="name" type="text" autocomplete="given-name" class="nv-form__input" placeholder="Исмингизни киритинг" />
 				</label>
 
 				<label class="nv-form__field">
-					<span class="nv-form__label">Telefon raqam</span>
+					<span class="nv-form__label">Телефон рақам</span>
 					<input
 						pattern="\+998\(\d{2}\)\s\d{3}\s\d{2}\s\d{2}"
 						required
@@ -26,6 +26,21 @@
 					/>
 				</label>
 
+				<label class="nv-form__field">
+					<span class="nv-form__label">Қайси муаммо сизни кўпроқ безовта қилади?</span>
+					<select
+						required
+						v-model="problem"
+						class="nv-form__input nv-form__select"
+						@invalid="setProblemHint"
+						@change="clearProblemHint"
+						:class="{ 'is-placeholder': !problem }"
+					>
+						<option value="" disabled>Муаммони танланг</option>
+						<option v-for="p in problemOptions" :key="p" :value="p">❗️ {{ p }}</option>
+					</select>
+				</label>
+
 				<!-- Keep "lead" out of id/data attrs: Meta's codeless matcher latches onto it (git fb58435).
 				     Lead is counted by Meta's URL rule on /thanks, reached only after /api/order succeeds. -->
 				<button
@@ -35,27 +50,27 @@
 					class="nv-btn nv-form__submit"
 					:disabled="isSubmitting"
 				>
-					{{ isSubmitting ? 'YUBORILMOQDA...' : 'YUBORISH' }}
+					{{ isSubmitting ? 'ЮБОРИЛМОҚДА...' : 'ЮБОРИШ' }}
 					<NvIcon v-if="!isSubmitting" name="arrow" :size="18" :stroke="2.5" />
 				</button>
-				<p class="nv-form__note">Ma'lumotlaringiz uchinchi shaxslarga berilmaydi.</p>
+				<p class="nv-form__note">Маълумотларингиз учинчи шахсларга берилмайди.</p>
 			</form>
 		</div>
 
 		<!-- Duplicate modal -->
 		<div class="duplicate-overlay" v-if="isDuplicateModal" @click.self="isDuplicateModal = false">
 			<div class="duplicate-popup">
-				<button class="duplicate-popup__close" @click="isDuplicateModal = false" aria-label="Yopish">&times;</button>
+				<button class="duplicate-popup__close" @click="isDuplicateModal = false" aria-label="Ёпиш">&times;</button>
 				<div class="duplicate-popup__icon">
 					<NvIcon name="check" :size="30" :stroke="2.5" />
 				</div>
-				<h3 class="duplicate-popup__title">Siz avval ham murojaat qoldirgansiz!</h3>
+				<h3 class="duplicate-popup__title">Сиз аввал ҳам мурожаат қолдиргансиз!</h3>
 				<p class="duplicate-popup__text">
-					Menejerlarimiz tez orada siz bilan bog'lanadi. Iltimos, kutib turing!
+					Менежерларимиз тез орада сиз билан боғланади. Илтимос, кутиб туринг!
 				</p>
 				<div class="duplicate-popup__actions">
 					<a href="https://t.me/NEVROSLIM" data-meta="contact-telegram" target="_blank" rel="noopener" class="duplicate-popup__btn duplicate-popup__btn--primary">
-						Telegram orqali bog'lanish
+						Telegram орқали боғланиш
 					</a>
 				</div>
 			</div>
@@ -75,8 +90,31 @@ const { capture: captureUtm, get: getUtm } = useUtmParams()
 const { dismiss: dismissModal } = useOrderModal();
 onMounted(() => captureUtm())
 
+// Sent as problems[] — server/utils/gateway.ts prints it in Telegram and the Bitrix comment.
+const problemOptions = [
+	'Бош оғриғи, Мигрень',
+	'Депрессия',
+	'Зеҳн ва Хотиранинг пастлиги',
+	'Асаб толиқиши',
+	'Уйқусизлик, ваҳима',
+	'Тушкун ҳолатда юриш',
+	'Қўрқув',
+	'Стресс - ички сиқилишлар',
+	'Невроз',
+];
+
 const name = ref('');
 const phone = ref('+998');
+const problem = ref('');
+
+// Browser's own "select an item" bubble follows the phone's UI language; say it in Uzbek.
+function setProblemHint(e: Event) {
+	(e.target as HTMLSelectElement).setCustomValidity('Илтимос, рўйхатдан муаммони танланг');
+}
+
+function clearProblemHint(e: Event) {
+	(e.target as HTMLSelectElement).setCustomValidity('');
+}
 const isSubmitting = ref(false);
 const isDuplicateModal = ref(false);
 
@@ -120,6 +158,7 @@ async function submitForm() {
 			body: {
 				name: name.value,
 				phone_number: normalizedPhone,
+				problems: problem.value ? [problem.value] : [],
 				...getUtm(),
 			},
 		});
@@ -132,13 +171,14 @@ async function submitForm() {
 
 			name.value = '';
 			phone.value = '+998';
+			problem.value = '';
 			emit('submitted');
 			await navigateTo('/thanks');
 			dismissModal();
 		}
 	} catch (error) {
 		console.error('Xatolik:', error);
-		toast.error('❌ Tizimda xatolik yuz berdi!');
+		toast.error('❌ Тизимда хатолик юз берди!');
 	} finally {
 		isSubmitting.value = false;
 	}

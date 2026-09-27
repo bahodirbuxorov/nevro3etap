@@ -6,11 +6,11 @@
 				class="nv-modal"
 				role="dialog"
 				aria-modal="true"
-				aria-label="Maslahat olish uchun ariza"
+				aria-label="Маслаҳат олиш учун ариза"
 			>
 				<div class="nv-modal__bar">
-					<img src="~/assets/images/v2/logo.svg" width="150" height="31" alt="Nevroslim" />
-					<button ref="closeBtn" type="button" class="nv-modal__close" aria-label="Yopish" @click="close">
+					<img src="~/assets/images/v2/logo.svg" width="150" height="31" alt="Неврослим" />
+					<button ref="closeBtn" type="button" class="nv-modal__close" aria-label="Ёпиш" @click="close">
 						<NvIcon name="close" :size="24" :stroke="2.5" />
 					</button>
 				</div>

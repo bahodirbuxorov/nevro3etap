@@ -2,16 +2,16 @@
 	<footer class="nv-foot">
 		<div class="nv-wrap nv-foot__in">
 			<div class="nv-foot__brand">
-				<img src="~/assets/images/v2/logo-white.svg" width="176" height="36" alt="Nevroslim" />
-				<p>Eksklyuziv distribyutor: AL-HAYAT-MED</p>
-				<p>Sayohat ko'chasi, 2-uy, Toshkent shahri, Mirzo Ulug'bek tumani</p>
+				<img src="~/assets/images/v2/logo-white.svg" width="176" height="36" alt="Неврослим" />
+				<p>Эксклюзив дистрибьютор: AL-HAYAT-MED</p>
+				<p>Саёҳат кўчаси, 2-уй, Тошкент шаҳри, Мирзо Улуғбек тумани</p>
 			</div>
 
-			<nav class="nv-foot__nav" aria-label="Pastki menyu">
-				<a href="/#top">Bosh sahifa</a>
-				<a href="/#mahsulot">Mahsulot haqida</a>
-				<a href="/#tarkibi">Tarkibi</a>
-				<a href="/#fikrlar">Mijozlar fikri</a>
+			<nav class="nv-foot__nav" aria-label="Пастки меню">
+				<a href="/#top">Бош саҳифа</a>
+				<a href="/#mahsulot">Маҳсулот ҳақида</a>
+				<a href="/#tarkibi">Таркиби</a>
+				<a href="/#fikrlar">Мижозлар фикри</a>
 			</nav>
 
 			<div class="nv-foot__contact">
@@ -29,7 +29,7 @@
 			</div>
 		</div>
 		<div class="nv-wrap nv-foot__note">
-			© Nevroslim. Qo'llashdan oldin mutaxassis bilan maslahatlashing.
+			© Неврослим. Қўллашдан олдин мутахассис билан маслаҳатлашинг.
 		</div>
 	</footer>
 </template>

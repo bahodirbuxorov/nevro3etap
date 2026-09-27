@@ -8,14 +8,14 @@
 			<div class="nv-wrap hero__in">
 				<div class="hero__copy">
 					<span class="hero__eyebrow">
-						<NvIcon name="leaf" :size="16" /> Asab tizimi uchun
+						<NvIcon name="leaf" :size="16" /> Асаб тизими учун
 					</span>
 					<h1 class="hero__title">
-						Xotirjam hayot va sifatli uyqu sari <span>birinchi qadam!</span>
+						Хотиржам ҳаёт ва сифатли уйқу сари <span>биринчи қадам!</span>
 					</h1>
 					<p class="hero__text">
-						Nevroslim — asab tizimini qo'llab-quvvatlash, stressni kamaytirish va umumiy xotirjamlik
-						uchun tabiiy komponentlar majmuasi.
+						Неврослим — асаб тизимини қўллаб-қувватлаш, стрессни камайтириш ва умумий хотиржамлик
+						учун табиий компонентлар мажмуаси.
 					</p>
 
 					<ul class="hero__feats">
@@ -27,10 +27,10 @@
 
 					<div class="hero__actions">
 						<button type="button" id="hero-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
-							Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
+							Маслаҳат олиш <NvIcon name="arrow" :size="18" :stroke="2.5" />
 						</button>
 					</div>
-					<p class="hero__note">Ariza qoldiring — konsultantimiz siz bilan bog'lanadi.</p>
+					<p class="hero__note">Ариза қолдиринг — консультантимиз сиз билан боғланади.</p>
 				</div>
 
 				<div class="hero__visual">
@@ -66,12 +66,12 @@
 						src="~/assets/images/v2/hero-bottle.webp"
 						width="1024"
 						height="1536"
-						alt="Nevroslim siropi, 200 ml"
+						alt="Неврослим сиропи, 200 мл"
 						fetchpriority="high"
 					/>
-					<img class="hero__badge" src="~/assets/images/v2/badge-100.webp" width="331" height="357" alt="100% tabiiy komponentlar" />
+					<img class="hero__badge" src="~/assets/images/v2/badge-100.webp" width="331" height="357" alt="100% табиий компонентлар" />
 
-					<ul class="hero__chips" aria-label="Nevroslim yordam beradigan holatlar">
+					<ul class="hero__chips" aria-label="Неврослим ёрдам берадиган ҳолатлар">
 						<li v-for="c in heroChips" :key="c.label">
 							<span><NvIcon :name="c.icon" :size="16" /></span>{{ c.label }}
 						</li>
@@ -88,11 +88,11 @@
 			<img class="about__leaf" src="~/assets/images/v2/leaves-corner.webp" alt="" aria-hidden="true" loading="lazy" />
 			<div class="nv-wrap about__in">
 				<div class="about__col">
-					<h2 class="nv-title about__title">Nevroslim nima?</h2>
+					<h2 class="nv-title about__title">Неврослим нима?</h2>
 					<p class="about__text">
-						Nevroslim — asabiylik, stress, vahima va qo'rquv hissi, ruhiy zo'riqish hamda nevrozga xos
-						bezovtalik holatlarida umumiy xotirjamlikni qo'llab-quvvatlashga mo'ljallangan tabiiy o'simlik
-						komponentlari asosidagi sirop.
+						Неврослим — асабийлик, стресс, ваҳима ва қўрқув ҳисси, руҳий зўриқиш ҳамда неврозга хос
+						безовталик ҳолатларида умумий хотиржамликни қўллаб-қувватлашга мўлжалланган табиий ўсимлик
+						компонентлари асосидаги сироп.
 					</p>
 					<ul class="about__icons">
 						<li v-for="a in aboutIcons" :key="a.label">
@@ -103,7 +103,7 @@
 				</div>
 
 				<div class="about__product">
-					<img src="~/assets/images/v2/about-bottles.webp" width="1299" height="1211" alt="Nevroslim siropi" loading="lazy" />
+					<img src="~/assets/images/v2/about-bottles.webp" width="1299" height="1211" alt="Неврослим сиропи" loading="lazy" />
 				</div>
 			</div>
 		</section>
@@ -116,13 +116,13 @@
 						src="~/assets/images/v2/ingredients-poster.webp"
 						width="1122"
 						height="1402"
-						alt="Nevroslimning tarkibi: ginkgo biloba, amarant, yalpiz, do'lana, valeriana"
+						alt="Неврослимнинг таркиби: гинкго билоба, амарант, ялпиз, дўлана, валериана"
 						loading="lazy"
 					/>
 				</figure>
 
-				<h2 class="nv-title">Mahsulot tarkibidagi «ekstrakt»larning tabiiy xususiyatlari</h2>
-				<p class="nv-sub">Tabiatning eng yaxshi ne’matlari</p>
+				<h2 class="nv-title">Маҳсулот таркибидаги «экстракт»ларнинг табиий хусусиятлари</h2>
+				<p class="nv-sub">Табиатнинг энг яхши неъматлари</p>
 
 				<div class="ing__grid">
 					<article v-for="(i, k) in ingredients" :key="i.img" class="ing__card" :style="{ '--i': k }">
@@ -136,7 +136,7 @@
 
 				<div class="nv-center">
 					<button type="button" id="ing-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
-						Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
+						Маслаҳат олиш <NvIcon name="arrow" :size="18" :stroke="2.5" />
 					</button>
 				</div>
 			</div>
@@ -147,11 +147,11 @@
 			<div class="nv-wrap">
 				<div class="rev__head">
 					<div>
-						<h2 class="nv-title rev__title">Mijozlarimiz fikrlari</h2>
-						<p class="rev__sub">Haqiqiy odamlar, haqiqiy natijalar. Nevroslimni tanlagan mijozlarimizning video fikrlari.</p>
+						<h2 class="nv-title rev__title">Мижозларимиз фикрлари</h2>
+						<p class="rev__sub">Ҳақиқий одамлар, ҳақиқий натижалар. Неврослимни танлаган мижозларимизнинг видео фикрлари.</p>
 					</div>
 					<a href="https://www.instagram.com/nevroslim.uz/" target="_blank" rel="noopener" data-meta="contact-instagram" class="nv-btn nv-btn--green nv-btn--sm">
-						Barcha fikrlarni ko'rish <NvIcon name="arrow" :size="16" :stroke="2.5" />
+						Барча фикрларни кўриш <NvIcon name="arrow" :size="16" :stroke="2.5" />
 					</a>
 				</div>
 
@@ -162,7 +162,7 @@
 						class="rev__card"
 						data-fancybox="reviews"
 						:href="`https://www.youtube.com/watch?v=${v}`"
-						:aria-label="`Mijoz fikri ${n + 1}`"
+						:aria-label="`Мижоз фикри ${n + 1}`"
 					>
 						<img :src="`https://i.ytimg.com/vi/${v}/oardefault.jpg`" alt="" loading="lazy" width="270" height="480" />
 						<span class="rev__play"><NvIcon name="play" :size="26" /></span>
@@ -174,8 +174,8 @@
 		<!-- ═════ How to order ═════ -->
 		<section class="steps" id="buyurtma">
 			<div class="nv-wrap">
-				<h2 class="nv-title">Buyurtma berish uchun:</h2>
-				<p class="nv-sub">Nevroslimni olish uchun atigi 3 ta qadam yetarli.</p>
+				<h2 class="nv-title">Буюртма бериш учун:</h2>
+				<p class="nv-sub">Неврослимни олиш учун атиги 3 та қадам етарли.</p>
 
 				<ol class="steps__row">
 					<li v-for="(s, n) in steps" :key="s.title" class="steps__card">
@@ -196,15 +196,15 @@
 			<div class="nv-wrap final__in">
 				<img class="final__man" src="~/assets/images/v2/cta-man.webp" width="621" height="394" alt="" aria-hidden="true" loading="lazy" />
 				<div class="final__copy">
-					<h2 class="final__title">Xotirjam hayot <span>hozir boshlanadi!</span></h2>
-					<p>Nevroslim — tabiiy komponentlar yordamida sizning kundalik xotirjamligingizni qo'llab-quvvatlaydi.</p>
+					<h2 class="final__title">Хотиржам ҳаёт <span>ҳозир бошланади!</span></h2>
+					<p>Неврослим — табиий компонентлар ёрдамида сизнинг кундалик хотиржамлигингизни қўллаб-қувватлайди.</p>
 					<ul>
-						<li><NvIcon name="check" :size="18" :stroke="3" /> Mutaxassis maslahati</li>
-						<li><NvIcon name="check" :size="18" :stroke="3" /> O'zbekiston bo'ylab yetkazib berish</li>
-						<li><NvIcon name="check" :size="18" :stroke="3" /> Original mahsulot</li>
+						<li><NvIcon name="check" :size="18" :stroke="3" /> Мутахассис маслаҳати</li>
+						<li><NvIcon name="check" :size="18" :stroke="3" /> Ўзбекистон бўйлаб етказиб бериш</li>
+						<li><NvIcon name="check" :size="18" :stroke="3" /> Оригинал маҳсулот</li>
 					</ul>
 					<button type="button" id="final-btn" data-meta="order-open" class="nv-btn final__btn" @click="openOrder">
-						Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
+						Маслаҳат олиш <NvIcon name="arrow" :size="18" :stroke="2.5" />
 					</button>
 				</div>
 			</div>
@@ -217,10 +217,10 @@ import { Fancybox } from '@fancyapps/ui';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
 useHead({
-	title: 'Nevroslim — asab tizimi uchun tabiiy sirop',
-	htmlAttrs: { lang: 'uz' },
+	title: 'Неврослим — асаб тизими учун табиий сироп',
+	htmlAttrs: { lang: 'uz-Cyrl' },
 	meta: [
-		{ name: 'description', content: "Nevroslim — asab tizimini qo'llab-quvvatlash, stressni kamaytirish va sifatli uyqu uchun 15 xil tabiiy ekstraktli sirop. Mutaxassis maslahatini oling." },
+		{ name: 'description', content: "Неврослим — асаб тизимини қўллаб-қувватлаш, стрессни камайтириш ва сифатли уйқу учун 15 хил табиий экстрактли сироп. Мутахассис маслаҳатини олинг." },
 	],
 	link: [
 		{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -234,54 +234,54 @@ const assets = import.meta.glob('../assets/images/v2/*.webp', { eager: true, imp
 const img = (name: string) => assets[`../assets/images/v2/${name}.webp`];
 
 const heroFeatures = [
-	{ icon: 'leaf', label: 'Tabiiy<br>komponentlar' },
-	{ icon: 'shield', label: 'Asab tizimini<br>mustahkamlash' },
-	{ icon: 'brain', label: 'Stressni<br>kamaytirish' },
-	{ icon: 'moon', label: 'Sifatli uyquni<br>qo\'llab-quvvatlash' },
+	{ icon: 'leaf', label: 'Табиий<br>компонентлар' },
+	{ icon: 'shield', label: 'Асаб тизимини<br>мустаҳкамлаш' },
+	{ icon: 'brain', label: 'Стрессни<br>камайтириш' },
+	{ icon: 'moon', label: 'Сифатли уйқуни<br>қўллаб-қувватлаш' },
 ];
 
 const heroChips = [
-	{ icon: 'frown', label: "Qo'rquv" },
-	{ icon: 'alert', label: 'Vahima' },
-	{ icon: 'zap', label: 'Stress' },
-	{ icon: 'flame', label: 'Asabiylik' },
-	{ icon: 'activity', label: "Bosh og'rig'i" },
-	{ icon: 'brain', label: 'Xotira zaifligi' },
-	{ icon: 'moon', label: 'Uyqusizlik' },
+	{ icon: 'frown', label: "Қўрқув" },
+	{ icon: 'alert', label: 'Ваҳима' },
+	{ icon: 'zap', label: 'Стресс' },
+	{ icon: 'flame', label: 'Асабийлик' },
+	{ icon: 'activity', label: "Бош оғриғи" },
+	{ icon: 'brain', label: 'Хотира заифлиги' },
+	{ icon: 'moon', label: 'Уйқусизлик' },
 ];
 
 const aboutIcons = [
-	{ icon: 'leaf', label: 'Tabiiy<br>komponentlar' },
-	{ icon: 'shield', label: "Organizmni<br>qo'llab-quvvatlash" },
-	{ icon: 'pill', label: 'Qulay<br>qabul qilish' },
-	{ icon: 'heart', label: 'Kundalik<br>xotirjamlik' },
+	{ icon: 'leaf', label: 'Табиий<br>компонентлар' },
+	{ icon: 'shield', label: "Организмни<br>қўллаб-қувватлаш" },
+	{ icon: 'pill', label: 'Қулай<br>қабул қилиш' },
+	{ icon: 'heart', label: 'Кундалик<br>хотиржамлик' },
 ];
 
 const ingredients = [
-	{ img: 'ing-ginkgo', name: 'Ginkgo Biloba', text: "Miya qon aylanishi va diqqatni qo'llab-quvvatlaydi" },
-	{ img: 'ing-amarant', name: 'Amarant', text: 'Organizmni foydali moddalar bilan boyitadi' },
-	{ img: 'ing-steviya', name: 'Steviya', text: "Tabiiy shirinlik beruvchi o'simlik" },
-	{ img: 'ing-dolana', name: "Do'lana mevalari va guli", text: "Yurak va asab tizimini qo'llab-quvvatlaydi" },
-	{ img: 'ing-valeriana', name: 'Valeriana', text: 'Xotirjamlik va sokin uyquga yordam beradi' },
-	{ img: 'ing-limon-ot', name: "Limon o't", text: 'Asabiy taranglikni yumshatishga yordam beradi' },
-	{ img: 'ing-tograyhon', name: "Tog'rayhon", text: 'Tinchlantiruvchi xususiyatga ega' },
-	{ img: 'ing-qora-andiz', name: 'Qora andiz', text: "Umumiy tetiklikni qo'llab-quvvatlaydi" },
-	{ img: 'ing-dolchin', name: 'Dolchin', text: 'Organizmga quvvat va iliqlik beradi' },
-	{ img: 'ing-arslonquyruq', name: 'Arslonquyruq', text: 'Asabni tinchlantirishga yordam beradi' },
-	{ img: 'ing-zanjabil', name: 'Zanjabil', text: "Immunitet va ichki muvozanatni qo'llab-quvvatlaydi" },
-	{ img: 'ing-nard', name: 'Nard', text: "Tinchlantiruvchi xushbo'y ildiz" },
-	{ img: 'ing-yalpiz', name: 'Yalpiz', text: 'Tetiklik va yengillik baxsh etadi' },
-	{ img: 'ing-propolis', name: 'Propolis', text: "Organizm himoyasini qo'llab-quvvatlaydi" },
-	{ img: 'ing-mumiyo', name: 'Mumiyo', text: 'Ichki quvvatni tiklashga yordam beradi' },
+	{ img: 'ing-ginkgo', name: 'Гинкго Билоба', text: "Мия қон айланиши ва диққатни қўллаб-қувватлайди" },
+	{ img: 'ing-amarant', name: 'Амарант', text: 'Организмни фойдали моддалар билан бойитади' },
+	{ img: 'ing-steviya', name: 'Стевия', text: "Табиий ширинлик берувчи ўсимлик" },
+	{ img: 'ing-dolana', name: "Дўлана мевалари ва гули", text: "Юрак ва асаб тизимини қўллаб-қувватлайди" },
+	{ img: 'ing-valeriana', name: 'Валериана', text: 'Хотиржамлик ва сокин уйқуга ёрдам беради' },
+	{ img: 'ing-limon-ot', name: "Лимон ўт", text: 'Асабий тарангликни юмшатишга ёрдам беради' },
+	{ img: 'ing-tograyhon', name: "Тоғрайҳон", text: 'Тинчлантирувчи хусусиятга эга' },
+	{ img: 'ing-qora-andiz', name: 'Қора андиз', text: "Умумий тетикликни қўллаб-қувватлайди" },
+	{ img: 'ing-dolchin', name: 'Долчин', text: 'Организмга қувват ва илиқлик беради' },
+	{ img: 'ing-arslonquyruq', name: 'Арслонқуйруқ', text: 'Асабни тинчлантиришга ёрдам беради' },
+	{ img: 'ing-zanjabil', name: 'Занжабил', text: "Иммунитет ва ички мувозанатни қўллаб-қувватлайди" },
+	{ img: 'ing-nard', name: 'Нард', text: "Тинчлантирувчи хушбўй илдиз" },
+	{ img: 'ing-yalpiz', name: 'Ялпиз', text: 'Тетиклик ва енгиллик бахш этади' },
+	{ img: 'ing-propolis', name: 'Прополис', text: "Организм ҳимоясини қўллаб-қувватлайди" },
+	{ img: 'ing-mumiyo', name: 'Мумиё', text: 'Ички қувватни тиклашга ёрдам беради' },
 ];
 
 // YouTube Shorts ids of real customer reviews
 const videos = ['_tZkM6ZkBJY', 'JG9eIsaMxtE', 'n1kFxCCc_Ls', '2efcDJVr3uE'];
 
 const steps = [
-	{ icon: 'clipboard', title: 'Ariza qoldiring', text: 'Ismingiz va telefon raqamingizni qoldiring.' },
-	{ icon: 'phone', title: 'Konsultatsiya oling', text: "Mutaxassisimiz siz bilan bog'lanib, savollaringizga javob beradi." },
-	{ icon: 'truck', title: 'Yetkazib berishni kuting', text: 'Manzilingizni tasdiqlang va mahsulotni qulay usulda qabul qiling.' },
+	{ icon: 'clipboard', title: 'Ариза қолдиринг', text: 'Исмингиз ва телефон рақамингизни қолдиринг.' },
+	{ icon: 'phone', title: 'Консультация олинг', text: "Мутахассисимиз сиз билан боғланиб, саволларингизга жавоб беради." },
+	{ icon: 'truck', title: 'Етказиб беришни кутинг', text: 'Манзилингизни тасдиқланг ва маҳсулотни қулай усулда қабул қилинг.' },
 ];
 
 const { open: openOrder } = useOrderModal();

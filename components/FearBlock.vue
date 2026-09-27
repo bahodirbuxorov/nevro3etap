@@ -2,20 +2,20 @@
 	<section class="fear" id="belgilar">
 		<div class="nv-wrap">
 			<header class="fear__head">
-				<span class="fear__eyebrow"><NvIcon name="alert" :size="16" :stroke="2.4" /> Ogohlantirish</span>
+				<span class="fear__eyebrow"><NvIcon name="alert" :size="16" :stroke="2.4" /> Огоҳлантириш</span>
 				<h2 class="fear__title">
-					Bugungi kichik belgilar —
-					<span>ertangi jiddiy muammo</span>
+					Бугунги кичик белгилар —
+					<span>эртанги жиддий муаммо</span>
 				</h2>
 				<p class="fear__lead">
-					Asab tizimidagi zo'riqish birdan paydo bo'lmaydi. U kichik belgilardan boshlanadi va e'tiborsiz qolsa,
-					vaqt o'tishi bilan jiddiy muammolarga aylanishi mumkin.
+					Асаб тизимидаги зўриқиш бирдан пайдо бўлмайди. У кичик белгилардан бошланади ва эътиборсиз қолса,
+					вақт ўтиши билан жиддий муаммоларга айланиши мумкин.
 				</p>
 			</header>
 
 			<!-- today -> tomorrow -->
 			<div class="fear-row fear-row--now">
-				<p class="fear-row__label">Bugun: sezilayotgan belgilar</p>
+				<p class="fear-row__label">Бугун: сезилаётган белгилар</p>
 				<ul class="fear-row__grid">
 					<li v-for="s in signs" :key="s.img" class="fear-tile">
 						<img :src="fearImg(s.img)" width="800" height="600" alt="" loading="lazy" />
@@ -26,11 +26,11 @@
 
 			<div class="fear__arrow" aria-hidden="true">
 				<span class="fear__arrow-ic"><NvIcon name="arrow" :size="24" :stroke="2.6" /></span>
-				<span class="fear__arrow-txt">E'tiborsiz qolsa…</span>
+				<span class="fear__arrow-txt">Эътиборсиз қолса…</span>
 			</div>
 
 			<div class="fear-row fear-row--later">
-				<p class="fear-row__label">Ertaga: jiddiy oqibatlar</p>
+				<p class="fear-row__label">Эртага: жиддий оқибатлар</p>
 				<ul class="fear-row__grid">
 					<li v-for="c in consequences" :key="c.img" class="fear-tile">
 						<img :src="fearImg(c.img)" width="640" height="640" alt="" loading="lazy" />
@@ -41,11 +41,11 @@
 
 			<div class="fear__cta">
 				<p>
-					<b>Oldini olish — keyin davolashdan ancha oson.</b>
-					Belgilar kuchaymasidan oldin mutaxassis maslahatini oling.
+					<b>Олдини олиш — кейин даволашдан анча осон.</b>
+					Белгилар кучаймасидан олдин мутахассис маслаҳатини олинг.
 				</p>
 				<button type="button" id="fear-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
-					Maslahat olish <NvIcon name="arrow" :size="18" :stroke="2.5" />
+					Маслаҳат олиш <NvIcon name="arrow" :size="18" :stroke="2.5" />
 				</button>
 			</div>
 		</div>
@@ -59,20 +59,20 @@ const fearAssets = import.meta.glob('../assets/images/v2/fear/*.webp', { eager: 
 const fearImg = (name: string) => fearAssets[`../assets/images/v2/fear/${name}.webp`];
 
 const signs = [
-	{ img: 'fear-card-irritable', title: 'Tez-tez asabiylashish' },
-	{ img: 'fear-card-anxiety', title: "Sababsiz xavotir va qo'rquv" },
-	{ img: 'fear-card-sleep', title: 'Uyqusizlik' },
-	{ img: 'fear-card-focus', title: 'Diqqat va xotira susayishi' },
-	{ img: 'fear-card-tension', title: "Doimiy ruhiy zo'riqish" },
-	{ img: 'fear-card-headache', title: "Bosh og'rig'i va taranglik" },
+	{ img: 'fear-card-irritable', title: 'Тез-тез асабийлашиш' },
+	{ img: 'fear-card-anxiety', title: "Сабабсиз хавотир ва қўрқув" },
+	{ img: 'fear-card-sleep', title: 'Уйқусизлик' },
+	{ img: 'fear-card-focus', title: 'Диққат ва хотира сусайиши' },
+	{ img: 'fear-card-tension', title: "Доимий руҳий зўриқиш" },
+	{ img: 'fear-card-headache', title: "Бош оғриғи ва таранглик" },
 ];
 
 const consequences = [
-	{ img: 'fear-cons-stress', title: 'Surunkali stress va tushkunlik' },
-	{ img: 'fear-cons-insomnia', title: 'Doimiy uyqusizlik' },
-	{ img: 'fear-cons-memory', title: 'Xotira va diqqatning pasayishi' },
-	{ img: 'fear-cons-heart', title: 'Yurak-qon tomir tizimiga yuklama' },
-	{ img: 'fear-cons-work', title: 'Ish va hayot sifatining pasayishi' },
+	{ img: 'fear-cons-stress', title: 'Сурункали стресс ва тушкунлик' },
+	{ img: 'fear-cons-insomnia', title: 'Доимий уйқусизлик' },
+	{ img: 'fear-cons-memory', title: 'Хотира ва диққатнинг пасайиши' },
+	{ img: 'fear-cons-heart', title: 'Юрак-қон томир тизимига юклама' },
+	{ img: 'fear-cons-work', title: 'Иш ва ҳаёт сифатининг пасайиши' },
 ];
 </script>
 

@@ -1,17 +1,17 @@
 <template>
 	<header class="nv-head" :class="{ 'is-scrolled': scrolled }">
 		<div class="nv-wrap nv-head__in">
-			<a href="/#top" class="nv-head__logo" aria-label="Nevroslim">
-				<img src="~/assets/images/v2/logo.svg" width="176" height="36" alt="Nevroslim" />
+			<a href="/#top" class="nv-head__logo" aria-label="Неврослим">
+				<img src="~/assets/images/v2/logo.svg" width="176" height="36" alt="Неврослим" />
 			</a>
 
-			<nav class="nv-head__nav" :class="{ 'is-open': open }" aria-label="Asosiy menyu">
+			<nav class="nv-head__nav" :class="{ 'is-open': open }" aria-label="Асосий меню">
 				<a v-for="l in links" :key="l.href" :href="l.href" @click="open = false">{{ l.label }}</a>
 			</nav>
 
-			<button type="button" data-meta="order-open" class="nv-btn nv-btn--sm nv-head__cta" @click="openOrder">Maslahat olish</button>
+			<button type="button" data-meta="order-open" class="nv-btn nv-btn--sm nv-head__cta" @click="openOrder">Маслаҳат олиш</button>
 
-			<button type="button" class="nv-head__burger" :aria-expanded="open" aria-label="Menyu" @click="open = !open">
+			<button type="button" class="nv-head__burger" :aria-expanded="open" aria-label="Меню" @click="open = !open">
 				<NvIcon :name="open ? 'close' : 'menu'" :size="26" />
 			</button>
 		</div>
@@ -20,11 +20,11 @@
 
 <script lang="ts" setup>
 const links = [
-	{ href: '/#top', label: 'Bosh sahifa' },
-	{ href: '/#mahsulot', label: 'Mahsulot haqida' },
-	{ href: '/#tarkibi', label: 'Tarkibi' },
-	{ href: '/#fikrlar', label: 'Mijozlar fikri' },
-	{ href: '/#buyurtma', label: 'Buyurtma' },
+	{ href: '/#top', label: 'Бош саҳифа' },
+	{ href: '/#mahsulot', label: 'Маҳсулот ҳақида' },
+	{ href: '/#tarkibi', label: 'Таркиби' },
+	{ href: '/#fikrlar', label: 'Мижозлар фикри' },
+	{ href: '/#buyurtma', label: 'Буюртма' },
 ];
 
 const open = ref(false);
