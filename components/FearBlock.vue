@@ -44,7 +44,7 @@
 					<b>Олдини олиш — кейин даволашдан анча осон.</b>
 					Белгилар кучаймасидан олдин мутахассис маслаҳатини олинг.
 				</p>
-				<button type="button" id="fear-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
+				<button type="button" id="fear-btn" data-meta="order-scroll" class="nv-btn" @click="scrollToOrderForm">
 					Маслаҳат олиш <NvIcon name="arrow" :size="18" :stroke="2.5" />
 				</button>
 			</div>
@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts" setup>
-const { open: openOrder } = useOrderModal();
+const { scrollToOrderForm } = useOrderScroll();
 
 const fearAssets = import.meta.glob('../assets/images/v2/fear/*.webp', { eager: true, import: 'default' }) as Record<string, string>;
 const fearImg = (name: string) => fearAssets[`../assets/images/v2/fear/${name}.webp`];

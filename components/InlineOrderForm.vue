@@ -87,7 +87,6 @@ const emit = defineEmits<{
 }>();
 
 const { capture: captureUtm, get: getUtm } = useUtmParams()
-const { dismiss: dismissModal } = useOrderModal();
 onMounted(() => captureUtm())
 
 // Sent as problems[] — server/utils/gateway.ts prints it in Telegram and the Bitrix comment.
@@ -173,8 +172,7 @@ async function submitForm() {
 			phone.value = '+998';
 			problem.value = '';
 			emit('submitted');
-			await navigateTo('/thanks');
-			dismissModal();
+			navigateTo('/thanks');
 		}
 	} catch (error) {
 		console.error('Xatolik:', error);

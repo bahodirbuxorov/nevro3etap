@@ -26,7 +26,7 @@
 					</ul>
 
 					<div class="hero__actions">
-						<button type="button" id="hero-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
+						<button type="button" id="hero-btn" data-meta="order-scroll" class="nv-btn" @click="scrollToOrderForm">
 							Маслаҳат олиш <NvIcon name="arrow" :size="18" :stroke="2.5" />
 						</button>
 					</div>
@@ -135,7 +135,7 @@
 				</div>
 
 				<div class="nv-center">
-					<button type="button" id="ing-btn" data-meta="order-open" class="nv-btn" @click="openOrder">
+					<button type="button" id="ing-btn" data-meta="order-scroll" class="nv-btn" @click="scrollToOrderForm">
 						Маслаҳат олиш <NvIcon name="arrow" :size="18" :stroke="2.5" />
 					</button>
 				</div>
@@ -190,7 +190,7 @@
 			</div>
 		</section>
 
-		<!-- ═════ Final CTA (form opens full screen) ═════ -->
+		<!-- ═════ Final CTA + order form ═════ -->
 		<section class="final">
 			<img class="final__bg" src="~/assets/images/v2/cta-bg.webp" alt="" aria-hidden="true" loading="lazy" />
 			<div class="nv-wrap final__in">
@@ -203,10 +203,8 @@
 						<li><NvIcon name="check" :size="18" :stroke="3" /> Ўзбекистон бўйлаб етказиб бериш</li>
 						<li><NvIcon name="check" :size="18" :stroke="3" /> Оригинал маҳсулот</li>
 					</ul>
-					<button type="button" id="final-btn" data-meta="order-open" class="nv-btn final__btn" @click="openOrder">
-						Маслаҳат олиш <NvIcon name="arrow" :size="18" :stroke="2.5" />
-					</button>
 				</div>
+				<InlineOrderForm />
 			</div>
 		</section>
 	</main>
@@ -284,7 +282,7 @@ const steps = [
 	{ icon: 'truck', title: 'Етказиб беришни кутинг', text: 'Манзилингизни тасдиқланг ва маҳсулотни қулай усулда қабул қилинг.' },
 ];
 
-const { open: openOrder } = useOrderModal();
+const { scrollToOrderForm } = useOrderScroll();
 
 onMounted(() => {
 	Fancybox.bind('[data-fancybox]', {});
@@ -826,6 +824,9 @@ section {
 
 		&__product {
 			order: -1;
+			// explicit width: with auto margins the grid item shrinks to its content,
+			// so the lazy image had no reserved height and shifted everything below it
+			width: 100%;
 			max-width: 420px;
 			margin: 0 auto;
 		}
@@ -1184,8 +1185,8 @@ section {
 	&__in {
 		position: relative;
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 40px;
+		grid-template-columns: 0.95fr 1fr 0.95fr;
+		gap: 24px;
 		align-items: center;
 	}
 
@@ -1241,15 +1242,9 @@ section {
 		}
 	}
 
-	&__btn {
-		margin-top: 26px;
-		min-width: 280px;
-	}
-
 	@media (max-width: 1100px) {
 		&__in {
-			grid-template-columns: 1fr;
-			max-width: 560px;
+			grid-template-columns: 1fr 1fr;
 		}
 
 		&__man {
@@ -1270,11 +1265,6 @@ section {
 			ul {
 				align-items: center;
 			}
-		}
-
-		&__btn {
-			width: 100%;
-			min-width: 0;
 		}
 	}
 }
