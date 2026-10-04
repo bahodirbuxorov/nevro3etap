@@ -26,21 +26,6 @@
 					/>
 				</label>
 
-				<label class="nv-form__field">
-					<span class="nv-form__label">Қайси муаммо сизни кўпроқ безовта қилади?</span>
-					<select
-						required
-						v-model="problem"
-						class="nv-form__input nv-form__select"
-						@invalid="setProblemHint"
-						@change="clearProblemHint"
-						:class="{ 'is-placeholder': !problem }"
-					>
-						<option value="" disabled>Муаммони танланг</option>
-						<option v-for="p in problemOptions" :key="p" :value="p">❗️ {{ p }}</option>
-					</select>
-				</label>
-
 				<!-- Keep "lead" out of id/data attrs: Meta's codeless matcher latches onto it (git fb58435).
 				     Lead is counted by Meta's URL rule on /thanks, reached only after /api/order succeeds. -->
 				<button
@@ -89,31 +74,8 @@ const emit = defineEmits<{
 const { capture: captureUtm, get: getUtm } = useUtmParams()
 onMounted(() => captureUtm())
 
-// Sent as problems[] — server/utils/gateway.ts prints it in Telegram and the Bitrix comment.
-const problemOptions = [
-	'Бош оғриғи, Мигрень',
-	'Депрессия',
-	'Зеҳн ва Хотиранинг пастлиги',
-	'Асаб толиқиши',
-	'Уйқусизлик, ваҳима',
-	'Тушкун ҳолатда юриш',
-	'Қўрқув',
-	'Стресс - ички сиқилишлар',
-	'Невроз',
-];
-
 const name = ref('');
 const phone = ref('+998');
-const problem = ref('');
-
-// Browser's own "select an item" bubble follows the phone's UI language; say it in Uzbek.
-function setProblemHint(e: Event) {
-	(e.target as HTMLSelectElement).setCustomValidity('Илтимос, рўйхатдан муаммони танланг');
-}
-
-function clearProblemHint(e: Event) {
-	(e.target as HTMLSelectElement).setCustomValidity('');
-}
 const isSubmitting = ref(false);
 const isDuplicateModal = ref(false);
 
@@ -157,7 +119,6 @@ async function submitForm() {
 			body: {
 				name: name.value,
 				phone_number: normalizedPhone,
-				problems: problem.value ? [problem.value] : [],
 				...getUtm(),
 			},
 		});
@@ -170,7 +131,6 @@ async function submitForm() {
 
 			name.value = '';
 			phone.value = '+998';
-			problem.value = '';
 			emit('submitted');
 			navigateTo('/thanks');
 		}
