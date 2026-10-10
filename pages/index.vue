@@ -25,6 +25,8 @@
 						</li>
 					</ul>
 
+					<PriceTag class="hero__price" />
+
 					<div class="hero__actions">
 						<button type="button" id="hero-btn" data-meta="order-scroll" class="nv-btn" @click="scrollToOrderForm">
 							Маслаҳат олиш <NvIcon name="arrow" :size="18" :stroke="2.5" />
@@ -203,6 +205,7 @@
 						<li><NvIcon name="check" :size="18" :stroke="3" /> Ўзбекистон бўйлаб етказиб бериш</li>
 						<li><NvIcon name="check" :size="18" :stroke="3" /> Оригинал маҳсулот</li>
 					</ul>
+					<PriceTag class="final__price" />
 				</div>
 				<InlineOrderForm />
 			</div>
@@ -424,12 +427,16 @@ section {
 		box-shadow: 0 6px 16px rgba(22, 98, 58, 0.28);
 	}
 
+	&__price {
+		margin-top: 52px;
+	}
+
 	&__actions {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 12px 16px;
-		margin-top: 28px;
+		margin-top: 24px;
 	}
 
 	&__note {
@@ -610,6 +617,11 @@ section {
 			bottom: -2%;
 			width: calc(var(--nv-art) * 0.6875);
 			max-width: none;
+		}
+
+		&__price {
+			order: 5;
+			margin-top: 30px;
 		}
 
 		&__actions {
@@ -1215,6 +1227,10 @@ section {
 		}
 	}
 
+	&__price {
+		margin-top: 52px;
+	}
+
 	&__copy {
 		> p {
 			margin-top: 14px;
@@ -1257,6 +1273,10 @@ section {
 
 		&__in {
 			grid-template-columns: 1fr;
+		}
+
+		&__price {
+			margin-inline: auto;
 		}
 
 		&__copy {
